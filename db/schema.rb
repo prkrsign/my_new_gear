@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_025154) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username", default: "", null: false
+    t.string "username", null: false
     t.string "favorite", null: false
     t.text "profile"
     t.string "avatar"
