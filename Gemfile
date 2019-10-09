@@ -51,6 +51,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'spring-commands-rspec'
   gem 'simplecov'
+  gem 'database_cleaner'
 end
 
 group :development do
