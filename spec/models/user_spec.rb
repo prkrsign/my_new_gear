@@ -78,6 +78,33 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe 'ユーザー新規登録(passwordの妥当性確認)' do
+      it "passwordがnilの場合、登録できない" do
+        user = build(:user, password: nil)
+        user.valid?
+        expect(user.errors[:password]).to include("を入力してください")
+      end
+
+      # 確認passwordがnilの場合のバリデーションは存在しないが、passwordではnilを許さないため問題ないと判断する(神山)
+      it "確認passwordとpasswordが一致しない場合、登録できない" do
+        user = build(:user, password_confirmation: 'aaaa')
+        user.valid?
+        expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
+      end
+
+      it "passwordが7桁以下の場合、登録できない" do
+        user = build(:user, password: 'aaabbb')
+        user.valid?
+        expect(user.errors[:password]).to include("は7文字以上で入力してください")
+      end
+
+      it "passwordが20桁以上の場合、登録できない" do
+        user = build(:user, password: 'aaabbbcccdddeeefffggg')
+        user.valid?
+        expect(user.errors[:password]).to include("は20文字以内で入力してください")
+      end
+    end
+
 
     describe 'ユーザー新規登録(favoriteの妥当性確認)' do
       it "favoriteがnilの場合、アカウント登録できない" do
@@ -87,8 +114,46 @@ RSpec.describe User, type: :model do
       end
     end
 
+
+
     describe 'ユーザー新規登録(profileの妥当性確認)' do
-      
+      it "profileがnilでも、アカウント登録できる" do
+        user = build(:user, profile: nil)
+        user.valid?
+        expect(user).to be_valid
+      end
+
+      it "profileが1000文字以内の場合、アカウント登録できる" do
+        user = build(:user, profile: Faker::Lorem.characters(number: 1000))
+        user.valid?
+        expect(user).to be_valid
+      end
+
+      it "profileが1001文字以上の場合、アカウント登録できない" do
+        user = build(:user, profile: Faker::Lorem.characters(number: 1001))
+        user.valid?
+        expect(user.errors[:profile]).to include("は1000文字以内で入力してください")
+      end
+    end
+
+
+
+    describe 'ユーザー新規登録(avatarの妥当性確認)' do
+      it "avatarがnilでも、アカウント登録できる" do
+        user = build(:user, avatar: nil)
+        user.valid?
+        expect(user).to be_valid
+      end
+    end
+
+
+
+    describe 'ユーザー新規登録(genre_idの妥当性確認)' do
+      it "genre_idがnilの場合、アカウント登録できない" do
+        user = build(:user, genre_id: nil)
+        user.valid?
+        expect(user.errors[:genre_id]).to include("を入力してください")
+      end
     end
 
 

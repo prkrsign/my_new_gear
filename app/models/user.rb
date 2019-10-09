@@ -15,4 +15,11 @@ class User < ApplicationRecord
   validates :username,             presence: true, length: { minimum:1, maximum:15 }
   validates :email,                presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGIX }
   validates :favorite,             presence: true
+  validates :profile,              length: { maximum: 1000 }
+  validates :genre_id,             presence: true
+  validates :password,             presence: true, length: { minimum: 7, maximum: 20}, confirmation: true    
+
+
+
+
 end
