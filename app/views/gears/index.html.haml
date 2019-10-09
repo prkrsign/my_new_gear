@@ -1,0 +1,11 @@
+- if user_signed_in?
+  = link_to new_user_session_path do
+    ログイン
+  
+  = link_to  destroy_user_session_path, method: :delete do
+    ログアウト
+
+
+- else
+  = link_to new_user_registration_path do
+    新規登録
