@@ -5,7 +5,7 @@
   .field
     = f.label :avatar
     %br/
-    = f.file_field :avar
+    = f.file_field :avatar
 
   .field
     = f.label :username
@@ -32,6 +32,11 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
+  
+  .field
+    = f.label :genre
+    %br/
+    = f.collection_select :genre_id, Genre.all, :id, :name
   
   .field
     = f.label :favorite
