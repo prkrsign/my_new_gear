@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'spring-commands-rspec'
+  gem 'simplecov'
 end
 
 group :development do
