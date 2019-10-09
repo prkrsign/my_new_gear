@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  # active_hashでgenreIDを紐づける
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :genre
+
+  mount_uploader :avatar, AvatarUploader
 end
