@@ -1,7 +1,7 @@
 class CreateGears < ActiveRecord::Migration[5.2]
   def change
     create_table :gears do |t|
-      t.string   :gear_name,       null: false
+      t.string   :gearname,        null: false
       t.text     :review,          null: false
       t.integer  :price,           null: false
       t.integer  :sound,           null: false
