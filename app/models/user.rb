@@ -9,4 +9,6 @@ class User < ApplicationRecord
   belongs_to_active_hash :genre
 
   mount_uploader :avatar, AvatarUploader
+
+  validates :username, presence: true
 end
