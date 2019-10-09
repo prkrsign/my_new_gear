@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
       it "usernameがnilの場合、アカウント登録ができない" do
         user = FactoryBot.build(:user,username: 'aaaaabbbbbccccc')
         user.valid?
-        expect(user.errors[:username]).to include("can't be blank")
+        expect(user.errors[:username]).to include("を入力してください")
       end
 
 
