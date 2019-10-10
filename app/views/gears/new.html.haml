@@ -3,3 +3,6 @@
 .gears-new-wrapper
   = form_with model:@gear, url:user_registration_path, local: true do |f|
     aaa
+    
+    = f.label :
+    = f.file_field :img_name, id: 'file_photo'
