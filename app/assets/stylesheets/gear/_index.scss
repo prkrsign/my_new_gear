@@ -2,10 +2,8 @@
     background-color: $site-main-color;
 }
 
-.main-header__logo {
-    color: $text-main-color;
+.main-header{
+    &__logo{
+        color: $text-main-color;
+    }
 }
-
-// .header-btn-signup{
-//     border: $text-main-color;
-// }
