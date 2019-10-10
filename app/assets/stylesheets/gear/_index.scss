@@ -1,0 +1,9 @@
+.main-header-wrapper{
+    background-color: $site-main-color;
+}
+
+.main-header{
+    &__logo{
+        color: $text-main-color;
+    }
+}
