@@ -1,5 +1,8 @@
 class GearsController < ApplicationController
-    def index
+    def index 
+    end
+
+    def new
         
     end
 end
