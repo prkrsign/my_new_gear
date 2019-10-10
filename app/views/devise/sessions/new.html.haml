@@ -1,17 +1,60 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.signup-wrapper
+  .container-fluid
+    .header.row.p-5
+      .h2.header__logo.text-center.col-12
+        %i.fa.fa-cog
+        My New Gears...
+
+    .middle.row
+      .middle__inner.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-10.offset-sm-1
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+
+          .middle__inner__title.h4.m-4
+            My New Gearsにログイン
+          %hr
+
+          .middle__inner__title__left.row
+            .col-md-6
+              =link_to '#', class: 'btn btn-twitter-inverse btn-block btn-lg my-3' do
+                %i.fa.fa-twitter
+                Twitterアカウントでログイン
+
+              =link_to '#', class: 'btn btn-instagram-inverse btn-block btn-lg my-3' do
+                %i.fa.fa-instagram
+                Instagramアカウントでログイン
+              
+              =link_to '#', class: 'btn btn-github-inverse btn-block btn-lg mt-3 mb-4' do
+                %i.fa.fa-github
+                Githubアカウントでログイン
+              %hr
+
+            .col-md-6.signup-right-content
+              .field.mt-3
+                = f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'form-control'
+              
+              .field.mt-3
+                = f.password_field :password, autofocus: true, autocomplete: :off, placeholder: "パスワード", class: 'form-control'
+
+              .actions.mt-4
+                = f.submit "My New Gearsにログイン", class: 'btn btn-block btn-lg btn-site-color'
+                
+              = render "devise/shared/links"
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"
