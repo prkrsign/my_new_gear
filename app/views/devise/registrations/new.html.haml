@@ -1,60 +1,64 @@
-.signup-wrapper.m-5
+.signup-wrapper
   .container-fluid
-    .header.row.m-3
-      .header__logo.text-center.col-12.ml-5.pt-3
+    .header.row.p-3
+      .h1.header__logo.text-center.col-12
         My New Gears...
-    -# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    -#   = render "devise/shared/error_messages", resource: resource
 
-    -#   .field
-    -#     = f.label :avatar
-    -#     %br/
-    -#     = f.file_field :avatar
+    .middle.row
+      .middle__inner.bg-white.offset-md-2.col-md-8
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
 
-    -#   .field
-    -#     = f.label :username
-    -#     %br/
-    -#     = f.text_field :username, autofocus: true, autocomplete: "username"
+          .field
+            = f.label :avatar
+            %br/
+            = f.file_field :avatar
 
-
-    -#   .field
-    -#     = f.label :email
-    -#     %br/
-    -#     = f.email_field :email, autofocus: true, autocomplete: "email"
+          .field
+            = f.label :username
+            %br/
+            = f.text_field :username, autofocus: true, autocomplete: "username"
 
 
-    -#   .field
-    -#     = f.label :password
-    -#     - if @minimum_password_length
-    -#       %em
-    -#         (#{@minimum_password_length} characters minimum)
-    -#     %br/
-    -#     = f.password_field :password, autocomplete: "new-password"
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email"
 
 
-    -#   .field
-    -#     = f.label :password_confirmation
-    -#     %br/
-    -#     = f.password_field :password_confirmation, autocomplete: "new-password"
-      
-    -#   .field
-    -#     = f.label :genre
-    -#     %br/
-    -#     = f.collection_select :genre_id, Genre.all, :id, :name
-      
-    -#   .field
-    -#     = f.label :favorite
-    -#     %br/
-    -#     = f.text_field :favorite, autofocus: true
+          .field
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "new-password"
 
 
-    -#   .field
-    -#     = f.label :profile
-    -#     %br/
-    -#     = f.text_area :profile, maxlength: "1000", rows: "10"
+          .field
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          
+          .field
+            = f.label :genre
+            %br/
+            = f.collection_select :genre_id, Genre.all, :id, :name
+          
+          .field
+            = f.label :favorite
+            %br/
+            = f.text_field :favorite, autofocus: true
+
+
+          .field
+            = f.label :profile
+            %br/
+            = f.text_area :profile, maxlength: "1000", rows: "10"
 
 
 
-    -#   .actions
-    -#     = f.submit "Sign up"
-    -# = render "devise/shared/links"
+          .actions
+            = f.submit "Sign up"
+          = render "devise/shared/links"
+    .footer.row
