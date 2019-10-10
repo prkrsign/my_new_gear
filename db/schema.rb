@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_025154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.string "favorite", null: false
+    t.string "favorite"
     t.text "profile"
     t.string "avatar"
     t.bigint "genre_id"

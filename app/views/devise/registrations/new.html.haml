@@ -1,58 +1,104 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
+.signup-wrapper
+  .container-fluid
+    .header.row.p-5
+      .h2.header__logo.text-center.col-12
+        %i.fa.fa-cog
+        My New Gears...
 
-  .field
-    = f.label :avatar
-    %br/
-    = f.file_field :avatar
+    .middle.row
+      .middle__inner.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-10.offset-sm-1
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
 
-  .field
-    = f.label :username
-    %br/
-    = f.text_field :username, autofocus: true, autocomplete: "username"
+          .middle__inner__title.h4.m-4
+            新規登録して利用を開始しましょう。
+          %hr
 
+          .middle__inner__title__left.row
+            .col-md-6
+              =link_to '#', class: 'btn btn-twitter-inverse btn-block btn-lg my-3' do
+                %i.fa.fa-twitter
+                Twitterアカウントで登録
 
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+              =link_to '#', class: 'btn btn-instagram-inverse btn-block btn-lg my-3' do
+                %i.fa.fa-instagram
+                Instagramアカウントで登録
+              
+              =link_to '#', class: 'btn btn-github-inverse btn-block btn-lg mt-3 mb-4' do
+                %i.fa.fa-github
+                Githubアカウントで登録
+              
+              %hr
 
+            .col-md-6.signup-right-content
+              .field.mt-3
+                = f.text_field :username, autofocus: true, autocomplete: :off, placeholder: "ユーザー名", class: 'form-control'
+              
+              .field.mt-3
+                = f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'form-control'
+              
+              .field.mt-3
+                = f.password_field :password, autofocus: true, autocomplete: :off, placeholder: "パスワード", class: 'form-control'
 
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
+              .actions.mt-4
+                = f.submit "新規会員登録", class: 'btn btn-block btn-lg btn-site-color'
+                
+              = render "devise/shared/links"
 
-
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  
-  .field
-    = f.label :genre
-    %br/
-    = f.collection_select :genre_id, Genre.all, :id, :name
-  
-  .field
-    = f.label :favorite
-    %br/
-    = f.text_field :favorite, autofocus: true
-
-
-  .field
-    = f.label :profile
-    %br/
-    = f.text_area :profile, maxlength: "1000", rows: "10"
-
-
-
-  .actions
-    = f.submit "Sign up"
+              -# .field.row
+              -#   %label.filed__label
+              -#     %i.fa.fa-user
+              -#     = f.file_field :avatar, id: 'avatar_photo', class: 'filed__label__text'
 
 
-= render "devise/shared/links"
+              -# .field
+              -#   = f.label :avatar
+              -#   %br/
+              -#   = f.file_field :avatar
+
+              -# .field
+              -#   = f.label :username
+              -#   %br/
+              -#   = f.text_field :username, autofocus: true, autocomplete: "username"
+
+
+              -# .field
+              -#   = f.label :email
+              -#   %br/
+              -#   = f.email_field :email, autofocus: true, autocomplete: "email"
+
+
+              -# .field
+              -#   = f.label :password
+              -#   - if @minimum_password_length
+              -#     %em
+              -#       (#{@minimum_password_length} characters minimum)
+              -#   %br/
+              -#   = f.password_field :password, autocomplete: "new-password"
+
+
+              -# .field
+              -#   = f.label :password_confirmation
+              -#   %br/
+              -#   = f.password_field :password_confirmation, autocomplete: "new-password"
+              
+              -# .field
+              -#   = f.label :genre
+              -#   %br/
+              -#   = f.collection_select :genre_id, Genre.all, :id, :name
+              
+              -# .field
+              -#   = f.label :favorite
+              -#   %br/
+              -#   = f.text_field :favorite, autofocus: true
+
+
+              -# .field
+              -#   = f.label :profile
+              -#   %br/
+              -#   = f.text_area :profile, maxlength: "1000", rows: "10"
+
+
+
+
+    .footer.row
