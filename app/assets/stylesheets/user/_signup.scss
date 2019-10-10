@@ -2,12 +2,36 @@
     background-color: $main-background;
 }
 
-.signup-wrapper{
-    .container-fluid{
-        .header{
-        }
-        .middle{
-            // margin: 2rem 10rem 0 10rem;
-        }
-    }
+.header__logo{
+    color: $site-main-color;
+}
+
+.signup-right-content{
+    border-left: 1px solid #eee;
+    overflow: hidden;
+}
+
+.btn-twitter-inverse {
+    color: #fff;
+    background-color: #55acee;
+    border-color: #2795e9;
+}
+
+.btn-instagram-inverse{
+    // color: #fff;
+    // background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    color: #fff;
+    background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    border-color: #2795e9;
+}
+
+.btn-github-inverse {
+    color: #fff;
+    background-color: #4d4d4d;
+    border-color: #1a1a1a;
+}
+
+.btn-site-color{
+    color: #fff;
+    background-color: $site-main-color; 
 }
