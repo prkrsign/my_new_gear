@@ -106,13 +106,14 @@ RSpec.describe User, type: :model do
     end
 
 
-    describe 'ユーザー新規登録(favoriteの妥当性確認)' do
-      it "favoriteがnilの場合、アカウント登録できない" do
-        user = build(:user, favorite: nil)
-        user.valid?
-        expect(user.errors[:favorite]).to include("を入力してください")
-      end
-    end
+    # favoriteのnull: falseはやめる
+    # describe 'ユーザー新規登録(favoriteの妥当性確認)' do
+    #   it "favoriteがnilの場合、アカウント登録できない" do
+    #     user = build(:user, favorite: nil)
+    #     user.valid?
+    #     expect(user.errors[:favorite]).to include("を入力してください")
+    #   end
+    # end
 
 
 
@@ -146,15 +147,14 @@ RSpec.describe User, type: :model do
       end
     end
 
-
-
-    describe 'ユーザー新規登録(genre_idの妥当性確認)' do
-      it "genre_idがnilの場合、アカウント登録できない" do
-        user = build(:user, genre_id: nil)
-        user.valid?
-        expect(user.errors[:genre_id]).to include("を入力してください")
-      end
-    end
+    # genreのnull: falseはやめる
+    # describe 'ユーザー新規登録(genre_idの妥当性確認)' do
+    #   it "genre_idがnilの場合、アカウント登録できない" do
+    #     user = build(:user, genre_id: nil)
+    #     user.valid?
+    #     expect(user.errors[:genre_id]).to include("を入力してください")
+    #   end
+    # end
 
 
   end
