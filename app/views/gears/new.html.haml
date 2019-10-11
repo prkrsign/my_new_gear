@@ -34,6 +34,8 @@
         .gears-new-contents__box__point-container.p-3.row
           .gears-new-contents__box__point-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
             ポイント
+            .gears-new-contents__box__point-container__title__note.mt-3.text-primary.h6
+              合計点が100点になるようにご記入ください。
           
           .gears-new-contents__box__point-container__list.col-md-8
             = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
@@ -50,6 +52,12 @@
 
             = f.label :dissatisfaction, '不満', class: 'h6 font-weight-bold mt-4'
             = f.text_field :dissatisfaction, class: 'form-control', placeholder: '例)20'
+
+            .gears-new-contents__box__point-container__list__result.mt-5.row.px-3
+              .gears-new-contents__box__point-container__list__result__text.font-weight-bold.col-4.h4
+                合計:
+              .gears-new-contents__box__point-container__list__result__point.col-8.text-right.h3
+                100point
         %hr.my-4
 
         .gears-new-contents__box__review-container.p-3.row
