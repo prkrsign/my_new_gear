@@ -21,15 +21,18 @@
             種類
 
           .gears-new-contents__box__status-container__select.col-md-8
-            = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold'
+            = f.label :gearname, '機材名', class: 'h6 font-weight-bold'
+            = f.text_field :gearname, class: 'form-control'
+
+            = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold mt-4'
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category form-control"}
 
             = f.label :maker_id, 'メーカー', class: 'h6 font-weight-bold mt-4'
             = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker form-control"}
         %hr.my-4
-    
-    -# = f.label :gearname 
-    -# = f.text_field :gearname
+
+        .gears-new-contents__box__status-container.p-3.row
+
 
     -# = f.label :cost_performance
     -# = f.text_field :cost_performance
