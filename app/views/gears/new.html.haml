@@ -9,19 +9,28 @@
           %hr.my-4
         
         .gears-new-contents__box__image-container.pt-3
-          %label.gears-new-contents__box__image-container__icon.h6.font-weight-bold.border.border-warning.rounded.pt-4
+          %label.gears-new-contents__box__image-container__icon.font-weight-bold.border.border-warning.rounded.pt-4
             %i.fa.fa-camera.align-middle
             = f.file_field :image, id: 'file_photo'
           .gears-new-contents__box__image-container__text.mt-2
             画像をアップロードしてください
+        %hr.my-4
+        
+        .gears-new-contents__box__status-container.pt-3
+          .gears-new-contents__box__status-container__tag
+            
+            = f.label :category_id do
+              .dropdown
+                %button
+                  = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
+            
     
 
   
     
 
 
-    -# = f.label :category_id
-    -# = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
+
 
     -# = f.label :maker_id
     -# = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker"}
