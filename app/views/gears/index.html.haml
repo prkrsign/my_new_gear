@@ -1,5 +1,7 @@
 = render 'shared/header'
 
+-# - @gears.each do |gear|
+-#   = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction})
 
 - if user_signed_in?
   = link_to new_user_session_path do
