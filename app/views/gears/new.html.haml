@@ -22,7 +22,7 @@
 
           .gears-new-contents__box__status-container__select.col-md-8
             = f.label :gearname, '機材名', class: 'h6 font-weight-bold'
-            = f.text_field :gearname, class: 'form-control'
+            = f.text_field :gearname, class: 'form-control', placeholder: '例)OD-1X'
 
             = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold mt-4'
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category form-control"}
@@ -37,19 +37,19 @@
           
           .gears-new-contents__box__point-container__list.col-md-8
             = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
-            = f.text_field :cost_performance, class: 'form-control'
+            = f.text_field :cost_performance, class: 'form-control', placeholder: '例)20'
 
             = f.label :sound, 'サウンド', class: 'h6 font-weight-bold mt-4'
-            = f.text_field :sound, class: 'form-control'
+            = f.text_field :sound, class: 'form-control', placeholder: '例)20'
 
             = f.label :design, 'デザイン', class: 'h6 font-weight-bold mt-4'
-            = f.text_field :design, class: 'form-control'
+            = f.text_field :design, class: 'form-control', placeholder: '例)20'
 
             = f.label :durability, '耐久性', class: 'h6 font-weight-bold mt-4'
-            = f.text_field :durability, class: 'form-control'
+            = f.text_field :durability, class: 'form-control', placeholder: '例)20'
 
             = f.label :dissatisfaction, '不満', class: 'h6 font-weight-bold mt-4'
-            = f.text_field :dissatisfaction, class: 'form-control'
+            = f.text_field :dissatisfaction, class: 'form-control', placeholder: '例)20'
         %hr.my-4
 
         .gears-new-contents__box__review-container.p-3.row
@@ -58,7 +58,7 @@
           
           .gears-new-contents__box__review-container__form.col-12
             .form-group
-              = f.text_area :review, class: 'form-control', rows: '6'
+              = f.text_area :review, class: 'form-control', rows: '6', placeholder: '例)これまでたくさんのオーバードライブを購入しましたが、ここに結論がありました。BOSSらしいと言えばそこまでですが、これがBOSSのひとつの回答だと思います。つまみをどの位置にしても良い音がでます。ブースターとして、クランチとして、軽めのディストーションとして。オールラウンダーです。'
         %hr.my-3
         
         .gears-new-contents__box__review-container.text-center.my-4
