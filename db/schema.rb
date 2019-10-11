@@ -15,13 +15,15 @@ ActiveRecord::Schema.define(version: 2019_10_09_025154) do
   create_table "gears", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "gearname", null: false
     t.text "review", null: false
-    t.integer "price", null: false
+    t.integer "cost_performance", null: false
     t.integer "sound", null: false
     t.integer "design", null: false
     t.integer "durability", null: false
     t.integer "dissatisfaction", null: false
+    t.string "image", null: false
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "maker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,37 @@
+= render 'shared/header'
+
+.gears-new-wrapper
+  = form_with model: @gear, url:gears_path,method: :post, local: true do |f|
+    
+    = f.label :image 
+    = f.file_field :image, id: 'file_photo'
+
+    = f.label :category_id
+    = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
+
+    = f.label :maker_id
+    = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker"}
+
+    = f.label :gearname 
+    = f.text_field :gearname
+
+    = f.label :cost_performance
+    = f.text_field :cost_performance
+
+    = f.label :sound
+    = f.text_field :sound
+
+    = f.label :design
+    = f.text_field :design
+
+    = f.label :durability
+    = f.text_field :durability
+
+    = f.label :dissatisfaction
+    = f.text_field :dissatisfaction
+  
+    = f.label :review
+    = f.text_area :review
+
+    =f.submit
+
