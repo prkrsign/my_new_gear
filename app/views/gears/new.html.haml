@@ -1,10 +1,16 @@
 = render 'shared/header'
 
 .gears-new-wrapper
-  = form_with model:@gear, url:user_registration_path, local: true do |f|
+  = form_with model: @gear, url:gears_path,method: :post, local: true do |f|
     
     = f.label :image 
-    = f.file_field :imaged, id: 'file_photo'
+    = f.file_field :image, id: 'file_photo'
+
+    = f.label :category_id
+    = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
+
+    = f.label :maker_id
+    = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker"}
 
     = f.label :gearname 
     = f.text_field :gearname
@@ -24,18 +30,10 @@
     = f.label :dissatisfaction
     = f.text_field :dissatisfaction
   
-    = f.label :dissatisfaction
-    = f.text_field :dissatisfaction
-
-    = f.label :category_id
-    = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
-
-    = f.label :maker_id
-    = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker"}
-
-  
-       
     = f.label :review
     = f.text_area :review
 
-    -# = pie_chart @pie_chart
+    =f.submit
+
+    - if @pie_chart.nil?
+      = pie_chart @pie_chart
