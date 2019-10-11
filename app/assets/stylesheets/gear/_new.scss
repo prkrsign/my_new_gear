@@ -1,7 +1,6 @@
 .gears-new-contents{
     &__box{
         background-color: $text-main-color;
-
         &__image-container{
             width: 100%;
             text-align: center;
@@ -12,9 +11,25 @@
                 color: #dcdcdc;
             }
         }
+        &__image-check{
+            display: none;
+            width: 100%;
+            text-align: center;
+            &__image{
+                height: 12rem;
+                width: 12rem;
+                &__view{
+                    height: 11rem;
+                    width: 11rem;
+                }
+            }
+        }
     }
 }
 
+.image-active{
+    display: block;
+}
 
 #file_photo{
     display: none;

@@ -13,11 +13,12 @@
             %i.fa.fa-camera.align-middle
             = f.file_field :image, id: 'file_photo'
           .gears-new-contents__box__image-container__text.mt-2
-            画像をアップロードしてください
+            -# 画像をアップロードしてください (後々画像読み込みアイコンのところと、読み込んだ画像が入れ替わるようにする)
         
-        .gears-new-contents__box__image-container.pt-3#userImgPreview
-          = image_tag "", id:'image', class:'gears-new-contents__box__image-container__image',accept: "image/*"
-          .gears-new-contents__box__image-container__text
+        .gears-new-contents__box__image-check.pt-3#gearImgPreview
+          %label.gears-new-contents__box__image-check__image.font-weight-bold.border.border-warning.rounded.pt-2
+            = image_tag "", id:'image', class:'gears-new-contents__box__image-check__image__view rounded',accept: "image/*"
+          .gears-new-contents__box__image-check__text
             画像をアップロード済
 
         %hr.my-4
