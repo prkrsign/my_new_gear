@@ -14,6 +14,12 @@
             = f.file_field :image, id: 'file_photo'
           .gears-new-contents__box__image-container__text.mt-2
             画像をアップロードしてください
+        
+        .gears-new-contents__box__image-container.pt-3#userImgPreview
+          = image_tag "", id:'image', class:'gears-new-contents__box__image-container__image',accept: "image/*"
+          .gears-new-contents__box__image-container__text
+            画像をアップロード済
+
         %hr.my-4
         
         .gears-new-contents__box__status-container.p-3.row
