@@ -31,23 +31,28 @@
             = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker form-control"}
         %hr.my-4
 
-        .gears-new-contents__box__status-container.p-3.row
+        .gears-new-contents__box__point-container.p-3.row
+          .gears-new-contents__box__point-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
+            ポイント
+          
+          .gears-new-contents__box__point-container__list.col-md-8
+            = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
+            = f.text_field :cost_performance, class: 'form-control'
 
+            = f.label :sound, 'サウンド', class: 'h6 font-weight-bold mt-4'
+            = f.text_field :sound, class: 'form-control'
 
-    -# = f.label :cost_performance
-    -# = f.text_field :cost_performance
+            = f.label :design, 'デザイン', class: 'h6 font-weight-bold mt-4'
+            = f.text_field :design, class: 'form-control'
 
-    -# = f.label :sound
-    -# = f.text_field :sound
+            = f.label :durability, '耐久性', class: 'h6 font-weight-bold mt-4'
+            = f.text_field :durability, class: 'form-control'
 
-    -# = f.label :design
-    -# = f.text_field :design
-
-    -# = f.label :durability
-    -# = f.text_field :durability
-
-    -# = f.label :dissatisfaction
-    -# = f.text_field :dissatisfaction
+            = f.label :dissatisfaction, '不満', class: 'h6 font-weight-bold mt-4'
+            = f.text_field :dissatisfaction, class: 'form-control'
+          
+        .gears-new-contents__box__review-container.p-3.row
+        
   
     -# = f.label :review
     -# = f.text_area :review
