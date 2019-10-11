@@ -6,13 +6,14 @@
       -if user_signed_in?
         = current_user.username
       
-      .main-header__btn.col-lg-2.col-md-2.col-sm-8.col-7.d-inline-flex.mb-2
-        .main-header__btn__signup.mr-1
-          =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white' do
-            新規登録
-        .main-header__btn__signin.ml-2
-          =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white' do
-            ログイン
+      -else
+        .main-header__btn.col-lg-2.col-md-2.col-sm-8.col-7.d-inline-flex.mb-2
+          .main-header__btn__signup.mr-1
+            =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white' do
+              新規登録
+          .main-header__btn__signin.ml-2
+            =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white' do
+              ログイン
 
       
       .main-header__search.col-lg-8.col-md-8.col-sm-12.col-12

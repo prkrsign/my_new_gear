@@ -3,6 +3,6 @@ class GearsController < ApplicationController
     end
 
     def new
-        @sample = {'2019-06-01' => 60, '2019-06-02' => 65, '2019-06-03' => 64}
+        @pie_chart = {'金額' =>20 , '耐久性' =>10 , '音' => 40, 'デザイン' => 10, '不満' => 20}
     end
 end
