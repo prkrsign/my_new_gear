@@ -9,7 +9,7 @@ class GearsController < ApplicationController
     end
 
     def create
-      binding.pry
+      # binding.pry
       @gear = Gear.new(gear_params)
       if @gear.save
         redirect_to root_path, notice: "レビューを投稿しました"

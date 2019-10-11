@@ -16,25 +16,18 @@
             画像をアップロードしてください
         %hr.my-4
         
-        .gears-new-contents__box__status-container.pt-3
-          .gears-new-contents__box__status-container__tag
-            
-            = f.label :category_id do
-              .dropdown
-                %button
-                  = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category"}
-            
+        .gears-new-contents__box__status-container.p-3.row
+          .gears-new-contents__box__status-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
+            種類
+
+          .gears-new-contents__box__status-container__select.col-md-8
+            = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold'
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category form-control"}
+
+            = f.label :maker_id, 'メーカー', class: 'h6 font-weight-bold mt-4'
+            = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker form-control"}
+        %hr.my-4
     
-
-  
-    
-
-
-
-
-    -# = f.label :maker_id
-    -# = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker"}
-
     -# = f.label :gearname 
     -# = f.text_field :gearname
 
