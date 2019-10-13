@@ -1,15 +1,19 @@
 = render 'shared/header'
 
--# - @gears.each do |gear|
--#   = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction})
+- @gears.each do |gear|
+  .gears-index-wrapper
+    .gears-index.container-fluid
+      .row.p-lg-5.p-md-3.p-3
+        .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.border.border-primary.rounded
+          .contents__title.h3.font-weight-bold.text-primary.border.border-primary.rounded
+            = gear.title
 
-- if user_signed_in?
-  = link_to new_user_session_path do
-    ログイン
+          .row
+            .contents__image.col-lg-2.col-md-2.col-sm-6.col-6.h-50
+              = image_tag gear.image.url
+            
+            .contents__graph.col-lg-2.col-md-2.col-sm-6.col-6.h-50
+              = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction})
+
+
   
-  = link_to  destroy_user_session_path, method: :delete do
-    ログアウト
-
-- else
-  = link_to new_user_registration_path do
-    新規登録
