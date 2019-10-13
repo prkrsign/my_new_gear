@@ -3,17 +3,24 @@
 - @gears.each do |gear|
   .gears-index-wrapper
     .gears-index.container-fluid
-      .row.p-lg-5.p-md-3.p-3
+      .row.pt-lg-5.px-lg-5.p-md-3.p-3
         .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.border.border-primary.rounded
-          .contents__title.h3.font-weight-bold.text-primary.border.border-primary.rounded
+          .contents__title.h3.font-weight-bold.text-primary.px-3.mt-3
             = gear.title
+          %hr
 
           .row
-            .contents__image.col-lg-2.col-md-2.col-sm-6.col-6.h-50
-              = image_tag gear.image.url
+            .contents__image.col-lg-2.col-md-2.col-sm-6.col-6.d-flex
+              = image_tag gear.image.url, size: '170x170', class: "img-responsive"
             
-            .contents__graph.col-lg-2.col-md-2.col-sm-6.col-6.h-50
-              = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction})
-
+            .contents__graph.col-lg-3.col-md-3.col-sm-6.col-6.d-flex
+              = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: 'bottom', donut: true,width: "12rem", height: "12rem")
+            
+            .contents__category
+              .contents__category__title
+                カテゴリ：
+              .contents__category__name
+                -# - binding.pry
+                = gear.category.name
 
   

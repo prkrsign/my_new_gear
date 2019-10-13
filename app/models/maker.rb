@@ -4,4 +4,5 @@ class Maker < ActiveHash::Base
     {id: 4, name: 'Ibanez'}, {id: 5, name: 'LINE6'}, {id: 6, name: 'TC Electronic'},
     {id: 7, name: 'MXR'}, {id: 8, name: 'ELECTRO HARMONIX'}, {id: 9, name: 'その他'},
     ]
+    # has_many :gears
 end
