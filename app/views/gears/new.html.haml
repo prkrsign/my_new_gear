@@ -69,6 +69,14 @@
 
         .gears-new-contents__box__review-container.p-3.row
           .gears-new-contents__box__review-container__title.h6.col-12.font-weight-bold.text-muted
+            タイトル
+          
+          .gears-new-contents__box__review-container__form.col-12
+            .form-group
+              = f.text_area :title, class: 'form-control', rows: '1', placeholder: '例)「CRAFTROS Supiritus」エフェクターレビュー！'
+
+        .gears-new-contents__box__review-container.p-3.row
+          .gears-new-contents__box__review-container__title.h6.col-12.font-weight-bold.text-muted
             レビュー
           
           .gears-new-contents__box__review-container__form.col-12
