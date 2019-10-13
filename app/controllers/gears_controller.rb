@@ -35,7 +35,8 @@ class GearsController < ApplicationController
         :design,
         :durability,
         :dissatisfaction,
-        :review
+        :review,
+        :title,
         ).merge(user_id: current_user.id)
     end
 end
