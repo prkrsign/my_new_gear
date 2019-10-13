@@ -9,12 +9,16 @@ class GearsController < ApplicationController
     end
 
     def create
-      # binding.pry
-      @gear = Gear.new(gear_params)
-      if @gear.save
-        redirect_to root_path, notice: "レビューを投稿しました"
+      @gear = Gear.new(gear_params) 
+      sum = (@gear.cost_performance.to_i + @gear.sound.to_i + @gear.design.to_i + @gear.durability.to_i + @gear.dissatisfaction.to_i) 
+      if  sum == 100
+        if @gear.save
+          redirect_to root_path, notice: "レビューを投稿しました"
+        else
+          redirect_to new_gear_path, alert: "投稿に失敗しました"
+        end
       else
-        redirect_to new_gear_path, notice: "投稿に失敗しました"
+        redirect_to new_gear_path, alert: "合計が100ポイントになるように評価ください"
       end
     end
 
