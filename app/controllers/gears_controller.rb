@@ -1,6 +1,6 @@
 class GearsController < ApplicationController
     def index 
-        @gears = Gear.all
+        @gear = Gear.all
         # @pie = {'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction} 
     end
 
