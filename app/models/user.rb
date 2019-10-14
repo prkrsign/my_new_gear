@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :gears
+  has_many :likes, dependent: :destroy
   
   # active_hashでgenreIDを紐づける
   extend ActiveHash::Associations::ActiveRecordExtensions
