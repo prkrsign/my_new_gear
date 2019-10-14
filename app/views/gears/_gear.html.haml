@@ -2,7 +2,7 @@
   .gears-index.container-fluid
     .row.pt-lg-5.px-lg-5.p-md-3.p-3
       .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.card.shadow
-        .contents__title.h3.font-weight-bold.text-primary.px-3.mt-3.card-header.bg-dark.text-light
+        = link_to gear_path(gear.id), class: 'contents__title h3 font-weight-bold px-3 mt-3 card-header bg-dark text-light' do
           = gear.title
 
         .row.card-body
