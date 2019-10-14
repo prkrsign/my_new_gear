@@ -24,6 +24,10 @@ class GearsController < ApplicationController
       end
     end
 
+    def edit
+      
+    end
+
     def destroy
       @gear = Gear.find(params[:id])
       @gear.destroy
