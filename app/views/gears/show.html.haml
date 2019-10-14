@@ -27,7 +27,6 @@
               = @gear.maker.name
         %hr
 
-    
         .row.px-3.my-3
           %label.review-label.text-secondary.ml-1
             この機材のレビュー
@@ -36,6 +35,10 @@
               = @gear.title
             .review-inner.p-3
               = @gear.review
-            
-        
-      
+        .row.px-4.mb-3
+          .gears-show-like.col-10.text-right.h4.text-secondary
+            %i.fa.fa-heart
+              10
+          .gears-show-like.col-2.text-right.h4.text-secondary
+            .gears-show-PV
+              PV 10
