@@ -12,7 +12,6 @@ class GearsController < ApplicationController
     end
 
     def create
-      binding.pry
       @gear = Gear.new(gear_params) 
       sum = (@gear.cost_performance.to_i + @gear.sound.to_i + @gear.design.to_i + @gear.durability.to_i + @gear.dissatisfaction.to_i) 
       if  sum == 100
@@ -33,7 +32,7 @@ class GearsController < ApplicationController
     def update
       @gear = Gear.find(params[:id])
       @gear.update(gear_params)
-      redirect_to  gear_path
+      redirect_to  gear_path, notice: 'レビューを編集しました'
     end
 
     def destroy
