@@ -4,8 +4,6 @@ class GearsController < ApplicationController
     end
 
     def show
-      # binding.pry
-      # @gear = Gear.find(params[:id])
     end
 
     def new
