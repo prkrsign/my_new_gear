@@ -4,23 +4,53 @@
   .gears-index-wrapper
     .gears-index.container-fluid
       .row.pt-lg-5.px-lg-5.p-md-3.p-3
-        .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.border.border-primary.rounded
-          .contents__title.h3.font-weight-bold.text-primary.px-3.mt-3
+        .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.card.shadow
+          .contents__title.h3.font-weight-bold.text-primary.px-3.mt-3.card-header
             = gear.title
-          %hr
 
-          .row
+          .row.card-body
             .contents__image.col-lg-2.col-md-2.col-sm-6.col-6.d-flex
               = image_tag gear.image.url, size: '170x170', class: "img-responsive"
+              
             
-            .contents__graph.col-lg-3.col-md-3.col-sm-6.col-6.d-flex
-              = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: 'bottom', donut: true,width: "12rem", height: "12rem")
+            .contents__graph.col-lg-3.col-md-3.col-sm-6.col-6.d-flex.justify-content-center
+              = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false,height: '170', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
             
-            .contents__category
-              .contents__category__title
-                カテゴリ：
-              .contents__category__name
-                -# - binding.pry
-                = gear.category.name
+            .contents__label.col-lg-2.col-md-2.col-sm-12.col-12
+              .contents__label__cost.d-flex
+                .contents__label__color.text-primary
+                  ● 
+                .contents__label__color.text-secondary
+                  コスパ
+              
+              .contents__label__sound.d-flex
+                .contents__label__color.text-success
+                  ● 
+                .contents__label__color.text-secondary
+                  音
+              
+              .contents__label__design.d-flex
+                .contents__label__color.text-design
+                  ● 
+                .contents__label__color.text-secondary
+                  デザイン
+              
+              .contents__label__durability.d-flex
+                .contents__label__color.text-durability
+                  ● 
+                .contents__label__color.text-secondary
+                  耐久性
+              
+              .contents__label__dissatisfaction.d-flex
+                .contents__label__color.text-danger
+                  ● 
+                .contents__label__color.text-secondary
+                  不満
+
+            -# .contents__category.card.col-lg-3.col-md-3.col-sm-6.col-6.d-inline-flex
+            -#   .contents__category__title
+            -#     = "カテゴリ：#{gear.category.name}"
+            -#   .contents__category__name
+                
 
   
