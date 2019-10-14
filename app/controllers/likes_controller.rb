@@ -3,13 +3,13 @@ class LikesController < ApplicationController
 
     def create
       @like = current_user.likes.create(gear_id: params[:gear_id])
-      @gears = Gear.all
+      @gear = Gear.all
     end
   
     def destroy
       like = current_user.likes.find_by(gear_id: params[:gear_id])
       like.destroy
-      @gears = Gear.all
+      @gear = Gear.all
     end
   
     private
