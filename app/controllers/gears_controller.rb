@@ -8,6 +8,7 @@ class GearsController < ApplicationController
     end
 
     def new
+      @gear = Gear.new
     end
 
     def create
@@ -24,6 +25,16 @@ class GearsController < ApplicationController
       end
     end
 
+    def edit
+      @gear = Gear.find(params[:id])
+    end
+
+    def update
+      @gear = Gear.find(params[:id])
+      @gear.update(gear_params)
+      redirect_to  gear_path, notice: 'レビューを編集しました'
+    end
+
     def destroy
       @gear = Gear.find(params[:id])
       @gear.destroy
@@ -33,7 +44,7 @@ class GearsController < ApplicationController
     private
 
     def gear_params
-      params.permit(
+      params.require(:gear).permit(
         :image,
         :category_id,
         :maker_id,

@@ -47,7 +47,7 @@
         - if current_user.id == @gear.user.id
           .row.px-4.my-2.mb-4.text-center
             .gears-show-edit.col-6
-              =link_to '#', class: 'btn btn-outline-success btn-block' do
+              =link_to edit_gear_path, class: 'btn btn-outline-success btn-block' do
                 編集
             .gears-show-delete.col-6
               %button{type: 'button', class: 'btn btn-outline-danger btn-block', data: {toggle: 'modal', target: '#deleteModal'}}
