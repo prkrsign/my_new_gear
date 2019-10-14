@@ -36,10 +36,18 @@
             .review-inner.p-3
               = @gear.review
 
-        .row.px-4.mb-3
+        .row.px-4.mb-1
           .gears-show-like.col-10.text-right.h4.text-secondary
             %i.fa.fa-heart
               10
           .gears-show-like.col-2.text-right.h4.text-secondary
             .gears-show-PV
               PV 10
+        - if current_user.id == @gear.user.id
+          .row.px-4.my-2.mb-4.text-center
+            .gears-show-edit.col-6
+              =link_to '#', class: 'btn btn-outline-success btn-block' do
+                編集
+            .gears-show-delete.col-6
+              =link_to '#', class: 'btn btn-outline-danger btn-block' do
+                削除
