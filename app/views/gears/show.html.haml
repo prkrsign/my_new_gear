@@ -1,0 +1,41 @@
+= render 'shared/header'
+
+.gears-show-wrapper
+  .gears-show.container-fluid
+    .row
+      .gears-show-container.col-lg-6.col-md-8.col-sm-12.col-12.offset-md-3.my-5.card.shadow
+        .gears-show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
+          = @gear.gearname
+        %hr
+    
+        .row
+          .gears-show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4
+            = image_tag @gear.image.url, size: '300x300', class: 'img-fluid rounded'
+
+          .gears-show-status.col-lg-6.col-md-6.col-sm-12.col-12.d-flex.justify-content-center.img-fluid
+            = pie_chart({'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction},legend: 'bottom', height: "300px", width: "300px", donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
+        %hr    
+
+        .row
+          .gears-show-category.col-6.text-center.text-secondary.font-weight-bold.h5
+            カテゴリー
+            .gears-show-category__name.text-center.text-primary.mt-2
+              = @gear.category.name
+          .gears-show-maker.col-6.text-center.text-secondary.font-weight-bold.h5
+            メーカー
+            .gears-show-maker__name.text-center.text-primary.mt-2
+              = @gear.maker.name
+        %hr
+
+    
+        .row.px-3.my-3
+          %label.review-label.text-secondary.ml-1
+            この機材のレビュー
+          .gears-show-review.card.shadow-sm
+            .review-title.card-header
+              = @gear.title
+            .review-inner.p-3
+              = @gear.review
+            
+        
+      

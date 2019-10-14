@@ -1,11 +1,13 @@
 class GearsController < ApplicationController
     def index 
-        @gears = Gear.all
-        # @pie = {'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction} 
+        @gear = Gear.all 
+    end
+
+    def show
+      @gear = Gear.find(params[:id])
     end
 
     def new
-        @pie_chart = {'金額' =>20 , '耐久性' =>10 , '音' => 40, 'デザイン' => 10, '不満' => 20}
     end
 
     def create
