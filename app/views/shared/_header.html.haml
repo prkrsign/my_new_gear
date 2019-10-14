@@ -10,7 +10,7 @@
             =link_to new_gear_path, class:'btn btn-outline-light rounded' do
               投稿する 
           .main-header__btn__icon.offset-1.align-self-center.mt-1
-            =link_to '#', class:'main-header__btn__icon__user text-light' do
+            =link_to destroy_user_session_path,method: :delete, class:'main-header__btn__icon__user text-light' do
               %i.fa.fa-user.h4
               マイページ
 
