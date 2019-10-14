@@ -36,10 +36,39 @@
             .review-inner.p-3
               = @gear.review
 
-        .row.px-4.mb-3
+        .row.px-4.mb-1
           .gears-show-like.col-10.text-right.h4.text-secondary
             %i.fa.fa-heart
               10
           .gears-show-like.col-2.text-right.h4.text-secondary
             .gears-show-PV
               PV 10
+
+        - if current_user.id == @gear.user.id
+          .row.px-4.my-2.mb-4.text-center
+            .gears-show-edit.col-6
+              =link_to '#', class: 'btn btn-outline-success btn-block' do
+                編集
+            .gears-show-delete.col-6
+              %button{type: 'button', class: 'btn btn-outline-danger btn-block', data: {toggle: 'modal', target: '#deleteModal'}}
+                削除
+              
+              #deleteModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteModalLabel", :role => "dialog", :style => "display: none; ", :tabindex => "-1"}
+                .modal-dialog{role: 'document'}
+                  .modal-content
+                    .modal-header
+                      .h4.modal-title#deleteModalLabel
+                        確認メッセージ
+                      %button{type: 'button', class: 'close', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+                        %span{aria: {hidden: 'true'}}
+                          &times;
+                    .modal-body.my-3.text-primary
+                      本当に削除してもよろしいですか？
+                    
+                    .modal-footer
+                      %button{type: 'button', class: 'btn btn-secondary', data: {dismiss: 'modal'}}
+                        戻る
+                      = link_to gear_path(@gear.id), method: :delete, class: 'btn btn-danger' do
+                        削除
+                      -# %button{type: 'button', class: 'btn btn-danger', url: 'gear_path', method: :delete}
+                        削除

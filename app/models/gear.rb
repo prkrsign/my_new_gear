@@ -1,4 +1,5 @@
 class Gear < ApplicationRecord
+    belongs_to :user
     mount_uploader :image, ImageUploader
 
     extend ActiveHash::Associations::ActiveRecordExtensions
