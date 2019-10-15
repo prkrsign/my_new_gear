@@ -28,3 +28,14 @@ canvas{
 .heart-red{
     color: #e83e8c;
 }
+
+.resp-size{
+
+    @media (min-width: 200px) {
+        font-size: 0.7rem;
+      }
+    
+      @media (min-width: 370px) {
+        font-size: 0.9rem;
+      }
+}

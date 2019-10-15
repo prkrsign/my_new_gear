@@ -1,7 +1,7 @@
 .main-header-wrapper
   =form_with model: @user, url: '#',id: 'new_user', class: "container-fluid shadow",local: true  do |f|
     .main-header.row.mx-2.py-3.align-self-center
-      =link_to root_path, class: 'main-header__logo h4 col-lg-2 col-md-3 col-sm-4 col-5 align-self-center' do
+      =link_to root_path, class: 'main-header__logo h4 col-lg-2 col-md-3 col-sm-4 col-6 text-left align-self-center mb-0' do
         MyNewGear
 
       -if user_signed_in?
@@ -15,15 +15,19 @@
               マイページ
 
       -else
-        .main-header__btn.col-lg-3.col-md-4.col-sm-8.col-7.d-inline-flex
-          .main-header__btn__signup.mr-1
-            =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white' do
-              新規登録
-          .main-header__btn__signin.offset-1
-            =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white' do
-              ログイン
+        =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size' do
+          新規登録
+        =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size ml-md-3 ml-1' do
+          ログイン
+          -# .row
+          -#   .main-header__btn__signup
+          -#     =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white' do
+          -#       新規登録
+          -#   .main-header__btn__signin
+          -#     =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white' do
+          -#       ログイン
 
       
-      .main-header__search.col-lg-7.align-self-center.mt-2.mt-lg-0
+      .main-header__search.col-lg-7.align-self-center.mt-2.mt-lg-0.ml-lg-3
         = f.text_field nil, class: 'form-control', placeholder: 'キーワードを入力' 
       
