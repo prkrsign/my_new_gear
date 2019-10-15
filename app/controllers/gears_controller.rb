@@ -1,10 +1,13 @@
 class GearsController < ApplicationController
+  before_action :set_gear, only: [:show, :destroy, :edit, :update]
+  before_action :authenticate_user!, only: [:new]
+
     def index 
         @gear = Gear.all 
     end
 
     def show
-      @gear = Gear.find(params[:id])
+
     end
 
     def new
@@ -26,19 +29,21 @@ class GearsController < ApplicationController
     end
 
     def edit
-      @gear = Gear.find(params[:id])
+
     end
 
     def update
-      @gear = Gear.find(params[:id])
       @gear.update(gear_params)
       redirect_to  gear_path, notice: 'レビューを編集しました'
     end
 
     def destroy
-      @gear = Gear.find(params[:id])
       @gear.destroy
       redirect_to root_path
+    end
+
+    def set_gear
+      @gear = Gear.find(params[:id])
     end
 
     private
