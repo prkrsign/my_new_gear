@@ -39,7 +39,6 @@ gem 'devise'
 gem 'haml-rails'
 gem 'active_hash'
 gem 'carrierwave'
-# gem 'mini_magick'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -62,6 +61,11 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
