@@ -25,12 +25,12 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-set :default_env, {
-  rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  AWS_ACCESS_KEY_ID: Rails.application.credentials.aws[:access_key_id],
-  AWS_SECRET_ACCESS_KEY: Rails.application.credentials.aws[:secret_access_key]
-}
+# set :default_env, {
+#   rbenv_root: "/usr/local/rbenv",
+#   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+#   AWS_ACCESS_KEY_ID: Rails.application.credentials.aws[:access_key_id],
+#   AWS_SECRET_ACCESS_KEY: Rails.application.credentials.aws[:secret_access_key]
+# }
 
 # master.key用のシンボリックリンクを追加
 set :linked_files, %w{ config/master.key }
