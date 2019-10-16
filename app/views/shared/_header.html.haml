@@ -11,29 +11,11 @@
           %i.fa.fa-user.h3.mb-0
           .align-self-center.d-none.d-sm-inline-block.ml-2
             マイページ
-
-        -# .main-header__btn.col-lg-3.col-md-4.col-sm-8.col-7.d-inline-flex
-        -#   .main-header__btn__review
-        -#     =link_to new_gear_path, class:'btn btn-outline-light rounded' do
-        -#       投稿する 
-        -#   .main-header__btn__icon.offset-1.align-self-center.mt-1
-        -#     =link_to destroy_user_session_path,method: :delete, class:'main-header__btn__icon__user text-light' do
-        -#       %i.fa.fa-user.h4
-        -#       マイページ
-
       -else
         =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size' do
           新規登録
         =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size ml-md-3 ml-1' do
           ログイン
-          -# .row
-          -#   .main-header__btn__signup
-          -#     =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white' do
-          -#       新規登録
-          -#   .main-header__btn__signin
-          -#     =link_to  new_user_session_path, class: 'btn btn border border-light rounded text-white' do
-          -#       ログイン
-
       
       .main-header__search.col-lg-7.align-self-center.mt-2.mt-lg-0.ml-lg-3
         = f.text_field nil, class: 'form-control', placeholder: 'キーワードを入力' 

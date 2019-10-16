@@ -6,14 +6,14 @@
           = gear.title
 
         .row.card-body
-          .contents__image.col-lg-2.col-md-4.col-sm-4.col-6.d-flex
+          .contents__image.col-xl-2.col-md-4.col-sm-4.col-12.text-center.mb-3.mb-sm-0
             = image_tag gear.image.url, size: '160x170'
               
             
-          .contents__graph.col-lg-2.col-md-4.col-sm-5.col-6.d-flex.justify-content-center
-            = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false,height: '170', width: '170', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
+          .contents__graph.col-xl-2.col-md-4.col-sm-5.col-12.d-flex.justify-content-center
+            = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false, height: '170px', width: '170px', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
             
-          .contents__label.col-lg-1.col-md-4.col-sm-3.col-12.py-3.d-inline-flex.justify-content-between.flex-lg-column.flex-md-column.flex-sm-column
+          .contents__label.col-xl-1.col-md-4.col-sm-3.col-12.py-3.pl-md-5.pl-lg-3.d-inline-flex.justify-content-between.flex-lg-column.flex-md-column.flex-sm-column
             .contents__label__cost.text-primary
               ● コスパ
               
@@ -29,7 +29,7 @@
             .contents__label__dissatisfaction.text-danger
               ● 不満 
             
-          .contents__detail.card.shadow-sm.col-lg-7
+          .contents__detail.card.shadow-sm.col-xl-7.mt-md-3
             .row
               .contents__detail__gearname.card-header.col-12.font-weight-bold
                 = "機材名：#{gear.gearname}"
@@ -43,15 +43,3 @@
                 = gear.review
 
               = render partial: 'likes/like_links', locals:{ gear: gear }
-              -# - if gear.like_user(current_user.id)
-              -#   = link_to gear_like_path(gear, gear.like_user(current_user)), method: :delete, class: 'heart-icon contents__detail__review col-sm-2 col-12 text-center pt-2 text-secondary d-flex flex-lg-column flex-md-column flex-sm-column justify-content-around', remote: true do
-              -#     .fa.fa-heart.h3.heart-red
-              -#     .heart-icon.h5
-              -#       0 PV
-
-              -# - else
-              -#   = link_to gear_likes_path(gear), method: :post, class: 'empty-heart contents__detail__review col-sm-2 col-12 text-center pt-2 text-secondary d-flex flex-lg-column flex-md-column flex-sm-column justify-content-around', remote: true do
-              -#     .fa.fa-heart-o.h3.heart-color
-              -#     .heart-icon.h5
-              -#       0 PV
-
