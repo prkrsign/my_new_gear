@@ -1,27 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|PCサイズ|iPadサイズ|iPhoneサイズ|
+|---|---|---|
+|<img width="1100" alt="スクリーンショット 2019-10-16 13 42 05" src="https://user-images.githubusercontent.com/52661994/66889761-96ba7d00-f01e-11e9-9f7b-7bd87167385a.png">|<img width="600" alt="スクリーンショット 2019-10-16 13 47 31" src="https://user-images.githubusercontent.com/52661994/66889762-96ba7d00-f01e-11e9-8ddf-b04fcf9a549e.png">|<img width="400" alt="スクリーンショット 2019-10-16 13 47 57" src="https://user-images.githubusercontent.com/52661994/66889763-96ba7d00-f01e-11e9-8dd6-8babdb174e77.png">
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ▪️制作背景
 まず自分の好きな分野や詳しい分野で何か作りたいと思った。
