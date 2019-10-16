@@ -37,3 +37,15 @@
     color: #fff;
     background-color: $site-main-color; 
 }
+
+.signup-title{
+    font-size: 2rem;
+
+    @media (min-width: 200px) {
+        font-size: 1.7rem;
+      }
+    
+    @media (min-width: 370px) {
+        font-size: 2.0rem;
+    }
+}
