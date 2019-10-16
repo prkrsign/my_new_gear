@@ -2,12 +2,11 @@ class GearsController < ApplicationController
   before_action :set_gear, only: [:show, :destroy, :edit, :update]
   before_action :authenticate_user!, only: [:new]
 
-    def index 
-        @gear = Gear.all 
+    def index
+        @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
     def show
-
     end
 
     def new
