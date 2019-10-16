@@ -29,14 +29,20 @@
             .contents__label__dissatisfaction.text-danger
               ● 不満 
             
-          .contents__detail.card.shadow-sm.col-xl-7.mt-md-3
+          .contents__detail.card.shadow-sm.col-xl-7.mt-xl-0.mt-lg-3.mt-md-3 
             .row
               .contents__detail__gearname.card-header.col-12.font-weight-bold
                 = "機材名：#{gear.gearname}"
+            .row
               .contents__detail__maker.col-6.font-weight-bold.text-center.mt-2.h6
-                ="メーカー #{gear.maker.name}"
+                メーカー 
+                .contents__detail__maker__text.text-primary.border-bottom.resp-maker-name
+                  = gear.maker.name
               .contents__detail__category.col-6.font-weight-bold.text-center.mt-2.h6
-                = "カテゴリー #{gear.category.name}"
+                .title.text-cetner
+                  カテゴリ
+                .contents__detail__category__text.text-primary.border-bottom.resp-maker-name
+                  = gear.category.name
 
             .row
               .contents__detail__review.col-sm-10.col-12.py-3.text-secondary.text-lowercase.text-left.text-truncate

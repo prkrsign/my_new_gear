@@ -30,12 +30,21 @@ canvas{
 }
 
 .resp-size{
-
     @media (min-width: 200px) {
         font-size: 0.7rem;
       }
     
       @media (min-width: 370px) {
         font-size: 0.9rem;
+      }
+}
+
+.resp-maker-name{
+    @media (min-width: 200px) {
+        font-size: 0.8rem;
+      }
+    
+      @media (min-width: 360px) {
+        font-size: 1.0rem;
       }
 }
