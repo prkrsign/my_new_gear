@@ -33,6 +33,7 @@
   * 統合テスト(System Spec)
   
 * インフラ
+  * DBにはMysqlを使用
   * 仮想サーバーEC2(AWS)を使用
   * ストレージS3(AWS)を用いた画像の保存 
   * Capistranoを用いた自動デプロイ
