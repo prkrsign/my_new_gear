@@ -379,6 +379,13 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 1.5rem;
+  @media (min-width: 200px) {
+    font-size: 1.2rem;
+  }
+
+  @media (min-width: 370px) {
+    font-size: 1.5rem;
+  }
 }
 
 h5, .h5 {
