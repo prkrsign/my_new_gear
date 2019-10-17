@@ -119,6 +119,44 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_link '編集'
         expect(page).to have_button '削除'
       end
+
+      context '削除ボタンを押した時' do
+        it 'モーダルウィンドウが表示される' do
+          click_on('デラックス版「TS808DX」')
+          click_on('削除')
+          expect(page).to have_content '本当に削除してもよろしいですか？'
+        end
+
+        context 'モーダルウィンドウの削除を実行した時' do
+          it 'rootページに遷移する' do
+            click_on('デラックス版「TS808DX」')
+            click_on('削除')
+            sleep 1
+            click_link('削除')
+            expect(page).to have_content 'MyNewGear'
+          end
+
+          it 'データベースからレビューが削除される' do
+            click_on('デラックス版「TS808DX」')
+            click_on('削除')
+            sleep 1
+            click_link('削除')
+            gear = Gear.find_by(title: 'デラックス版「TS808DX」')
+            gear.nil?
+          end
+        end
+
+        context 'モーダルウィンドウの戻るボタンを押した時' do
+          it 'モーダルウィンドウが消える' do
+            click_on('デラックス版「TS808DX」')
+            click_on('削除')
+            sleep 1
+            click_button('戻る')
+            sleep 1
+            expect(page).to have_no_content '本当に削除してもよろしいですか？'
+          end
+        end
+      end
     end
 
     context '詳細ページの投稿者と、閲覧者のアカウントが違う場合' do
@@ -142,7 +180,6 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_no_link '編集'
         expect(page).to have_no_button '削除'
       end
-
     end
   end
 end
