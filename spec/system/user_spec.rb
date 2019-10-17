@@ -11,24 +11,24 @@ RSpec.describe 'ユーザーログイン機能', type: :system do
             visit new_user_session_path
             fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
             fill_in 'パスワード', with: 1234567
-            click_button 'Log in'
-            expect(page).to have_content 'ログアウト'
+            click_button 'My New Gearにログイン'
+            expect(page).to have_content '投稿する'
         end
 
         it '既存ユーザーが間違ったEmailを入力した場合、ログインできない' do
             visit new_user_session_path
             fill_in 'メールアドレス', with: 'testmam@yahoo.co.jp'
             fill_in 'パスワード', with: 1234567
-            click_button 'Log in'
-            expect(page).to have_content 'Log in'
+            click_button 'My New Gearにログイン'
+            expect(page).to have_content 'My New Gearにログイン'
         end
 
         it '既存ユーザーが間違ったパスワードを入力した場合、ログインできない' do
             visit new_user_session_path
             fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
             fill_in 'パスワード', with: 1234568
-            click_button 'Log in'
-            expect(page).to have_content 'Log in'
+            click_button 'My New Gearにログイン'
+            expect(page).to have_content 'My New Gearにログイン'
         end
     end
 
@@ -37,8 +37,8 @@ RSpec.describe 'ユーザーログイン機能', type: :system do
             visit new_user_session_path
             fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
             fill_in 'パスワード', with: 1234567
-            click_button 'Log in'
-            expect(page).to have_content 'Log in'
+            click_button 'My New Gearにログイン'
+            expect(page).to have_content 'My New Gearにログイン'
         end
     end
 end

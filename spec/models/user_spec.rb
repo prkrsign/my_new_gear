@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:password]).to include("を入力してください")
       end
 
-      # 確認passwordがnilの場合のバリデーションは存在しないが、passwordではnilを許さないため問題ないと判断する(神山)
+      # 確認passwordがnilの場合のバリデーションは存在しないが、passwordではnilを許さないため問題ないと判断する
       it "確認passwordとpasswordが一致しない場合、登録できない" do
         user = build(:user, password_confirmation: 'aaaa')
         user.valid?
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
     end
 
 
-    # favoriteのnull: falseはやめる
+    # favoriteのnull: falseはやめる。ユーザーアカウント作成手順が煩雑になるため。
     # describe 'ユーザー新規登録(favoriteの妥当性確認)' do
     #   it "favoriteがnilの場合、アカウント登録できない" do
     #     user = build(:user, favorite: nil)
@@ -147,7 +147,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    # genreのnull: falseはやめる
+    # genreのnull: falseはやめる。ユーザーアカウント作成手順が煩雑になるため。
     # describe 'ユーザー新規登録(genre_idの妥当性確認)' do
     #   it "genre_idがnilの場合、アカウント登録できない" do
     #     user = build(:user, genre_id: nil)
