@@ -106,7 +106,6 @@ RSpec.describe User, type: :model do
     end
 
 
-    # favoriteのnull: falseはやめる
     # favoriteのnull: falseはやめる。ユーザーアカウント作成手順が煩雑になるため。
     # describe 'ユーザー新規登録(favoriteの妥当性確認)' do
     #   it "favoriteがnilの場合、アカウント登録できない" do
