@@ -3,10 +3,17 @@ class GearsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
     def index
-        @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
+      @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
+      @search = Gear.ransack(params[:q])
+    end
+
+    def search
+      @search = Gear.search(search_params)
+      @gear = @search.result(distinct: true)
     end
 
     def show
+      @search = Gear.ransack(params[:q])
     end
 
     def new
@@ -61,5 +68,9 @@ class GearsController < ApplicationController
         :review,
         :title,
         ).merge(user_id: current_user.id)
+    end
+
+    def search_params
+      params.require(:q).permit(:gearname_or_title_or_review_cont)
     end
 end
