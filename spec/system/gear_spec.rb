@@ -3,6 +3,18 @@ require 'rails_helper'
 RSpec.describe 'レビュー機能', type: :system do
 
   describe  '投稿機能' do
+    context 'アカウントを持たないユーザーの場合' do
+      it 'ヘッダーに投稿リンクが表示されない' do
+        visit root_path
+        expect(page).to have_no_link '投稿する'
+      end
+
+      it '投稿ページに遷移しようとすると、サインインページにリダイレクトされる' do
+        visit new_gear_path
+        expect(current_path).to eq('/users/sign_in')
+      end
+    end
+
     context '既存ユーザーが新規投稿する場合' do
       before do
         user= FactoryBot.create(:user)
@@ -17,21 +29,35 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_content '機材の情報を入力'
       end
 
-      it '投稿ページで全項目を記載した場合に、投稿内容が一覧ページに反映される' do
-        visit new_gear_path
-        attach_file "gear[image]", "#{Rails.root}/spec/files/jisaku.png", visible: false
-        fill_in 'gear_gearname', with: 'Plumes'
-        select "Overdrive", from: "gear_category_id"
-        select "Boss", from: "gear_maker_id"
-        fill_in 'cost_point', with: '20'
-        fill_in 'sound_point', with: '20'
-        fill_in 'design_point', with: '20'
-        fill_in 'durability_point', with: '20'
-        fill_in 'dissatisfaction_point', with: '20'
-        fill_in 'gear_title', with: 'デラックス版「TS808DX」'
-        fill_in 'gear_review', with: 'これまでたくさんのオーバードライブを購入しましたが、ここに結論がありました。BOSSらしいと言えばそこまでですが、これがBOSSのひとつの回答だと思います。つまみをどの位置にしても良い音がでます。ブースターとして、クランチとして、軽めのディストーションとして。オールラウンダーです。'
-        click_button 'レビューを投稿する'
-        expect(page).to have_content 'デラックス版「TS808DX」'
+      context '投稿ページで全項目を記載した場合' do 
+        before do
+          visit new_gear_path
+          attach_file "gear[image]", "#{Rails.root}/spec/files/jisaku.png", visible: false
+          fill_in 'gear_gearname', with: 'Plumes'
+          select "Overdrive", from: "gear_category_id"
+          select "Boss", from: "gear_maker_id"
+          fill_in 'cost_point', with: '20'
+          fill_in 'sound_point', with: '20'
+          fill_in 'design_point', with: '20'
+          fill_in 'durability_point', with: '20'
+          fill_in 'dissatisfaction_point', with: '20'
+          fill_in 'gear_title', with: 'デラックス版「TS808DX」'
+          fill_in 'gear_review', with: 'これまでたくさんのオーバードライブを購入しましたが、ここに結論がありました。BOSSらしいと言えばそこまでですが、これがBOSSのひとつの回答だと思います。つまみをどの位置にしても良い音がでます。ブースターとして、クランチとして、軽めのディストーションとして。オールラウンダーです。'
+          click_button 'レビューを投稿する'
+        end
+
+        it '投稿内容が一覧ページに反映される' do
+          expect(page).to have_content 'デラックス版「TS808DX」'
+          expect(page).to have_content 'Plumes'
+          expect(page).to have_content 'Overdrive'
+          expect(page).to have_content 'Boss'
+        end
+
+        it '投稿内容がデータベースに保存される' do
+          binding.pry
+          gear = Gear.last
+          gear.nil?
+        end
       end
     end
   end
