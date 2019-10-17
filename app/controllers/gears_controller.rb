@@ -9,7 +9,7 @@ class GearsController < ApplicationController
 
     def search
       @search = Gear.search(search_params)
-      @gear = @search.result(distinct: true)
+      @gear = @search.result(distinct: true).order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
     def show
