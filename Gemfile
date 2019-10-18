@@ -34,46 +34,47 @@ gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'devise'
-gem 'haml-rails'
 gem 'active_hash'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap-sass'
 gem 'carrierwave'
-gem 'rails-i18n'
+gem "chartkick"
+gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-gem 'bootstrap-sass'
-gem 'jquery-rails'
-gem "font-awesome-rails"
-gem "chartkick"
 gem 'fog-aws'
+gem "font-awesome-rails"
+gem 'haml-rails'
+gem 'jquery-rails'
 gem 'kaminari'
+gem 'rails-i18n'
 gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-doc'
-  gem 'spring-commands-rspec'
-  gem 'simplecov'
-  gem 'database_cleaner'
-  gem 'faker'
   gem 'capistrano'
-  gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

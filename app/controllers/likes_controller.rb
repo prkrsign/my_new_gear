@@ -12,7 +12,7 @@ class LikesController < ApplicationController
       @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
-    private
+  private
   
     def set_show
       @show = Gear.find(params[:gear_id])
