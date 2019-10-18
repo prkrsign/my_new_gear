@@ -1,10 +1,10 @@
 class GearsController < ApplicationController
   before_action :set_gear, only: [:show, :destroy, :edit, :update]
+  before_action :set_search, only: [:index, :show]
   before_action :authenticate_user!, only: [:new]
 
     def index
       @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
-      @search = Gear.ransack(params[:q])
     end
 
     def search
@@ -13,7 +13,6 @@ class GearsController < ApplicationController
     end
 
     def show
-      @search = Gear.ransack(params[:q])
     end
 
     def new
@@ -35,7 +34,6 @@ class GearsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
@@ -52,8 +50,11 @@ class GearsController < ApplicationController
       @gear = Gear.find(params[:id])
     end
 
-    private
+    def set_search
+      @search = Gear.ransack(params[:q])
+    end
 
+  private
     def gear_params
       params.require(:gear).permit(
         :image,
