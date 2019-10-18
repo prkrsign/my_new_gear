@@ -5,12 +5,12 @@
       .likeCount.h5
         = gear.likes.count
 
-
   - else
     = link_to gear_likes_path(gear), method: :post, class: 'empty-heart contents__detail__review col-sm-2 col-12 text-center pt-2 text-secondary d-flex flex-lg-column flex-md-column flex-sm-column justify-content-around', remote: true do
       .fa.fa-heart-o.h3.heart-color
       .likeCount.h5
         = gear.likes.count
+        
 - else
   = link_to gear_likes_path(gear), method: :post, class: 'empty-heart contents__detail__review col-sm-2 col-12 text-center pt-2 text-secondary d-flex flex-lg-column flex-md-column flex-sm-column justify-content-around', remote: true do
     .fa.fa-heart-o.h3.heart-color

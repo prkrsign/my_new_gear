@@ -7,10 +7,9 @@
         .gears-show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
           = @gear.gearname
         %hr
-        .row.px-4.mb-1
-          .gears-show-like.col-12.text-right.h4.text-secondary
-            %i.fa.fa-heart
-              10
+        #js-grid-juicy-projects
+          = render partial: 'likes/like_show', locals:{ gear: @gear }
+
     
         .row
           .gears-show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4.d-inline-flex.justify-content-center

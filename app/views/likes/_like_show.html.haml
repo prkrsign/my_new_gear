@@ -1,0 +1,28 @@
+-# .row.px-4.mb-1
+-#   .gears-show-like.col-12.text-right.h4.text-secondary
+-#     %i.fa.fa-heart
+-#       10
+
+
+- if user_signed_in?
+  - if gear.like_user(current_user.id)
+    .row.px-4.mb-1
+      = link_to gear_like_path(gear, gear.like_user(current_user)), method: :delete, class: 'heart-icon gears-show-like text-right h4 text-secondary', remote: true do
+        %i.fa.fa-heart.heart-red
+      .text-secondary.h5.ml-1.pt-1
+        = gear.likes.count
+
+
+  - else
+    .row.px-4.mb-1
+      = link_to gear_likes_path(gear), method: :post, class: 'heart-icon gears-show-like text-right h4 text-secondary', remote: true do
+        %i.fa.fa-heart-o.heart-color
+      .text-secondary.h5.ml-1.pt-1
+        = gear.likes.count
+
+- else
+  .row.px-4.mb-1
+    = link_to gear_likes_path(gear), method: :post, class: 'heart-icon gears-show-like text-right h4 text-secondary', remote: true do
+      %i.fa.fa-heart-o.heart-color
+    .text-secondary.h5.ml-1.pt-1
+      = gear.likes.count
