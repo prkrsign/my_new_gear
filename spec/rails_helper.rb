@@ -43,8 +43,6 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  
-
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
