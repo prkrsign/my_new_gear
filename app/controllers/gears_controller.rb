@@ -34,7 +34,6 @@ class GearsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
@@ -56,7 +55,6 @@ class GearsController < ApplicationController
     end
 
   private
-
     def gear_params
       params.require(:gear).permit(
         :image,
