@@ -29,7 +29,37 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_content '機材の情報を入力'
       end
 
-      context '投稿ページで全項目を記載した場合' do 
+      context '投稿ページで必須項目をブランクで投稿した場合' do
+        before do
+          visit new_gear_path
+          attach_file "gear[image]", "#{Rails.root}/spec/files/jisaku.png", visible: false
+          select "Overdrive", from: "gear_category_id"
+          select "Boss", from: "gear_maker_id"
+          fill_in 'cost_point', with: '20'
+          fill_in 'sound_point', with: '20'
+          fill_in 'design_point', with: '20'
+          fill_in 'durability_point', with: '20'
+          fill_in 'dissatisfaction_point', with: '20'
+          fill_in 'gear_title', with: 'デラックス版「TS808DX」'
+          fill_in 'gear_review', with: 'これまでたくさんのオーバードライブを購入しましたが、ここに結論がありました。BOSSらしいと言えばそこまでですが、これがBOSSのひとつの回答だと思います。つまみをどの位置にしても良い音がでます。ブースターとして、クランチとして、軽めのディストーションとして。オールラウンダーです。'
+          click_button 'レビューを投稿する'
+        end
+
+        it 'バリデーションで弾かれて投稿できない' do
+          expect(page).to have_content '投稿に失敗しました'
+        end
+
+        it '投稿ページに滞在し続ける' do
+          expect(current_path).to eq('/gears/new')
+        end
+
+        it 'データベースに値が存在しない' do
+          gear = Gear.last
+          gear.nil?
+        end
+      end
+
+      context '投稿ページで全項目を記載して投稿した場合' do 
         before do
           visit new_gear_path
           attach_file "gear[image]", "#{Rails.root}/spec/files/jisaku.png", visible: false
@@ -54,9 +84,12 @@ RSpec.describe 'レビュー機能', type: :system do
         end
 
         it '投稿内容がデータベースに保存される' do
-          binding.pry
           gear = Gear.last
-          gear.nil?
+          gear.title.eql?('デラックス版「TS808DX」')
+        end
+
+        it '投稿後、トップページに遷移する' do
+          expect(current_path).to eq(root_path)
         end
       end
     end
@@ -207,5 +240,24 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_no_button '削除'
       end
     end
+  end
+
+  describe  '編集機能機能' do
+    before do
+      user = FactoryBot.create(:user)
+      gear = FactoryBot.create(:gear, user: user)
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
+      fill_in 'パスワード', with: '1234567'
+      click_button 'My New Gearにログイン'
+      click_on 'デラックス版「TS808DX」'
+      click_link '編集'
+    end
+
+    it '編集画面に遷移できる' do
+      gear = Gear.last
+      expect(current_path).to eq("/gears/#{gear.id}/edit")
+    end
+
   end
 end
