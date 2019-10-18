@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'gears#index'
 
-  get 'gears/search', to: 'gears#search'
+  get  'gears/search', to: 'gears#search'
+  post 'photos/:id/:user_id', to: 'photos#show'
 
   resources :gears, only: %i(new create show destroy edit update search) do
     resources :likes, only: %i(create destroy)

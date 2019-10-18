@@ -1,1 +1,2 @@
 $("#js-grid-juicy-projects").html("<%= j(render @gear) %>");
+$("#js-grid-like-show").html("<%= j(render partial: 'likes/like_show', locals:{ gear: @show }) %>");
