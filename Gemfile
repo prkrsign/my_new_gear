@@ -46,8 +46,6 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem "chartkick"
-gem 'bootstrap-select-rails'
-gem 'popper_js'
 gem 'fog-aws'
 gem 'kaminari'
 gem 'ransack'
