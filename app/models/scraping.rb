@@ -35,6 +35,13 @@ class Scraping
     @@n += 1
   end
 
+  def self.line6_urls
+    current_page = @@agent.get('https://www.digimart.net/search?brandId=289&nosoldoutp=on')
+    page_links(current_page, @@n, @@links)    
+    @@n += 1
+  end
+
+
 
   def self.page_links(current_page, n, links)
     while true
