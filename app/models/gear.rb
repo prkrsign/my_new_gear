@@ -1,5 +1,4 @@
 class Gear < ApplicationRecord
-    belongs_to :user
     has_many   :likes, dependent: :destroy
 
     mount_uploader :image, ImageUploader
@@ -8,7 +7,7 @@ class Gear < ApplicationRecord
     belongs_to_active_hash        :category
     belongs_to_active_hash        :maker
       
-    validates :gearname,             presence: true, length: { minimum:1, maximum:15 }
+    validates :gearname,             presence: true, length: { minimum:1, maximum:30 }
 
 
     def like_user(id)
