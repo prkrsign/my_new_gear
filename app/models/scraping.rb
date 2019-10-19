@@ -20,10 +20,10 @@ class Scraping
     agent = Mechanize.new
     page = agent.get(link)
     gearname = page.search(".itemDetailBox h1").inner_text
-    image_url = page.at('.mainPhotoBlock img').get_attribute('src')
+    image_url = page.at('.mainPhotoBlock img')[:src] if page.at('.mainPhotoBlock img')
     image = 'http:' + image_url
 
-    gear = Gear.new(gearname: gearname, image: image )
+    gear = Gear.new(gearname: gearname, image: image)
     gear.save!
 
   end
