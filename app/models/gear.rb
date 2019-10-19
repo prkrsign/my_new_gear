@@ -4,9 +4,10 @@ class Gear < ApplicationRecord
     # スクレイピングによる画像保存のため一度コメントアウト
     # mount_uploader :image, ImageUploader
 
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash        :category
-    belongs_to_active_hash        :maker
+    # スクレイピングによる保存のため一度コメントアウト
+    # extend ActiveHash::Associations::ActiveRecordExtensions
+    # belongs_to_active_hash        :category
+    # belongs_to_active_hash        :maker
       
     validates :gearname,             presence: true
 

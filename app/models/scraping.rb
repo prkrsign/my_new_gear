@@ -18,8 +18,6 @@ class Scraping
         
       else
         next_link = current_page.link_with(text: '次へ').click
-        binding.pry
-        puts next_link
         break unless next_link
         current_page = agent.get(next_link)
         elements = current_page.search('.itemSearchBoxLeft .pic a')
@@ -37,12 +35,26 @@ class Scraping
 
 
   def self.get_product(link)
+    checks = []
     agent = Mechanize.new
     page = agent.get(link)
     gearname = page.search(".itemDetailBox h1").inner_text if page.at('.itemDetailBox h1')
+
+    
+    maker    = page.search(".itemDetail .itemDetailInfo a").inner_text if page.at('.itemDetail .itemDetailInfo a')
+    category = page.search('//*[@id="main"]/div/div[1]/ul/li[3]/a').inner_text if page.at('//*[@id="main"]/div/div[1]/ul/li[3]/a')
     image_url = page.at('.mainPhotoBlock img')[:src] if page.at('.mainPhotoBlock img')
     image = 'http:' + image_url
-    gear = Gear.where(gearname: gearname, image: image).first_or_initialize
+    
+    if maker.nil?
+      maker ='その他'
+    end
+
+    if category.nil?
+      category = 'その他'
+    end
+
+    gear = Gear.where(gearname: gearname, image: image).first_or_initialize(maker: maker, category: category)
     gear.save!
   end
 end
