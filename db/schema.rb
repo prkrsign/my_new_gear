@@ -29,7 +29,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_073720) do
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "details", null: false
+    t.string "title", null: false
+    t.text "detail", null: false
     t.integer "cost_performance", null: false
     t.integer "sound", null: false
     t.integer "durability", null: false

@@ -6,6 +6,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = Gon::Base.render_data
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}
     %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}

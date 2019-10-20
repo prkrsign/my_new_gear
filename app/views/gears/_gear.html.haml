@@ -16,6 +16,9 @@
          
             %canvas#myRadarChart{:height => "170px", :width => "170px"}
               :javascript
+                console.log(gon.gears)
+                console.log(gon.gears[0])
+                console.log(gon.gears[0].reviews)
                 var ctx = document.getElementById("myRadarChart").getContext('2d');
                 var myRadarChart = new Chart(ctx, {
                     type: 'radar',
