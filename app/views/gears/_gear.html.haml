@@ -1,51 +1,51 @@
 .gears-index-wrapper
   .gears-index.container-fluid
     .row.pt-lg-5.px-lg-5.p-md-3.p-3
-      .gears-index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.card.shadow
+      .index-contents.col-lg-10.col-md-10.col-sm-12.col-12.offset-lg-1.offset-md-1.card.shadow
         = link_to gear_path(gear.id), class: 'contents__title h3 font-weight-bold px-3 mt-3 card-header bg-dark text-light' do
-          = gear.title
+          = "#{gear.maker}#{gear.gearname}"
 
-        .row.card-body
+        .contents.row.card-body
           .contents__image.col-xl-2.col-md-4.col-sm-4.col-12.text-center.mb-3.mb-sm-0
-            = image_tag gear.image.url, size: '160x170'
+            = image_tag gear.image, size: '160x170'
               
             
           .contents__graph.col-xl-2.col-md-4.col-sm-5.col-12.d-flex.justify-content-center
-            = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false, height: '170px', width: '170px', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
+            -# = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false, height: '170px', width: '170px', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
             
           .contents__label.col-xl-1.col-md-4.col-sm-3.col-12.py-3.pl-md-5.pl-lg-3.d-inline-flex.justify-content-between.flex-lg-column.flex-md-column.flex-sm-column
-            .contents__label__cost.text-primary
+            .label__cost.text-primary
               ● コスパ
               
-            .contents__label__sound.text-success
+            .label__sound.text-success
               ● 音
               
-            .contents__label__design.text-design
+            .label__design.text-design
               ● デザイン
 
-            .contents__label__durability.text-durability
+            .label__durability.text-durability
               ● 耐久性
                   
-            .contents__label__dissatisfaction.text-danger
+            .label__dissatisfaction.text-danger
               ● 不満 
             
           .contents__detail.card.shadow-sm.col-xl-7.mt-xl-0.mt-lg-3.mt-md-3 
             .row
-              .contents__detail__gearname.card-header.col-12.font-weight-bold
+              .detail__gearname.card-header.col-12.font-weight-bold.h5
                 = "機材名：#{gear.gearname}"
             .row
-              .contents__detail__maker.col-6.font-weight-bold.text-center.mt-2.h6
+              .detail__maker.col-6.font-weight-bold.text-center.mt-2.h6
                 メーカー 
-                .contents__detail__maker__text.text-primary.border-bottom.resp-maker-name
-                  = gear.maker.name
-              .contents__detail__category.col-6.font-weight-bold.text-center.mt-2.h6
-                .title.text-cetner
+                .maker__text.text-primary.border-bottom.resp-maker-name.mt-1
+                  = gear.maker
+              .detail__category.col-6.font-weight-bold.text-center.mt-2.h6
+                .category__title.text-cetner
                   カテゴリ
-                .contents__detail__category__text.text-primary.border-bottom.resp-maker-name
-                  = gear.category.name
+                .category__text.text-primary.border-bottom.resp-maker-name.mt-1
+                  = gear.category
 
             .row
               .contents__detail__review.col-sm-10.col-12.py-3.text-secondary.text-lowercase.text-left.text-truncate
-                = gear.review
+                -# = gear.review
 
-              = render partial: 'likes/like_links', locals:{ gear: gear }
+              -# = render partial: 'likes/like_links', locals:{ gear: gear }
