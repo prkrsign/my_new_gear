@@ -14,8 +14,4 @@ class User < ApplicationRecord
   validates :email,                presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGIX }
   validates :profile,              length: { maximum: 1000 }
   validates :password,             presence: true, length: { minimum: 7, maximum: 20}, confirmation: true    
-
-
-
-
 end

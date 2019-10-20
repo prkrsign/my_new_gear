@@ -34,7 +34,6 @@ gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'active_hash'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'carrierwave'

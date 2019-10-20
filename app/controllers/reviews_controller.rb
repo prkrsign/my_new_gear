@@ -29,6 +29,4 @@ class ReviewsController < ApplicationController
         :detail
       ).merge(user_id: current_user.id, gear_id: params[:gear_id])
     end
-
-
 end
