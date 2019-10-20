@@ -5,12 +5,15 @@
         MyNewGear
 
       -if user_signed_in?
-        =link_to new_gear_path, class:'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size' do
-          投稿する 
-        =link_to destroy_user_session_path,method: :delete, class:'main-header__btn__icon__user text-light resp-size ml-2 align-self-center d-inline-flex ml-md-4 ml-4' do
+        =link_to destroy_user_session_path, method: :delete, class:'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size' do
+          ログアウト
+
+        =link_to '#',method: :delete, class:'text-light resp-size ml-2 align-self-center d-inline-flex ml-md-4 ml-4' do
           %i.fa.fa-user.h3.mb-0
           .align-self-center.d-none.d-sm-inline-block.ml-2
             マイページ
+
+
       -else
         =link_to new_user_registration_path, class: 'btn btn border border-light rounded text-white btn-sm align-self-center float-right resp-size' do
           新規登録
@@ -18,5 +21,5 @@
           ログイン
       
       .main-header__search.col-lg-7.align-self-center.mt-2.mt-lg-0.ml-lg-3
-        =  f.search_field :gearname_or_title_or_review_cont, class: 'form-control', placeholder: 'キーワードを入力' 
+        =  f.search_field :gearname_or_maker_or_category_cont, class: 'form-control', placeholder: 'キーワードを入力' 
       

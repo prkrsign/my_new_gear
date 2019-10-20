@@ -38,7 +38,6 @@ gem 'active_hash'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'carrierwave'
-gem "chartkick"
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'

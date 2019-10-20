@@ -3,66 +3,67 @@
 .gears-show-wrapper
   .gears-show.container-fluid
     .row
-      .gears-show-container.col-lg-6.col-md-8.col-sm-12.col-12.offset-xl-3.offset-lg-3.offset-md-2.my-5.card.shadow
-        .gears-show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
-          = @gear.gearname
+      .show-container.col-lg-6.col-md-8.col-sm-12.col-12.offset-xl-3.offset-lg-3.offset-md-2.my-5.card.shadow
+        .show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
+          = "#{@gear.maker} #{@gear.gearname}"
         %hr
         #js-grid-like-show
-          = render partial: 'likes/like_show', locals:{ gear: @gear }
+          -# = render partial: 'likes/like_show', locals:{ gear: @gear }
 
   
         .row
-          .gears-show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4.d-inline-flex.justify-content-center
-            = image_tag @gear.image.url, size: '300x300', class: 'img-fluid'
+          .show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4.d-inline-flex.justify-content-center
+            = image_tag @gear.image, size: '300x300', class: 'img-fluid'
 
           .gears-show-status.col-lg-6.col-md-6.col-sm-12.col-12.d-inline-flex.justify-content-center.pl-md-0
-            = pie_chart({'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction},legend: 'bottom', height: "300px", width: "300px", donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
+            -# = pie_chart({'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction},legend: 'bottom', height: "300px", width: "300px", donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
         %hr    
 
         .row
-          .gears-show-category.col-6.text-center.text-secondary.font-weight-bold.h5
-            カテゴリー
-            .gears-show-category__name.text-center.text-primary.mt-2
-              = @gear.category.name
-          .gears-show-maker.col-6.text-center.text-secondary.font-weight-bold.h5
+          .show-maker.col-6.text-center.text-secondary.font-weight-bold.h5
             メーカー
-            .gears-show-maker__name.text-center.text-primary.mt-2
-              = @gear.maker.name
+            .show-maker__name.text-center.text-primary.mt-2
+              = @gear.maker
+          .show-category.col-6.text-center.text-secondary.font-weight-bold.h5
+            カテゴリー
+            .show-category__name.text-center.text-primary.mt-2
+              = @gear.category
+
         %hr
 
         .row.px-3.my-3
           %label.review-label.text-secondary.ml-1
             この機材のレビュー
-          .gears-show-review.card.shadow-sm.w-100
+          .show-review.card.shadow-sm.w-100
             .review-title.card-header
-              = @gear.title
+              -# = @gear.title
             .review-inner.p-3
-              = @gear.review
+              -# = @gear.review
 
-        - if user_signed_in?
-          - if current_user.id == @gear.user.id
-            .row.px-4.my-2.mb-4.text-center
-              .gears-show-edit.col-6
-                =link_to edit_gear_path, class: 'btn btn-outline-success btn-block' do
-                  編集
-              .gears-show-delete.col-6
-                %button{type: 'button', class: 'btn btn-outline-danger btn-block', data: {toggle: 'modal', target: '#deleteModal'}}
-                  削除
-                
-                #deleteModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteModalLabel", :role => "dialog", :style => "display: none; ", :tabindex => "-1"}
-                  .modal-dialog{role: 'document'}
-                    .modal-content
-                      .modal-header
-                        .h4.modal-title#deleteModalLabel
-                          確認メッセージ
-                        %button{type: 'button', class: 'close', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
-                          %span{aria: {hidden: 'true'}}
-                            &times;
-                      .modal-body.my-3.text-primary
-                        本当に削除してもよろしいですか？
-                      
-                      .modal-footer
-                        %button{type: 'button', class: 'btn btn-secondary', data: {dismiss: 'modal'}}
-                          戻る
-                        = link_to gear_path(@gear.id), method: :delete, class: 'btn btn-danger' do
-                          削除
+        -# - if user_signed_in?
+        -#   - if current_user.id == @gear.user.id
+        .row.px-4.my-2.mb-4.text-center
+          .show-edit.col-6
+            =link_to edit_gear_path, class: 'btn btn-outline-success btn-block' do
+              レビューを投稿
+          .show-delete.col-6
+            %button{type: 'button', class: 'btn btn-outline-danger btn-block', data: {toggle: 'modal', target: '#deleteModal'}}
+              レビューを削除
+            
+            #deleteModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteModalLabel", :role => "dialog", :style => "display: none; ", :tabindex => "-1"}
+              .modal-dialog{role: 'document'}
+                .modal-content
+                  .modal-header
+                    .h4.modal-title#deleteModalLabel
+                      確認メッセージ
+                    %button{type: 'button', class: 'close', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+                      %span{aria: {hidden: 'true'}}
+                        &times;
+                  .modal-body.my-3.text-primary
+                    本当に削除してもよろしいですか？
+                  
+                  .modal-footer
+                    %button{type: 'button', class: 'btn btn-secondary', data: {dismiss: 'modal'}}
+                      戻る
+                    = link_to gear_path(@gear.id), method: :delete, class: 'btn btn-danger' do
+                      削除
