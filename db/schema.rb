@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_120701) do
+ActiveRecord::Schema.define(version: 2019_10_20_073720) do
 
   create_table "gears", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "gearname", null: false
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2019_10_14_120701) do
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "gear_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "details", null: false
+    t.integer "cost_performance", null: false
+    t.integer "sound", null: false
+    t.integer "durability", null: false
+    t.integer "design", null: false
+    t.integer "satisfaction_level", null: false
+    t.bigint "gear_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,6 @@
 class Gear < ApplicationRecord
     has_many   :likes, dependent: :destroy
+    has_many   :reviews
 
     # スクレイピングによる画像保存のため一度コメントアウト
     # mount_uploader :image, ImageUploader

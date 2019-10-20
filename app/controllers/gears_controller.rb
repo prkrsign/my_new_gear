@@ -4,7 +4,8 @@ class GearsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
     def index
-      @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
+      @gear = Gear.all.page(params[:page]).per(10)
+      # @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
     def search
