@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def new
     @review = Review.new
     @gear = Gear.find_by(id: params[:gear_id])
@@ -14,19 +13,19 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
-    def review_params
-      params.require(:review).permit(
-        :cost_performance,
-        :sound,
-        :design,
-        :durability,
-        :satisfaction_level,
-        :title,
-        :detail
-      ).merge(user_id: current_user.id, gear_id: params[:gear_id])
-    end
+
+  def review_params
+    params.require(:review).permit(
+      :cost_performance,
+      :sound,
+      :design,
+      :durability,
+      :satisfaction_level,
+      :title,
+      :detail
+    ).merge(user_id: current_user.id, gear_id: params[:gear_id])
+  end
 end

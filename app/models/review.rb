@@ -8,5 +8,4 @@ class Review < ApplicationRecord
   validates :durability,              presence: true
   validates :design,                  presence: true
   validates :satisfaction_level,      presence: true
-
 end
