@@ -50,6 +50,8 @@ gem 'rails-i18n'
 gem 'ransack'
 gem 'mechanize'
 gem 'seed_dump'
+gem 'chart-js-rails'
+gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -4,7 +4,8 @@ class GearsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
     def index
-      @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
+      @gear = Gear.all.page(params[:page]).per(10)
+      # @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
     def search
@@ -13,6 +14,16 @@ class GearsController < ApplicationController
     end
 
     def show
+
+      unless @gear.reviews.first.nil?  
+        # binding.pry
+        gon.cost_performance = @gear.reviews.first.cost_performance
+        gon.sound = @gear.reviews.first.sound
+        gon.durability = @gear.reviews.first.durability
+        gon.design = @gear.reviews.first.design
+        gon.satisfaction_level = @gear.reviews.first.satisfaction_level
+      end
+
     end
 
     def new

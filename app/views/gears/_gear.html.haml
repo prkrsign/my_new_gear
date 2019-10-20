@@ -10,25 +10,31 @@
             = image_tag gear.image, size: '160x170'
               
             
-          .contents__graph.col-xl-2.col-md-4.col-sm-5.col-12.d-flex.justify-content-center
+          .contents__graph.col-xl-3.col-md-4.col-sm-5.col-12.d-flex.justify-content-center
+          
             -# = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false, height: '170px', width: '170px', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
-            
-          .contents__label.col-xl-1.col-md-4.col-sm-3.col-12.py-3.pl-md-5.pl-lg-3.d-inline-flex.justify-content-between.flex-lg-column.flex-md-column.flex-sm-column
-            .label__cost.text-primary
-              ● コスパ
-              
-            .label__sound.text-success
-              ● 音
-              
-            .label__design.text-design
-              ● デザイン
+         
+            -# %canvas#myRadarChart{:height => "170px", :width => "170px"}
+            -#   :javascript
+            -#     console.log(gon.gears)
+            -#     console.log(gon.gears[0])
+            -#     console.log(gon.gears[0].reviews)
+            -#     var ctx = document.getElementById("myRadarChart").getContext('2d');
+            -#     var myRadarChart = new Chart(ctx, {
+            -#         type: 'radar',
+            -#         data: {
+            -#               labels: ['コスパ', '音', 'デザイン', '耐久', '満足度'],
+            -#               datasets: [{
+            -#                   data: [10, 4, 5, 6, 8]
+            -#               }]
+            -#         },
+            -#         options: {
+            -#           legend: {
+            -#             display: false
+            -#           }
+            -#         }
+            -#     });
 
-            .label__durability.text-durability
-              ● 耐久性
-                  
-            .label__dissatisfaction.text-danger
-              ● 不満 
-            
           .contents__detail.card.shadow-sm.col-xl-7.mt-xl-0.mt-lg-3.mt-md-3 
             .row
               .detail__gearname.card-header.col-12.font-weight-bold.h5
@@ -46,6 +52,23 @@
 
             .row
               .contents__detail__review.col-sm-10.col-12.py-3.text-secondary.text-lowercase.text-left.text-truncate
+          -# .contents__label.col-xl-1.col-md-4.col-sm-3.col-12.py-3.pl-md-5.pl-lg-3.d-inline-flex.justify-content-between.flex-lg-column.flex-md-column.flex-sm-column
+          -#   .label__cost.text-primary
+          -#     ● コスパ
+              
+          -#   .label__sound.text-success
+          -#     ● 音
+              
+          -#   .label__design.text-design
+          -#     ● デザイン
+
+          -#   .label__durability.text-durability
+          -#     ● 耐久性
+                  
+          -#   .label__dissatisfaction.text-danger
+          -#     ● 不満 
+            
+
                 -# = gear.review
 
               -# = render partial: 'likes/like_links', locals:{ gear: gear }

@@ -15,8 +15,45 @@
           .show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4.d-inline-flex.justify-content-center
             = image_tag @gear.image, size: '300x300', class: 'img-fluid'
 
-          .gears-show-status.col-lg-6.col-md-6.col-sm-12.col-12.d-inline-flex.justify-content-center.pl-md-0
-            -# = pie_chart({'コスパ': @gear.cost_performance, '音': @gear.sound, 'デザイン': @gear.design, '耐久性': @gear.durability, '不満': @gear.dissatisfaction},legend: 'bottom', height: "300px", width: "300px", donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
+
+          .gears-show-status.col-lg-6.col-md-6.col-sm-12.col-12.d-inline-flex.justify-content-center.pl-md-0.mb-4
+            -# -binding.pry
+            - if @gear.reviews.first.nil? 
+              = image_tag '/nodata.png', size: '300x300', class: 'img-fluid'
+
+            - else
+              %canvas#myRadarChart{:height => "170px", :width => "170px"}
+                :javascript
+                  var ctx = document.getElementById("myRadarChart").getContext('2d');
+                  var myRadarChart = new Chart(ctx, {
+                      type: 'radar',
+                      data: {
+                            labels: ['コスパ', '音', 'デザイン', '耐久', '満足度'],
+                            datasets: [{
+                                backgroundColor: 'rgb(54, 162, 235, 0.2)',
+                                borderColor: 'rgb(54, 162, 235)',
+                                pointBackgroundColor: 'rgb(54, 162, 235, 0.2)',
+                                data: [ gon.cost_performance, gon.sound, gon.design, gon.durability, gon.satisfaction_level]
+                            }]
+                      },
+                      options: {
+                        legend: {
+                          display: false
+                        },
+                        scale: {
+                          ticks: {
+                            min: 0,
+                            max: 5,
+                            stepSize: 1,
+                            fontSize: 12
+                          },
+                        gridLines: {
+                            display: true,
+                            color: 'rgb(255, 205, 86)'
+                          }
+                        }
+                      }
+                  });
         %hr    
 
         .row
@@ -34,13 +71,20 @@
         .row.px-3.my-3
           %label.review-label.text-secondary.ml-1
             この機材のレビュー
-          .show-review.card.shadow-sm.w-100
-            .review-title.card-header
-              -# = @gear.title
-            .review-inner.p-3
-              -# = @gear.review
+          - if @gear.reviews.first.nil? 
+            .show-review.card.shadow-sm.w-100
+              .review-title.card-header
+                まだレビューが存在しません
+        
+          - else
+            .show-review.card.shadow-sm.w-100
+              .review-title.card-header
+                = @gear.reviews.first.title
+              .review-inner.p-3
+                = @gear.reviews.first.detail
 
-        -# - if user_signed_in?
+        -# レビューの削除は条件分岐が必要
+        -# - if user_signed_in? 
         -#   - if current_user.id == @gear.user.id
         .row.px-4.my-2.mb-4.text-center
           .show-edit.col-6
