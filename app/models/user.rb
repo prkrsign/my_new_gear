@@ -6,10 +6,6 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   
-  # active_hashでgenreIDを紐づける
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :genre
-
   mount_uploader :avatar, AvatarUploader
 
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
