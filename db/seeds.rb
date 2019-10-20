@@ -4,6 +4,7 @@ Gear.create!([
   {gearname: " M108SE 10-Band Graphic-EQ LIMITED BLK", image: "http://img.digimart.net/prdimg/m/93/b873d256c60cc4db043addf2a094a0ee6ed06b.jpg", maker: "MXR", category: "イコライザー"},
   {gearname: " M133 Micro Amp", image: "http://img.digimart.net/prdimg/m/10/f228973b8a11b7a4f50aa63e474f46721f1112.jpg", maker: "MXR", category: "プリアンプ"},
   {gearname: " M102 Dyna Comp Compressor", image: "http://img.digimart.net/prdimg/m/5b/27cd835a8a07392b50273feac3144bfd4ba19f.jpg", maker: "MXR", category: "コンプレッサ／リミッター"},
+  {gearname: " OD-200", image: "http://img.digimart.net/prdimg/m/ff/49883a981684c8dfec18d7dfa768109e547347.jpg", maker: "BOSS", category: "オーバードライブ"},
   {gearname: " KATANA-100 Guitar Amplifier", image: "http://img.digimart.net/prdimg/m/06/fad04ad8ac185033e7dc6f695f19c84066dcc3.jpg", maker: "BOSS", category: "ギターアンプ（コンボ）"},
   {gearname: " GT-1", image: "http://img.digimart.net/prdimg/m/63/225689b3021c85999044da6a821046c987906b.jpg", maker: "BOSS", category: "マルチエフェクター"},
   {gearname: " ME-50B Bass Multiple Effects ", image: "http://img.digimart.net/prdimg/m/a1/9892fe8dd3aeb60059498c7e318be45c8148fc.jpg", maker: "BOSS", category: "その他"},
