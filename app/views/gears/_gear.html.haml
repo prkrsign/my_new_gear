@@ -14,26 +14,26 @@
           
             -# = pie_chart({'コスパ': gear.cost_performance, '音': gear.sound, 'デザイン': gear.design, '耐久性': gear.durability, '不満': gear.dissatisfaction},legend: false, height: '170px', width: '170px', donut: true, colors: ["#007bff", "#28a745", "#fd7e14", "#6f42c1", "#dc3545"])
          
-            %canvas#myRadarChart{:height => "170px", :width => "170px"}
-              :javascript
-                console.log(gon.gears)
-                console.log(gon.gears[0])
-                console.log(gon.gears[0].reviews)
-                var ctx = document.getElementById("myRadarChart").getContext('2d');
-                var myRadarChart = new Chart(ctx, {
-                    type: 'radar',
-                    data: {
-                          labels: ['コスパ', '音', 'デザイン', '耐久', '満足度'],
-                          datasets: [{
-                              data: [10, 4, 5, 6, 8]
-                          }]
-                    },
-                    options: {
-                      legend: {
-                        display: false
-                      }
-                    }
-                });
+            -# %canvas#myRadarChart{:height => "170px", :width => "170px"}
+            -#   :javascript
+            -#     console.log(gon.gears)
+            -#     console.log(gon.gears[0])
+            -#     console.log(gon.gears[0].reviews)
+            -#     var ctx = document.getElementById("myRadarChart").getContext('2d');
+            -#     var myRadarChart = new Chart(ctx, {
+            -#         type: 'radar',
+            -#         data: {
+            -#               labels: ['コスパ', '音', 'デザイン', '耐久', '満足度'],
+            -#               datasets: [{
+            -#                   data: [10, 4, 5, 6, 8]
+            -#               }]
+            -#         },
+            -#         options: {
+            -#           legend: {
+            -#             display: false
+            -#           }
+            -#         }
+            -#     });
 
           .contents__detail.card.shadow-sm.col-xl-7.mt-xl-0.mt-lg-3.mt-md-3 
             .row

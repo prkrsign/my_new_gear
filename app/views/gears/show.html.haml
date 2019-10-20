@@ -24,11 +24,6 @@
             - else
               %canvas#myRadarChart{:height => "170px", :width => "170px"}
                 :javascript
-                  console.log(gon.cost_performance)
-                  console.log(gon.sound)
-                  console.log(gon.durability)
-                  console.log(gon.design)
-                  console.log(gon.satisfaction_level)
                   var ctx = document.getElementById("myRadarChart").getContext('2d');
                   var myRadarChart = new Chart(ctx, {
                       type: 'radar',
