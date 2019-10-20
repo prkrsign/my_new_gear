@@ -88,7 +88,7 @@
         -#   - if current_user.id == @gear.user.id
         .row.px-4.my-2.mb-4.text-center
           .show-edit.col-6
-            =link_to edit_gear_path, class: 'btn btn-outline-success btn-block' do
+            =link_to new_gear_review_path(@gear.id), class: 'btn btn-outline-success btn-block' do
               レビューを投稿
           .show-delete.col-6
             %button{type: 'button', class: 'btn btn-outline-danger btn-block', data: {toggle: 'modal', target: '#deleteModal'}}

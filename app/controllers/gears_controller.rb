@@ -66,6 +66,7 @@ class GearsController < ApplicationController
     end
 
   private
+
     def gear_params
       params.require(:gear).permit(
         :image,

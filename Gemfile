@@ -34,24 +34,23 @@ gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'active_hash'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'carrierwave'
+gem 'chart-js-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'fog-aws'
 gem "font-awesome-rails"
+gem 'gon'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'mechanize'
 gem 'rails-i18n'
 gem 'ransack'
-gem 'mechanize'
 gem 'seed_dump'
-gem 'chart-js-rails'
-gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -77,10 +76,10 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'bullet'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'bullet'
 end
 
 group :test do

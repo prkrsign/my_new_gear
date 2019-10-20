@@ -14,56 +14,55 @@ class Scraping
   def self.boss_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=258&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.mxr_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=85&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.harmonix_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=13&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.tc_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=230&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.behringer_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=255&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.line6_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=289&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
   def self.ibanez_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?dispMode=ALL&shopNo=&keywordOr=&keywordPhrase=&productName=&categoryId=&categoryNames=&category12Id=1301&category3Id=&brandnames=Ibanez&brandnames=&brandnames=&keywordAnd=&areaId=&priceFrom=&priceTo=&nosoldoutp=on&x=137&y=17&manufactureYearFrom=&manufactureYearTo=&weightOptionFrom=&weightOptionTo=&term=&stringsoption=&pickupOption=&pickupComponentOption=&otherOption=&fretOption=&neckScaleOption=&bodyOption=&tremolantOption=&fingerboardOption=&neckjointOption=&neckOption=&topMaterialOption=&sideMaterialOption=&backMaterialOption=&bodysizeOption=&bodyShapeOption=&materialOption=&specOption=&keywordNot=')
-    page_links(current_page, scraping.n, scraping.links)    
+    page_links(current_page, scraping.n, scraping.links)
     scraping.n += 1
   end
 
-
   # 一覧ページから詳細ページへのhref属性を抽出して、配列linksに順次格納していく
   def self.page_links(current_page, n, links)
-    while true
+    loop do
       # 初回は指定したURLを読みにいく
       if n == 0
         elements = current_page.search('.itemSearchBoxLeft .pic a')
@@ -74,6 +73,7 @@ class Scraping
       else
         next_link = current_page.link_with(text: '次へ').click
         break unless next_link
+
         current_page = agent.get(next_link)
         elements = current_page.search('.itemSearchBoxLeft .pic a')
         elements.each do |ele|
@@ -105,11 +105,11 @@ class Scraping
     category = page.search('//*[@id="main"]/div/div[1]/ul/li[3]/a').inner_text if page.at('//*[@id="main"]/div/div[1]/ul/li[3]/a')
     image_url = page.at('.mainPhotoBlock img')[:src] if page.at('.mainPhotoBlock img')
     image = 'http:' + image_url
-    
+
     # メーカー名が存在しない場合は、その他というレコードで保存したいので条件分岐
     maker = maker_check(maker)
     # カテゴリ名が存在しない場合は、その他というレコードで保存したいので条件分岐
-    category = category_check(category)    
+    category = category_check(category)
     scraping_save(gearname, image, maker, category)
   end
 
@@ -122,17 +122,12 @@ class Scraping
   end
 
   def self.maker_check(maker)
-    if maker.nil?
-      maker ='その他'
-    end
-    return maker
+    maker = 'その他' if maker.nil?
+    maker
   end
 
   def self.category_check(category)
-    if category.nil?
-      category = 'その他'
-    end
-    return category
+    category = 'その他' if category.nil?
+    category
   end
-
 end
