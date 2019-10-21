@@ -12,11 +12,6 @@
           .gearname.col-12.text-primary.mb-3
             = @gear.gearname
           = image_tag @gear.image, size: '300x300', class: 'img-fluid'
-          -# %label.gears-new-contents__box__image-container__icon.font-weight-bold.border.border-warning.rounded.pt-4
-          -#   %i.fa.fa-camera.align-middle
-          -#   = f.file_field :image, id: 'file_photo'
-          -# .gears-new-contents__box__image-container__text.mt-2
-            -# 画像をアップロードしてください (後々画像読み込みアイコンのところと、読み込んだ画像が入れ替わるようにする)
         
         .gears-new-contents__box__image-check.pt-3#gearImgPreview
           %label.gears-new-contents__box__image-check__image.font-weight-bold.border.border-warning.rounded.pt-2
@@ -34,7 +29,6 @@
             = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold mt-4'
             .text-primary.font-weight-bold.col-12.text-center
               = @gear.category
-            -# = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category form-control"}
 
             = f.label :maker_id, 'メーカー', class: 'h6 font-weight-bold mt-4'
             .text-primary.font-weight-bold.col-12.text-center
@@ -45,33 +39,23 @@
           .gears-new-contents__box__point-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
             ポイント
             .gears-new-contents__box__point-container__title__note.mt-3.text-primary.h6
-              合計点が100点になるようにご記入ください。
+              点数を選択してください。
           
           .gears-new-contents__box__point-container__list.col-md-8
             = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
             = f.select :cost_performance, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
-            -# = f.text_field :cost_performance, class: 'form-control point_input', placeholder: '例)20', id: 'cost_point'
 
             = f.label :sound, 'サウンド', class: 'h6 font-weight-bold mt-4'
             = f.select :sound, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
-            -# = f.text_field :sound, class: 'form-control point_input', placeholder: '例)20', id: 'sound_point'
 
             = f.label :design, 'デザイン', class: 'h6 font-weight-bold mt-4'
             = f.select :design, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
-            -# = f.text_field :design, class: 'form-control point_input', placeholder: '例)20', id: 'design_point'
 
             = f.label :durability, '耐久性', class: 'h6 font-weight-bold mt-4'
             = f.select :durability, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
-            -# = f.text_field :durability, class: 'form-control point_input', placeholder: '例)20', id: 'durability_point'
 
             = f.label :dissatisfaction, '満足度', class: 'h6 font-weight-bold mt-4'
             = f.select :satisfaction_level, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
-            -# = f.text_field :dissatisfaction, class: 'form-control point_input', placeholder: '例)20', id: 'dissatisfaction_point'
-
-            .gears-new-contents__box__point-container__list__result.mt-5.row.px-3
-              .gears-new-contents__box__point-container__list__result__text.font-weight-bold.col-4.h4
-                合計:
-              .gears-new-contents__box__point-container__list__result__point.col-8.text-right.h3
               
         %hr.my-4
 
