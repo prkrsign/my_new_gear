@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to  gear_path(@gear.id), notice: 'レビューを削除しました'
+    redirect_to gear_path(@gear.id), notice: 'レビューを削除しました'
   end
 
   def set_review
