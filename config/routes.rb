@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get  'gears/search', to: 'gears#search'
   post 'photos/:id/:user_id', to: 'photos#show'
 
-  resources :gears, only: %i(new create show destroy edit update search) do
+  resources :gears, only: %i(show search) do
     resources :likes, only: %i(create destroy)
-    resources :reviews, only: %i(new create destroy)
+    resources :reviews, only: %i(new edit create destroy)
   end
 
 

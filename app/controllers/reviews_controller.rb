@@ -4,6 +4,11 @@ class ReviewsController < ApplicationController
     @gear = Gear.find_by(id: params[:gear_id])
   end
 
+  def edit
+    @review = Review.new
+    @gear = Gear.find_by(id: params[:gear_id])
+  end
+
   def create
     review = Review.new(review_params)
     if review.save
