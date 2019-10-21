@@ -1,10 +1,10 @@
 class GearsController < ApplicationController
-  before_action :set_gear, only: [:show, :destroy, :edit, :update]
+  before_action :set_gear, only: [:show]
   before_action :set_search, only: [:index, :show]
-  before_action :authenticate_user!, only: [:new]
+  # before_action :authenticate_user!, only: [:new] (削除予定)
 
     def index
-      @gear = Gear.all.page(params[:page]).per(10)
+      # @gear = Gear.all.page(params[:page]).per(10)
       # @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
     end
 
