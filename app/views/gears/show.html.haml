@@ -75,13 +75,19 @@
             .show-review.card.shadow-sm.w-100
               .review-title.card-header
                 まだレビューが存在しません
-        
+
           - else
             .show-review.card.shadow-sm.w-100
               .review-title.card-header
                 = @gear.reviews.first.title
               .review-inner.p-3
                 = @gear.reviews.first.detail
+                .review-info.col-12.text-right.text-primary.mt-3
+                  -# -binding.pry
+                  = @gear.reviews.first.user.username
+                  %time(datetime="#{@gear.reviews.first.created_at}")= time_ago_in_words(@gear.reviews.first.created_at)
+                  -# = @gear.reviews.first.created_at.strftime("%Y-%m-%d %H:%M")
+                  
 
         -# レビューの削除は条件分岐が必要
         -# - if user_signed_in? 
