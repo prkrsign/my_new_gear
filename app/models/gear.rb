@@ -16,7 +16,7 @@ class Gear < ApplicationRecord
         @review_list = Review.where(gear_id: gear_id)
     end
 
-    # 引数で指定したカラムの平均点を計算
+    # 任意のギアのレビューにおいて、引数で指定したカラムの平均点を計算
     def self.average_point(gear_id, culumn)
       gear = Gear.new(gear_id)
       point_list = gear.review_list.pluck(:"#{culumn}")
@@ -24,15 +24,15 @@ class Gear < ApplicationRecord
         gear.points += list
         gear.n += 1
       end
-      gear.points/gear.n.to_f
+      gear.points / gear.n.to_f
     end
 
 
-    # スクレイピングによる画像保存のため一度コメントアウト
-    # mount_uploader :image, ImageUploader
+  # スクレイピングによる画像保存のため一度コメントアウト
+  # mount_uploader :image, ImageUploader
 
-    # スクレイピングによる保存のため一度コメントアウト
-    # extend ActiveHash::Associations::ActiveRecordExtensions
-    # belongs_to_active_hash        :category
-    # belongs_to_active_hash        :maker
+  # スクレイピングによる保存のため一度コメントアウト
+  # extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to_active_hash        :category
+  # belongs_to_active_hash        :maker
 end
