@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :gears, only: %i(show search) do
     resources :likes, only: %i(create destroy)
-    resources :reviews, only: %i(new edit create destroy)
+    resources :reviews, only: %i(new edit update create destroy)
   end
 
 

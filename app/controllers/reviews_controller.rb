@@ -1,21 +1,27 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:destroy]
-  before_action :set_gear,   only: [:destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_gear,   only: [:new, :edit, :update, :destroy]
 
   def new
     @review = Review.new
-    @gear = Gear.find_by(id: params[:gear_id])
   end
 
   def edit
-    @review = Review.new
-    @gear = Gear.find_by(id: params[:gear_id])
+  end
+
+  def update
+    if @review.update(review_params)    
+      redirect_to gear_path(@gear.id), notice: 'レビューを更新しました'
+    else
+      binding.pry
+      redirect_to edit_gear_review_path(@gear.id, @review.id), alert: 'レビューの更新に失敗しました'
+    end
   end
 
   def create
     review = Review.new(review_params)
     if review.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'レビューを投稿しました'
     else
       redirect_to new_gear_review_path, alert: 'レビューの投稿に失敗しました'
     end

@@ -17,7 +17,6 @@
 
 
           .gears-show-status.col-lg-6.col-md-6.col-sm-12.col-12.d-inline-flex.justify-content-center.pl-md-0.mb-4
-            -# -binding.pry
             - if @gear.reviews.first.nil? 
               = image_tag '/nodata.png', size: '300x300', class: 'img-fluid'
 
@@ -92,7 +91,8 @@
                     %time.text-secondary(datetime="#{review.created_at}")= time_ago_in_words(review.created_at)
                   - if review.user.id == current_user.id
                     .show-delete.col-12.text-right.mt-2
-                      = link_to edit_gear_review_path(review.id), class: 'btn btn-outline-success btn-sm mr-2' do
+                      -# -binding.pry
+                      = link_to edit_gear_review_path(@gear.id, review.id), class: 'btn btn-outline-success btn-sm mr-2' do
                         編集                    
                       %button{type: 'button', class: 'btn btn-outline-danger btn-sm', data: {toggle: 'modal', target: '#deleteModal'}}
                         削除  
