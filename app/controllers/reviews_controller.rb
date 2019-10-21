@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:destroy]
+  before_action :set_gear,   only: [:destroy]
+
   def new
     @review = Review.new
     @gear = Gear.find_by(id: params[:gear_id])
@@ -18,7 +21,18 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @review.destroy
+    redirect_to  gear_path(@gear.id), notice: 'レビューを削除しました'
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  def set_gear
+    @gear = Gear.find(params[:gear_id])
+  end
 
   private
 

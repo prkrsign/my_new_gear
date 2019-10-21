@@ -112,5 +112,5 @@
                           .modal-footer
                             %button{type: 'button', class: 'btn btn-secondary', data: {dismiss: 'modal'}}
                               戻る
-                            = link_to gear_review_path(review.id), method: :delete, class: 'btn btn-danger' do
+                            = link_to gear_review_path(@gear.id, review.id), method: :delete, class: 'btn btn-danger' do
                               削除
