@@ -16,12 +16,6 @@ class Gear < ApplicationRecord
       @review_list = Review.where(gear_id: gear_id)
     end
 
-    def self.review_count
-      gear = Gear.new
-      review_list
-
-    end
-
     # 任意のギアのレビューにおいて、引数で指定したカラムの平均点を計算
     def self.average_point(gear_id, culumn)
       gear = Gear.new(gear_id)
