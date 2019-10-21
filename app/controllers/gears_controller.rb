@@ -14,13 +14,11 @@ class GearsController < ApplicationController
     end
 
     def show
-      unless @gear.reviews.first.nil?  
-        gon.cost_performance = @gear.reviews.first.cost_performance
-        gon.sound = @gear.reviews.first.sound
-        gon.durability = @gear.reviews.first.durability
-        gon.design = @gear.reviews.first.design
-        gon.satisfaction_level = @gear.reviews.first.satisfaction_level
-      end
+      gon.sound = Gear.average_point(@gear.id, 'sound')
+      gon.cost_performance = Gear.average_point(@gear.id, 'cost_performance')
+      gon.durability = Gear.average_point(@gear.id, 'durability')
+      gon.design = Gear.average_point(@gear.id, 'design')
+      gon.satisfaction_level = Gear.average_point(@gear.id, 'satisfaction_level')
     end
 
     # 削除予定
