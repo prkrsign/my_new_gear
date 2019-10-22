@@ -115,7 +115,6 @@ class Scraping
 
   # first_or_initializeを使って、gearnameとimageでは同じレコードを許さない。makerとcategoryは重複してもかまわない
   def self.scraping_save(gearname, image, maker, category)
-    # binding.pry
     gear = Gear.where(gearname: gearname, image: image).first_or_initialize
     gear.maker = maker
     gear.category = category
