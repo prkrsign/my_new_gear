@@ -3,7 +3,7 @@ class GearsController < ApplicationController
   before_action :set_search, only: [:index, :show]
 
     def index
-      @gear = Gear.all.page(params[:page]).per(10)
+      @gear = Gear.all.page(params[:page]).per(12)
     end
 
     def search
