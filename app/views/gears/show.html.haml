@@ -5,7 +5,7 @@
     .row
       .show-container.col-lg-6.col-md-8.col-sm-12.col-12.offset-xl-3.offset-lg-3.offset-md-2.my-5.card.shadow
         .show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
-          = "#{@gear.maker} #{@gear.gearname}"
+          = @gear.gearname
         %hr
         #js-grid-like-show
           -# = render partial: 'likes/like_show', locals:{ gear: @gear }
@@ -61,11 +61,11 @@
         .row
           .show-maker.col-6.text-center.text-secondary.font-weight-bold.h5
             メーカー
-            .show-maker__name.text-center.text-primary.mt-2
+            .show-maker__name.text-center.text-primary.mt-2.h6.font-weight-bold
               = @gear.maker
           .show-category.col-6.text-center.text-secondary.font-weight-bold.h5
             カテゴリー
-            .show-category__name.text-center.text-primary.mt-2
+            .show-category__name.text-center.text-primary.mt-2.h6.font-weight-bold
               = @gear.category
         %hr
 
@@ -75,7 +75,7 @@
               レビューを投稿
 
         .row.px-3.my-3
-          %label.review-label.text-secondary
+          %label.review-label.text-secondary.mb-0
             この機材のレビュー
           - if @gear.reviews.first.nil? 
             .show-review.card.shadow-sm.w-100.mt-3
