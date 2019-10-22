@@ -1,6 +1,6 @@
 = paginator.render do
   %nav
-    %ul.pagination.offset-1.mt-3
+    %ul.pagination.offset-1.mt-1
       = first_page_tag unless current_page.first?
       = prev_page_tag unless current_page.first?
       - each_page do |page|
