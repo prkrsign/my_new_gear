@@ -35,7 +35,6 @@ gem 'mini_magick', '~> 4.8'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'chart-js-rails'
 gem 'devise'
