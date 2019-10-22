@@ -53,3 +53,21 @@ canvas{
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
 }
+
+.index-contents{
+    &:after{
+        content:"";
+        display:block;
+        width: 60%;
+        height:0;
+      }
+}
+
+.search-contents{
+    &:after{
+        content:"";
+        display:block;
+        width: 60%;
+        height:0;
+      }
+}
