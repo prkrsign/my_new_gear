@@ -1,6 +1,7 @@
 = render 'shared/header'
 
-#js-grid-juicy-projects
-  = render @gear
+#js-grid-juicy-projects.container-fluid
+  .row.d-flex.justify-content-around 
+    = render @gear
 
 = paginate @gear, window: 1
