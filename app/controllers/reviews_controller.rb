@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :set_gear,   only: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new]
 
   def new
     @review = Review.new
