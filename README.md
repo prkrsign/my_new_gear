@@ -1,7 +1,7 @@
 ## サイトトップページ画像
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
-|<img width="1100" alt="スクリーンショット 2019-10-16 13 42 05" src="https://user-images.githubusercontent.com/52661994/66889761-96ba7d00-f01e-11e9-9f7b-7bd87167385a.png">|<img width="600" alt="スクリーンショット 2019-10-16 13 47 31" src="https://user-images.githubusercontent.com/52661994/66889762-96ba7d00-f01e-11e9-8ddf-b04fcf9a549e.png">|<img width="400" alt="スクリーンショット 2019-10-16 13 47 57" src="https://user-images.githubusercontent.com/52661994/66889763-96ba7d00-f01e-11e9-8dd6-8babdb174e77.png">
+|<img width="1100" src="https://i.gyazo.com/11582041f79f97be303cf36647b7b703.jpg">|<img width="600"  src="https://i.gyazo.com/db4948a05ea895277af0a0a822169aff.png">|<img width="400" src="https://i.gyazo.com/e4d4f890ac69e57e097b505952c0e597.png">
 
 ## 概要  
 第三者という立場のユーザー同士が、音楽機材のレビューを通して意見交流、情報交換を行うアプリケーションを目指しています。
