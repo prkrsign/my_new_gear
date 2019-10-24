@@ -9,8 +9,6 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-
-
     describe 'ユーザー新規登録(usernameの妥当性確認)' do
       it "usernameが1文字の場合、アカウント登録ができる" do
         user = FactoryBot.build(:user, username: 'あ')
@@ -105,18 +103,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-
-    # favoriteのnull: falseはやめる。ユーザーアカウント作成手順が煩雑になるため。
-    # describe 'ユーザー新規登録(favoriteの妥当性確認)' do
-    #   it "favoriteがnilの場合、アカウント登録できない" do
-    #     user = build(:user, favorite: nil)
-    #     user.valid?
-    #     expect(user.errors[:favorite]).to include("を入力してください")
-    #   end
-    # end
-
-
-
     describe 'ユーザー新規登録(profileの妥当性確認)' do
       it "profileがnilでも、アカウント登録できる" do
         user = build(:user, profile: nil)
@@ -137,8 +123,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-
-
     describe 'ユーザー新規登録(avatarの妥当性確認)' do
       it "avatarがnilでも、アカウント登録できる" do
         user = build(:user, avatar: nil)
@@ -146,17 +130,5 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
       end
     end
-
-    # genreのnull: falseはやめる。ユーザーアカウント作成手順が煩雑になるため。
-    # describe 'ユーザー新規登録(genre_idの妥当性確認)' do
-    #   it "genre_idがnilの場合、アカウント登録できない" do
-    #     user = build(:user, genre_id: nil)
-    #     user.valid?
-    #     expect(user.errors[:genre_id]).to include("を入力してください")
-    #   end
-    # end
-
-
   end
-
 end
