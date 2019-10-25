@@ -44,4 +44,11 @@ RSpec.describe 'レビュー機能', type: :system do
 
     end
   end
+
+  describe '編集機能' do
+    before do
+      user = FactoryBot.create(:user)
+      gear = FactoryBot.create(:gear)
+    end
+  end
 end
