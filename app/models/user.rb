@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  validates :username,             presence: true, length: { minimum:1, maximum:15 }
+  validates :username,             presence: true, length: { minimum: 1, maximum: 15 }
   validates :email,                presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGIX }
   validates :profile,              length: { maximum: 1000 }
   validates :password,             presence: true, length: { minimum: 7, maximum: 20}, confirmation: true    
