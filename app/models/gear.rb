@@ -6,7 +6,7 @@ class Gear < ApplicationRecord
     validates :gearname,             presence: true
 
     def like_user(id)
-        likes.find_by(user_id: id)
+      likes.find_by(user_id: id)
     end
 
     # 任意のギアのレビューにおいて、引数で指定したカラムの平均点を計算
