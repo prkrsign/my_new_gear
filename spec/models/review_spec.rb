@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Review, type: :model do
   describe 'レビュー投稿機能' do
     it "全ての必須項目を入れた場合、レビューの投稿ができる" do
-      user = FactoryBot.build(:user)
-      gear = FactoryBot.build(:gear)
+      user = FactoryBot.create(:user)
+      gear = FactoryBot.create(:gear)
       review = FactoryBot.build(:review, user: user, gear: gear)
       review.valid?
       expect(review).to be_valid
@@ -28,8 +28,8 @@ RSpec.describe Review, type: :model do
       end
 
       it 'titleが1文字以上の場合、投稿ができる' do
-        user = FactoryBot.build(:user)
-        gear = FactoryBot.build(:gear)
+        user = FactoryBot.create(:user)
+        gear = FactoryBot.create(:gear)
         review = FactoryBot.build(:review, title: 'あ', user: user, gear: gear)
         review.valid?
         expect(review).to be_valid
@@ -37,7 +37,7 @@ RSpec.describe Review, type: :model do
     end
 
     describe 'detailの妥当性確認' do
-      it 'detailがnilの場合、登録ができない' do
+      it 'detailがnilの場合、投稿できない' do
         user = FactoryBot.build(:user)
         gear = FactoryBot.build(:gear)
         review = FactoryBot.build(:review, detail: nil, user: user, gear: gear)
@@ -45,12 +45,36 @@ RSpec.describe Review, type: :model do
         expect(review.errors[:detail]).to  include("を入力してください")
       end
 
-      it 'detailが501文字を超える場合、登録ができない' do
+      it 'detailが501文字を超える場合、投稿できない' do
         user = FactoryBot.build(:user)
         gear = FactoryBot.build(:gear)
         review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 501))
         review.valid?
         expect(review.errors[:detail]).to  include("は500文字以内で入力してください")
+      end
+
+      it 'detailが500文字以下の場合、投稿できる' do
+        user = FactoryBot.create(:user)
+        gear = FactoryBot.create(:gear)
+        review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 500), user: user, gear: gear)
+        review.valid?
+        expect(review).to be_valid        
+      end
+
+      it 'detailが5文字以上の場合、投稿できる' do
+        user = FactoryBot.create(:user)
+        gear = FactoryBot.create(:gear)
+        review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 5), user: user, gear: gear)
+        review.valid?
+        expect(review).to be_valid
+      end
+      
+      it 'detailが4文字以下の場合、投稿できない' do
+        user = FactoryBot.create(:user)
+        gear = FactoryBot.create(:gear)
+        review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 4), user: user, gear: gear)
+        review.valid?
+        expect(review.errors[:detail]).to  include("は5文字以上で入力してください")
       end
     end
 
@@ -112,6 +136,14 @@ RSpec.describe Review, type: :model do
         review.valid?
         expect(review.errors[:user]).to  include("を入力してください")
       end
+
+      # it '任意の機材に対して、一人のユーザーが二つ以上のレビューを投稿できない' do
+      #   user = FactoryBot.create(:user)
+      #   gear = FactoryBot.create(:gear)
+      #   review = FactoryBot.create(:review, user: user, gear: gear)
+      #   review2 = FactoryBot.create(:review, user: user, gear: gear)
+        # バリデーションは機能しているが
+      # end
     end
 
     describe 'gear(外部キー)の妥当性確認' do
