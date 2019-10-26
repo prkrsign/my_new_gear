@@ -57,7 +57,7 @@ RSpec.describe 'サインアップ、ログイン、ログアウト機能', type
 
       it '既存ユーザーが間違ったパスワードを入力した場合、ログインできない' do
         fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
-        fill_in 'パスワード', with: '1234567'
+        fill_in 'パスワード', with: '1234568'
         click_button 'My New Gearにログイン'
         expect(page).to have_content 'My New Gearにログイン'
       end

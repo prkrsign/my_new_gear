@@ -114,9 +114,9 @@ Metrics/MethodLength:
 # Offense count: 1
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip, db
-Naming/UncommunicativeMethodParamName:
-  Exclude:
-    - 'app/models/scraping.rb'
+# Naming/UncommunicativeMethodParamName:
+#   Exclude:
+#     - 'app/models/scraping.rb'
 
 # Offense count: 151
 # Configuration parameters: AllowedChars.
@@ -133,9 +133,9 @@ Style/AsciiComments:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
+# Style/BlockComments:
+#   Exclude:
+#     - 'spec/spec_helper.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -144,31 +144,33 @@ Style/BlockComments:
 # ProceduralMethods: benchmark, bm, bmbm, create, each_with_object, measure, new, realtime, tap, with_object
 # FunctionalMethods: let, let!, subject, watch
 # IgnoredMethods: lambda, proc, it
-Style/BlockDelimiters:
-  Exclude:
-    - 'spec/factories/users.rb'
+# Style/BlockDelimiters:
+#   Exclude:
+#     - 'spec/factories/users.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/test_helper.rb'
+# Style/ClassAndModuleChildren:
+#   Exclude:
+#     - 'test/test_helper.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
+
+# デプロイできなくなる可能性があるのでコメントアウト
 Style/ExpandPathArguments:
   Exclude:
     - 'config/unicorn.rb'
 
 # Offense count: 2
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/models/scraping.rb'
+# Style/IdenticalConditionalBranches:
+#   Exclude:
+#     - 'app/models/scraping.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'config/deploy.rb'
+# Style/IfUnlessModifier:
+#   Exclude:
+#     - 'config/deploy.rb'
