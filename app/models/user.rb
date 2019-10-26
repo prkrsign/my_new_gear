@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
   mount_uploader :avatar, AvatarUploader
 
-  VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
 
   validates :username,             presence: true, length: { minimum: 1, maximum: 15 }
   validates :email,                presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGIX }

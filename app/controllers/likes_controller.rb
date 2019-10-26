@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
-  before_action :set_show, only: [:create, :destroy]
-  before_action :set_gear, only: [:create, :destroy]
+  before_action :set_show, only: %i[create destroy]
+  before_action :set_gear, only: %i[create destroy]
 
   def create
     @like = current_user.likes.create(gear_id: params[:gear_id])

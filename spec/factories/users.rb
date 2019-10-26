@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :user do
     username                 {'テストマン'}
     email                    {'testman@yahoo.co.jp'}
-    password                 {1234567}
-    password_confirmation    {1234567}
+    password                 {'1234567'}
+    password_confirmation    {'1234567'}
     favorite                 {'メタリカ'}
     profile                  {
       '私が丸々さんに興味を持ったのは、代表であるAA社長のお父様が、△出身だった、とプロフィールに書かれていたからです。

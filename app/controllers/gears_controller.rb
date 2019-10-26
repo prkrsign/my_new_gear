@@ -1,6 +1,6 @@
 class GearsController < ApplicationController
   before_action :set_gear, only: [:show]
-  before_action :set_search, only: [:index, :show]
+  before_action :set_search, only: %i[index show]
 
   def index
     @gear = Gear.all.page(params[:page]).per(12)
@@ -41,7 +41,7 @@ class GearsController < ApplicationController
       :durability,
       :dissatisfaction,
       :review,
-      :title,
+      :title
     ).merge(user_id: current_user.id)
   end
 
