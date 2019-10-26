@@ -91,7 +91,7 @@ RSpec.describe 'レビュー機能', type: :system do
 
           it '編集、および削除ボタンが表示されない' do
             expect(page).to have_no_link '編集'
-            expect(page).to have_no_button '削除'            
+            expect(page).to have_no_button '削除'
           end
         end
 
@@ -170,7 +170,7 @@ RSpec.describe 'レビュー機能', type: :system do
           end
 
           it '機材詳細画面に遷移する' do
-            gear = Gear.last 
+            gear = Gear.last
             expect(current_path).to eq("/gears/#{gear.id}")
             expect(page).to have_content 'テストチェック'
           end
@@ -192,7 +192,7 @@ RSpec.describe 'レビュー機能', type: :system do
           end
 
           it '機材詳細ページに遷移する' do
-            gear = Gear.last 
+            gear = Gear.last
             expect(current_path).to eq("/gears/#{gear.id}")
           end
 

@@ -43,19 +43,19 @@
           
           .gears-new-contents__box__point-container__list.col-md-8
             = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
-            = f.select :cost_performance, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
+            = f.select :cost_performance, options_for_select(["0","1", "2", "3", "4", "5"]),{prompt: '未選択'}, class: 'form-control'
 
             = f.label :sound, 'サウンド', class: 'h6 font-weight-bold mt-4'
-            = f.select :sound, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
+            = f.select :sound, options_for_select(["0","1", "2", "3", "4", "5"]),{prompt: '未選択'}, class: 'form-control'
 
             = f.label :design, 'デザイン', class: 'h6 font-weight-bold mt-4'
-            = f.select :design, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
+            = f.select :design, options_for_select(["0","1", "2", "3", "4", "5"]),{prompt: '未選択'}, class: 'form-control'
 
             = f.label :durability, '耐久性', class: 'h6 font-weight-bold mt-4'
-            = f.select :durability, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
+            = f.select :durability, options_for_select(["0","1", "2", "3", "4", "5"]),{prompt: '未選択'}, class: 'form-control'
 
             = f.label :dissatisfaction, '満足度', class: 'h6 font-weight-bold mt-4'
-            = f.select :satisfaction_level, options_for_select(["0","1", "2", "3", "4", "5"]),{}, class: 'form-control'
+            = f.select :satisfaction_level, options_for_select(["0","1", "2", "3", "4", "5"]),{prompt: '未選択'}, class: 'form-control'
               
         %hr.my-4
 

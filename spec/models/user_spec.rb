@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'ユーザー新規登録' do
     it "全ての必須項目を入れた場合、アカウント登録ができる" do
       user = FactoryBot.build(:user)
@@ -23,19 +22,17 @@ RSpec.describe User, type: :model do
       end
 
       it "usernameがnilの場合、アカウント登録ができない" do
-        user = FactoryBot.build(:user,username: nil)
+        user = FactoryBot.build(:user, username: nil)
         user.valid?
         expect(user.errors[:username]).to include("を入力してください")
       end
 
       it "usernameが16文字以上の場合、アカウント登録ができない" do
-        user = FactoryBot.build(:user,username: 'あああああいいいいいうううううえ')
+        user = FactoryBot.build(:user, username: 'あああああいいいいいうううううえ')
         user.valid?
         expect(user.errors[:username]).to include("は15文字以内で入力してください")
       end
     end
-
-
 
     describe 'ユーザー新規登録(emailの妥当性確認)' do
       it "emailがnilの場合、アカウント登録ができない" do

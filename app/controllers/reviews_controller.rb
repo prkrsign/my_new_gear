@@ -1,20 +1,18 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :set_gear,   only: [:new, :edit, :update, :destroy]
+  before_action :set_review, only: %i[edit update destroy]
+  before_action :set_gear,   only: %i[new edit update destroy]
   before_action :authenticate_user!, only: [:new]
 
   def new
     @review = Review.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    if @review.update(review_params)    
+    if @review.update(review_params)
       redirect_to gear_path(@gear.id), notice: 'レビューを更新しました'
     else
-      binding.pry
       redirect_to edit_gear_review_path(@gear.id, @review.id), alert: 'レビューの更新に失敗しました'
     end
   end
