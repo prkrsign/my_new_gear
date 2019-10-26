@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to gear_path(@gear.id), notice: 'レビューを更新しました'
     else
-      binding.pry
       redirect_to edit_gear_review_path(@gear.id, @review.id), alert: 'レビューの更新に失敗しました'
     end
   end
