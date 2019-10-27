@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   #   end
   # end
 
-  validates  :title,                   presence: true, length: { minimum: 1, maximum: 30 }
+  validates  :title,                   presence: true, length: { minimum: 1, maximum: 100 }
   validates  :detail,                  presence: true, length: { minimum: 5, maximum: 500 }
   validates  :cost_performance,        presence: true
   validates  :sound,                   presence: true
