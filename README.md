@@ -38,10 +38,10 @@
   * 統合テスト(System Spec)
   
 * インフラ
-  * DBにはMysqlを使用
+  * DBにAmazonRDS(MySQL)
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
-  * Docker,docker-composeによる開発環境構築
+  * Docker、docker-composeによる開発環境構築
   * CircleCIによる自動テスト(rspec及びrubocopに対応)
 
 ## 追加予定機能
