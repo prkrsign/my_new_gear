@@ -9,7 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
-          BUNDLER_VERSION: 2.0.2
+          - BUNDLER_VERSION: 2.0.2
           - RAILS_ENV: 'test'
       
       - image: circleci/mysql:5.6
