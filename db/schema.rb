@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_073720) do
   create_table "gears", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "gearname", null: false
     t.string "image", null: false
-    t.string "maker", default: "その他", null: false
-    t.string "category", default: "その他", null: false
+    t.string "maker", null: false
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

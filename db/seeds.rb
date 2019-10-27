@@ -1,8 +1,8 @@
-User.create!([
+User.first_or_create([
                { email: "test@example.com", password: "1234567", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, username: "test", favorite: nil, profile: nil, avatar: nil, genre_id: nil },
                { email: "test1@yahoo.co.jp", password: "1234567", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, username: "AK47", favorite: nil, profile: nil, avatar: nil, genre_id: nil }
              ])
-Gear.create!([
+Gear.first_or_create([
                { gearname: "KATANA-AIR ", image: "http://img.digimart.net/prdimg/m/57/09c59874579315cb84be4bed128b6a0f20b729.jpg", maker: "BOSS", category: "ギターアンプ（コンボ）" },
                { gearname: "MD-200", image: "http://img.digimart.net/prdimg/m/e0/ad87ad82be09f1412b0e35ce71575ae1c3a5bb.jpg", maker: "BOSS", category: "マルチエフェクター" },
                { gearname: "DD-7 Digital Delay ", image: "http://img.digimart.net/prdimg/m/f7/ddcc20b98cb41436fe3d0d7bffa8a37383d8e7.jpg", maker: "BOSS", category: "ディレイ" },
@@ -110,7 +110,7 @@ Gear.create!([
                { gearname: "TS808HW", image: "http://img.digimart.net/prdimg/m/43/98f0e9906dcedc963f44ab849595c47e8b2290.jpg", maker: "Ibanez", category: "オーバードライブ" },
                { gearname: "TS-9 ", image: "http://img.digimart.net/prdimg/m/c9/5480ab9a82bb7c2f3e2717d3d750b85b9543ac.jpg", maker: "Ibanez", category: "オーバードライブ" }
              ])
-Review.create!([
+Review.first_or_create([
                  { title: "Bluetoothとワイヤレスシステムを唯一搭載している", detail: "タイトルの通り、Bluetoothスピーカーとワイヤレスシステムを搭載している現在のところ唯一のアンプだと思いましたので購入しました。\r\n電源コードひとつでギター演奏と外部音源を鳴らせるのは部屋がすっきりして良いです。\r\nフロントパネルの見た目は好きではないので、フロント部分を下方向に向け、コントロールツマミ部分を正面に向け、アルミラックの上段に置いて使用しています。", cost_performance: 3, sound: 4, durability: 2, design: 1, satisfaction_level: 5, gear_id: 1, user_id: 1 },
                  { title: "モジュレーションthe BESTって感じの製品です！", detail: "「MD-200 Modulation」は、フラッグシップ・モデルである「MD-500」のアルゴリズムを継承した、高品位なモジュレーション・ペダル。「CE-1 CHORUS」のモデリングやVIBRATO、SLICERを始めとする12種類のモードを搭載し、多彩なモジュレーション・エフェクトを生み出すことが可能。コントロールもシンプルで、RATE（フットスイッチでのタップ入力にも対応）やDEPTH、E.LEVELなどに加え、モードによって操作パラメータが変化するPARAMノブを3つ搭載。各モードに応じたパラメータを直感的に操作し、サウンドメイクすることができる。さらに、インサート機能も搭載しており、お気に入りのペダルをインサート接続すると、MD-200によるエフェクトのポジションをプリ／ポストから選択可能だ。", cost_performance: 4, sound: 5, durability: 3, design: 2, satisfaction_level: 4, gear_id: 2, user_id: 1 },
                  { title: "何度も言ってますが、とにかく高音質！", detail: "とにかく驚きの高音質です!!\r\n\r\n高音質というのは、つまり高音域の劣化がないことを指し、\r\n\r\n音が全く奥に引っ込まないんです！\r\n\r\nアタックもボヤけずシャっと立ち上がるので、付点８分とかのわかりやすいディレイにしたときにトコトコ具合の綺麗さは本当にすごい！\r\n\r\nわたしはDD-3を持ってるのでBOSSのDDシリーズの音はなんとなく知ってるつもりになってましたが、\r\n\r\nいやもう、完全に別モノやで!!", cost_performance: 3, sound: 5, durability: 3, design: 4, satisfaction_level: 4, gear_id: 3, user_id: 1 },
