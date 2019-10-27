@@ -51,6 +51,11 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+
       # run tests!
       - run:
           name: run tests
@@ -65,9 +70,6 @@ jobs:
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
-      - run:
-          name: Rubocop
-          command: bundle exec rubocop
 
       # collect reports
       - store_test_results:
