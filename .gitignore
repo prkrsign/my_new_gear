@@ -30,3 +30,5 @@ coverage
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .DS_Store
+mysql/mysql_data/ib_logfile0
+mysql/mysql_data/ibdata1
