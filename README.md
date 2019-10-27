@@ -26,13 +26,13 @@
   
 * サーバーサイド
   * ユーザー登録機能(gem deviseを使用)
-  * スクレイピングによる機材データベースの作成 
+  * スクレイピングによる機材データベースの作成(gem mechanizeを使用)
   * 機材一覧表示
   * レビューの投稿機能
   * レビューの編集機能
   * レビューの削除機能
   * 検索機能(gem ransackを使用)
-  * ページネーション  
+  * ページネーション(gem kaminariを使用)
   * グラフ表示機能(chart.jsを用いたレーダーチャート)
   * 単体テスト(RSpec)
   * 統合テスト(System Spec)
@@ -41,7 +41,7 @@
   * DBにはMysqlを使用
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
-  * Docker,docker-composeによる開発構築
+  * Docker,docker-composeによる開発環境構築
   * CircleCIによる自動テスト(rspec及びrubocopに対応)
 
 ## 追加予定機能
