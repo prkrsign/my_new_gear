@@ -48,7 +48,7 @@ RSpec.describe Review, type: :model do
       it 'detailが501文字を超える場合、投稿できない' do
         user = FactoryBot.build(:user)
         gear = FactoryBot.build(:gear)
-        review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 501))
+        review = FactoryBot.build(:review, detail: Faker::Lorem.characters(number: 501), user: user, gear: gear)
         review.valid?
         expect(review.errors[:detail]).to include("は500文字以内で入力してください")
       end
@@ -130,7 +130,6 @@ RSpec.describe Review, type: :model do
 
     describe 'user(外部キー)の妥当性確認' do
       it 'userがnilの場合、登録ができない' do
-        user = FactoryBot.build(:user)
         gear = FactoryBot.build(:gear)
         review = FactoryBot.build(:review, user: nil, gear: gear)
         review.valid?
@@ -149,7 +148,6 @@ RSpec.describe Review, type: :model do
     describe 'gear(外部キー)の妥当性確認' do
       it 'gearがnilの場合、登録ができない' do
         user = FactoryBot.build(:user)
-        gear = FactoryBot.build(:gear)
         review = FactoryBot.build(:review, user: user, gear: nil)
         review.valid?
         expect(review.errors[:gear]).to include("を入力してください")
