@@ -59,9 +59,10 @@ class Scraping
     loop do
       # 1ページ目は指定したURLを読みにいく
       unless times.zero?
-      # 2回目以降は、ページネーションの'次へ'ボタンをクリックした先のURLを読み出しにいく
+        # 2回目以降は、ページネーションの'次へ'ボタンをクリックした先のURLを読み出しにいく
         next_link = current_page.link_with(text: '次へ').click
         break unless next_link
+
         current_page = agent.get(next_link)
       end
       elements = current_page.search('.itemSearchBoxLeft .pic a')

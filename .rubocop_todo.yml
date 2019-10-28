@@ -131,46 +131,8 @@ Style/AsciiComments:
     - 'spec/system/gear_spec.rb'
     - 'spec/system/review_spec.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Style/BlockComments:
-#   Exclude:
-#     - 'spec/spec_helper.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ProceduralMethods, FunctionalMethods, IgnoredMethods, AllowBracesOnProceduralOneLiners.
-# SupportedStyles: line_count_based, semantic, braces_for_chaining, always_braces
-# ProceduralMethods: benchmark, bm, bmbm, create, each_with_object, measure, new, realtime, tap, with_object
-# FunctionalMethods: let, let!, subject, watch
-# IgnoredMethods: lambda, proc, it
-# Style/BlockDelimiters:
-#   Exclude:
-#     - 'spec/factories/users.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle.
-# SupportedStyles: nested, compact
-# Style/ClassAndModuleChildren:
-#   Exclude:
-#     - 'test/test_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-
-# デプロイできなくなる可能性があるのでコメントアウト
+# デプロイできなくなる可能性があるのでコメントアウトしない
 Style/ExpandPathArguments:
   Exclude:
     - 'config/unicorn.rb'
-
-# Offense count: 2
-# Style/IdenticalConditionalBranches:
-#   Exclude:
-#     - 'app/models/scraping.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Style/IfUnlessModifier:
-#   Exclude:
-#     - 'config/deploy.rb'
