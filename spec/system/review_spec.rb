@@ -65,6 +65,11 @@ RSpec.describe 'レビュー機能', type: :system do
           expect(page).to have_content '現在のレビュー数:1'
         end
 
+        it '機材詳細ページに遷移する' do
+          review = Review.last
+          expect(current_path).to eq("/gears/#{review.gear_id}")
+        end
+
         it '機材詳細ページに、レビューと投稿者が反映される' do
           visit root_path
           click_link 'KATANA-AIR'

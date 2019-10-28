@@ -25,6 +25,9 @@ Metrics/AbcSize:
 # 必要なのでコメントアウトしない
 Metrics/BlockLength:
   Max: 172
+  # 長くなっても仕方ないものは除外する
+  Exclude:
+   - 'spec/system/review_spec.rb'
 
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.

@@ -1,13 +1,18 @@
 class Gear < ApplicationRecord
   attr_accessor :n, :points, :review_list
-  has_many   :likes, dependent: :destroy
-  has_many   :reviews
+  # いいね機能一旦停止
+  # has_many   :likes, dependent: :destroy
+  has_many :reviews
 
-  validates :gearname, presence: true
+  validates :gearname,      presence: true
+  validates :image,         presence: true
+  validates :maker,         presence: true
+  validates :category,      presence: true
 
-  def like_user(id)
-    likes.find_by(user_id: id)
-  end
+  # いいね機能一旦停止
+  # def like_user(id)
+  #   likes.find_by(user_id: id)
+  # end
 
   # 任意のギアのレビューにおいて、引数で指定したカラムの平均点を計算
   def self.average_point(gear_id, culumn)
@@ -22,7 +27,4 @@ class Gear < ApplicationRecord
     end
     gear.points / gear.n.to_f
   end
-
-  # スクレイピングによる画像保存のため一度コメントアウト
-  # mount_uploader :image, ImageUploader
 end

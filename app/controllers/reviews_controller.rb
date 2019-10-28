@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[edit update destroy]
-  before_action :set_gear,   only: %i[new edit update destroy]
+  before_action :set_gear,   only: %i[new edit update create destroy]
   before_action :authenticate_user!, only: [:new]
 
   def new
@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
   def create
     review = Review.new(review_params)
     if review.save
-      redirect_to root_path, notice: 'レビューを投稿しました'
+      redirect_to gear_path(@gear.id), notice: 'レビューを投稿しました'
     else
       redirect_to new_gear_review_path, alert: 'レビューの投稿に失敗しました'
     end
