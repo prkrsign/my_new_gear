@@ -53,29 +53,16 @@ Layout/SpaceInsidePercentLiteralDelimiters:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: final_newline, final_blank_line
-Layout/TrailingBlankLines:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/likes_controller.rb'
-    - 'config/deploy.rb'
-    - 'config/initializers/carrierwave.rb'
-    - 'config/unicorn.rb'
-    - 'spec/system/gear_spec.rb'
-    - 'spec/system/user_spec.rb'
-
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: AllowInHeredoc.
-# Layout/TrailingWhitespace:
+# Layout/TrailingBlankLines:
 #   Exclude:
-#     - 'app/controllers/application_controller.rb'
+#     - 'Gemfile'
 #     - 'app/controllers/likes_controller.rb'
-#     - 'app/models/gear.rb'
-#     - 'app/models/user.rb'
-#     - 'spec/factories/gears.rb'
-#     - 'spec/factories/likes.rb'
-#     - 'spec/spec_helper.rb'
+#     - 'config/deploy.rb'
+#     - 'config/initializers/carrierwave.rb'
+#     - 'config/unicorn.rb'
 #     - 'spec/system/gear_spec.rb'
+#     - 'spec/system/user_spec.rb'
+
 
 # Offense count: 1
 # Cop supports --auto-correct.
