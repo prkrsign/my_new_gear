@@ -6,4 +6,3 @@ FactoryBot.define do
     category      {'ギターアンプ（コンボ）'}
   end
 end
-  

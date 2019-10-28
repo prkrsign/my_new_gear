@@ -58,7 +58,7 @@ RSpec.describe 'レビュー機能', type: :system do
   #       end
   #     end
 
-  #     context '投稿ページで全項目を記載して投稿した場合' do 
+  #     context '投稿ページで全項目を記載して投稿した場合' do
   #       before do
   #         visit new_gear_path
   #         attach_file "gear[image]", "#{Rails.root}/spec/files/jisaku.png", visible: false

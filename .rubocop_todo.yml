@@ -66,30 +66,26 @@ Layout/TrailingBlankLines:
 # Offense count: 10
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/likes_controller.rb'
-    - 'app/models/gear.rb'
-    - 'app/models/user.rb'
-    - 'spec/factories/gears.rb'
-    - 'spec/factories/likes.rb'
-    - 'spec/spec_helper.rb'
-    - 'spec/system/gear_spec.rb'
-
-# Offense count: 1
-Lint/Debugger:
-  Exclude:
-    - 'app/controllers/reviews_controller.rb'
+# Layout/TrailingWhitespace:
+#   Exclude:
+#     - 'app/controllers/application_controller.rb'
+#     - 'app/controllers/likes_controller.rb'
+#     - 'app/models/gear.rb'
+#     - 'app/models/user.rb'
+#     - 'spec/factories/gears.rb'
+#     - 'spec/factories/likes.rb'
+#     - 'spec/spec_helper.rb'
+#     - 'spec/system/gear_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.
-Lint/UnusedBlockArgument:
-  Exclude:
-    - 'config/deploy.rb'
+# Lint/UnusedBlockArgument:
+#   Exclude:
+#     - 'config/deploy.rb'
 
 # Offense count: 8
+# 必要なのでコメントアウトしない。テストの挙動がおかしくなる可能性あり。
 Lint/UselessAssignment:
   Exclude:
     - 'spec/models/user_spec.rb'
@@ -97,17 +93,20 @@ Lint/UselessAssignment:
     - 'spec/system/user_spec.rb'
 
 # Offense count: 3
+# 必要なのでコメントアウトしない。基準値を超える変数への代入、メソッド呼び出し、条件分岐を判定する
 Metrics/AbcSize:
   Max: 24
 
 # Offense count: 13
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
+# 必要なのでコメントアウトしない
 Metrics/BlockLength:
   Max: 172
 
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
+# 必要なのでコメントアウトしない
 Metrics/MethodLength:
   Max: 17
 
