@@ -2,7 +2,7 @@ class Gear < ApplicationRecord
   attr_accessor :n, :points, :review_list
   # いいね機能一旦停止
   # has_many   :likes, dependent: :destroy
-  has_many   :reviews
+  has_many :reviews
 
   validates :gearname,      presence: true
   validates :image,         presence: true
@@ -27,7 +27,4 @@ class Gear < ApplicationRecord
     end
     gear.points / gear.n.to_f
   end
-
-  # スクレイピングによる画像保存のため一度コメントアウト
-  # mount_uploader :image, ImageUploader
 end
