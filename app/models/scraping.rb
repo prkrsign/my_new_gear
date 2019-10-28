@@ -1,87 +1,76 @@
 class Scraping
-  attr_accessor :links, :agent, :n
+  attr_accessor :links, :agent, :times
 
+  Encoding.default_external = 'UTF-8'
   def initialize
     # hrefのURLを格納する配列を用意
     @links = []
     # 共通で使うのでMechanizeを変数化
     @agent = Mechanize.new
     # 初回のスクレイピングは、指定したURLであり、その後はリンク先に飛ばしたいので、処理回数nを定義する
-    @n = 0
+    @times = 0
   end
 
   # ブランドごとの機材一覧ページを指定すると、画像ファイルや詳細情報を取ってくる
   def self.boss_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=258&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.mxr_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=85&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.harmonix_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=13&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.tc_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=230&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.behringer_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=255&category12Id=&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.line6_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?brandId=289&nosoldoutp=on')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   def self.ibanez_urls
     scraping = Scraping.new
     current_page = scraping.agent.get('https://www.digimart.net/search?dispMode=ALL&shopNo=&keywordOr=&keywordPhrase=&productName=&categoryId=&categoryNames=&category12Id=1301&category3Id=&brandnames=Ibanez&brandnames=&brandnames=&keywordAnd=&areaId=&priceFrom=&priceTo=&nosoldoutp=on&x=137&y=17&manufactureYearFrom=&manufactureYearTo=&weightOptionFrom=&weightOptionTo=&term=&stringsoption=&pickupOption=&pickupComponentOption=&otherOption=&fretOption=&neckScaleOption=&bodyOption=&tremolantOption=&fingerboardOption=&neckjointOption=&neckOption=&topMaterialOption=&sideMaterialOption=&backMaterialOption=&bodysizeOption=&bodyShapeOption=&materialOption=&specOption=&keywordNot=')
-    page_links(current_page, scraping.n, scraping.links)
-    scraping.n += 1
+    page_links(current_page, scraping.times, scraping.links)
   end
 
   # 一覧ページから詳細ページへのhref属性を抽出して、配列linksに順次格納していく
-  def self.page_links(current_page, n, links)
+  def self.page_links(current_page, times, links)
     loop do
-      # 初回は指定したURLを読みにいく
-      if n == 0
-        elements = current_page.search('.itemSearchBoxLeft .pic a')
-        elements.each do |ele|
-          links << ele.get_attribute('href')
-        end
+      # 1ページ目は指定したURLを読みにいく
+      unless times.zero?
       # 2回目以降は、ページネーションの'次へ'ボタンをクリックした先のURLを読み出しにいく
-      else
         next_link = current_page.link_with(text: '次へ').click
         break unless next_link
-
         current_page = agent.get(next_link)
-        elements = current_page.search('.itemSearchBoxLeft .pic a')
-        elements.each do |ele|
-          links << ele.get_attribute('href')
-        end
+      end
+      elements = current_page.search('.itemSearchBoxLeft .pic a')
+      elements.each do |ele|
+        links << ele.get_attribute('href')
       end
       # クラスメソッドlink_eachを実行
       link_each(links)
+      times += 1
     end
   end
 
