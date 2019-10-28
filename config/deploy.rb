@@ -33,7 +33,7 @@ set :keep_releases, 5
 # }
 
 # master.key用のシンボリックリンクを追加
-set :linked_files, %w[ config/master.key ]
+set :linked_files, %w[config/master.key]
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
@@ -44,7 +44,7 @@ namespace :deploy do
 
   desc 'upload master.key'
   task :upload do
-    on roles(:app) do |host|
+    on roles(:app) do |_host|
       execute "mkdir -p #{shared_path}/config" if test "[ ! -d #{shared_path}/config ]"
       upload!('config/master.key', "#{shared_path}/config/master.key")
     end

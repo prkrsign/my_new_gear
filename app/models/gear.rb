@@ -2,7 +2,7 @@ class Gear < ApplicationRecord
   attr_accessor :n, :points, :review_list
   has_many   :likes, dependent: :destroy
   has_many   :reviews
-      
+
   validates :gearname, presence: true
 
   def like_user(id)
