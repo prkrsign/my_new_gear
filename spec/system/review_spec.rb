@@ -67,7 +67,7 @@ RSpec.describe 'レビュー機能', type: :system do
 
         it '機材詳細ページに遷移する' do
           review = Review.last
-          expect(current_path).to eq("/gears/#{review.gear_id}") 
+          expect(current_path).to eq("/gears/#{review.gear_id}")
         end
 
         it '機材詳細ページに、レビューと投稿者が反映される' do
