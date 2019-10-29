@@ -94,7 +94,7 @@ class Scraping
     maker    = page.search(".itemDetail .itemDetailInfo a").inner_text if page.at('.itemDetail .itemDetailInfo a')
     category = page.search('//*[@id="main"]/div/div[1]/ul/li[3]/a').inner_text if page.at('//*[@id="main"]/div/div[1]/ul/li[3]/a')
     image_url = page.at('.mainPhotoBlock img')[:src] if page.at('.mainPhotoBlock img')
-    image = 'http:' + image_url
+    image = 'https:' + image_url
 
     # メーカー名が存在しない場合は、その他というレコードで保存したいので条件分岐
     maker = maker_check(maker)
