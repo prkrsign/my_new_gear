@@ -1,7 +1,6 @@
 ## サイトトップページ画像
 * ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。
-  * URL:https://mynewgear-portfolio.com/ メールアドレス:test@example.com      パスワード:1234567
-  (AWS設定を修正しアクセス可能となりました 19/10/29)
+  * URL:https://mynewgear-portfolio.com/ メールアドレス:test@example.com      パスワード:1234567  (AWS設定を修正しアクセス可能となりました 19/10/29)
   
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
