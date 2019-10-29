@@ -1,6 +1,6 @@
 ## サイトトップページ画像
 * ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。
-  * URL:http://18.179.74.251/    メールアドレス:test@example.com      パスワード:1234567
+  * URL:http://mynewgear-portfolio.com/    メールアドレス:test@example.com      パスワード:1234567
   
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
