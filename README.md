@@ -38,15 +38,15 @@
   * 統合テスト(System Spec)
   
 * インフラ
+　* Docker、docker-composeによる開発環境構築
   * DBにAmazonRDS(MySQL)
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
-  * Docker、docker-composeによる開発環境構築
   * CircleCIによる自動テスト(rspec及びrubocopに対応)
+  * Route53(AWS)を使用した独自ドメインの取得
 
 ## 追加予定機能
 
-* 独自ドメイン設定
 * SSL化
 * レビューに対するコメント投稿機能
 * いいね機能(一時実装したが一旦削除)
