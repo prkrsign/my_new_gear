@@ -1,6 +1,7 @@
 ## サイトトップページ画像
 * ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。
-  * URL:https://mynewgear-portfolio.com/(AWS設定のため現在アクセスできません。少々おまちください 19/10/29)   メールアドレス:test@example.com      パスワード:1234567
+  * URL:https://mynewgear-portfolio.com/ メールアドレス:test@example.com      パスワード:1234567
+  (AWS設定を修正しアクセス可能となりました 19/10/29)
   
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
@@ -44,10 +45,10 @@
   * Capistranoを用いた自動デプロイ
   * CircleCIによる自動テスト(rspec及びrubocopに対応)
   * Route53(AWS)を使用した独自ドメインの取得
+  * ELB(AWS)をエンドポイントとして常時SSL化
 
 ## 追加予定機能
 
-* SSL化
 * レビューに対するコメント投稿機能
 * いいね機能(一時実装したが一旦削除)
 * いいね通知機能
