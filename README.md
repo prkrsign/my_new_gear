@@ -38,8 +38,8 @@
   * 単体テスト(RSpec)
   * 統合テスト(System Spec)
   
-* インフラ
-　* Docker、docker-composeによる開発環境構築
+* インフラ  
+  * Docker、docker-composeによる開発環境構築
   * DBにAmazonRDS(MySQL)
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
