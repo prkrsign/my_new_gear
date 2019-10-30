@@ -35,7 +35,7 @@ RSpec.describe Gear, type: :model do
 
     describe 'categoryの妥当性確認' do
       it 'categoryがnilの場合、機材情報が保存されない' do
-        gear.category =nil
+        gear.category = nil
         gear.valid?
         expect(gear.errors[:category]).to include("を入力してください")
       end
@@ -45,8 +45,8 @@ RSpec.describe Gear, type: :model do
   describe 'average_pointメソッド' do
     let(:gear) { FactoryBot.create(:gear) }
     let(:user) { FactoryBot.create(:user) }
-    let(:review) { FactoryBot.create_list(:review, 5, gear: gear, user: user ) }
-    
+    let(:review) { FactoryBot.create_list(:review, 5, gear: gear, user: user) }
+
     before do
       review
     end
