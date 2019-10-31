@@ -1,7 +1,6 @@
 ## サイトトップページ画像
 * ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。
   * URL:https://mynewgear-portfolio.com/ メールアドレス:test@example.com      パスワード:1234567  
-  * (AWS設定を修正しアクセス可能となりました 19/10/29)
   
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
@@ -36,7 +35,7 @@
   * ページネーション(gem kaminariを使用)
   * グラフ表示機能(chart.jsを用いたレーダーチャート)
   * 単体テスト(RSpec)
-  * 統合テスト(System Spec)
+  * 統合テスト(System Spec) (gem simpleCOVによるカバレッジ計測87%)
   
 * インフラ  
   * Docker、docker-composeによる開発環境構築
