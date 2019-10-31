@@ -35,7 +35,7 @@
   * ページネーション(gem kaminariを使用)
   * グラフ表示機能(chart.jsを用いたレーダーチャート)
   * 単体テスト(RSpec)
-  * 統合テスト(System Spec) (gem simpleCOVによるカバレッジ計測87%)
+  * 統合テスト(System Spec) (gem simplecovによるカバレッジ計測87%)
   
 * インフラ  
   * Docker、docker-composeによる開発環境構築
