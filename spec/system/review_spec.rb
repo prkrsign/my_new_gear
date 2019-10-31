@@ -159,7 +159,7 @@ RSpec.describe 'レビュー機能', type: :system do
           expect(page).to have_content '機材のレビューを編集'
         end
 
-        context '既存の値を編集した場合' do
+        context '既存の値を適切に編集した場合' do
           before do
             # 元々の値は1
             select '5', from: 'review[cost_performance]'
@@ -178,6 +178,19 @@ RSpec.describe 'レビュー機能', type: :system do
             gear = Gear.last
             expect(current_path).to eq("/gears/#{gear.id}")
             expect(page).to have_content 'テストチェック'
+          end
+        end
+
+        context '既存の値をnilにした場合' do
+          before do
+            fill_in 'review_title', with: nil
+            click_button 'レビューを編集する'
+          end
+
+          it 'レビューの編集に失敗する' do
+            gear = Gear.last
+            review = Review.last
+            expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
           end
         end
       end
