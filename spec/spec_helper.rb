@@ -25,7 +25,7 @@ Capybara.register_driver :selenium_chrome_headless do |app|
 
   [
     "headless",
-    "window-size=1280x1280",
+    "window-size=2880x2000",
     "disable-gpu" # https://developers.google.com/web/updates/2017/04/headless-chrome
   ].each { |arg| options.add_argument(arg) }
 
