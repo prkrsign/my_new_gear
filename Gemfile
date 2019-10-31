@@ -65,11 +65,11 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem "rspec_junit_formatter"
   gem 'simplecov'
   gem 'spring-commands-rspec'
-  gem 'rails-controller-testing'
 end
 
 group :development do
