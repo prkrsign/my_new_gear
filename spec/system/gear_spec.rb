@@ -125,7 +125,7 @@ RSpec.describe '機材機能', type: :system, js: true do
   describe '検索機能' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:gear) { FactoryBot.create_list(:gear, 16) }
-    
+
     context '検索にヒットした場合' do
       before do
         visit root_path
