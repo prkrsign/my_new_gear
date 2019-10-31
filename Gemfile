@@ -69,6 +69,7 @@ group :development, :test do
   gem "rspec_junit_formatter"
   gem 'simplecov'
   gem 'spring-commands-rspec'
+  gem 'rails-controller-testing'
 end
 
 group :development do
