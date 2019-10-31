@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :likes, dependent: :destroy
 
+  mount_uploader :avatar, AvatarUploader
+
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
 
   validates :username,             presence: true, length: { minimum: 1, maximum: 15 }
