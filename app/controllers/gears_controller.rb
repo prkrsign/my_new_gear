@@ -29,22 +29,6 @@ class GearsController < ApplicationController
 
   private
 
-  def gear_params
-    params.require(:gear).permit(
-      :image,
-      :category_id,
-      :maker_id,
-      :gearname,
-      :cost_performance,
-      :sound,
-      :design,
-      :durability,
-      :dissatisfaction,
-      :review,
-      :title
-    ).merge(user_id: current_user.id)
-  end
-
   def search_params
     params.require(:q).permit(:gearname_or_maker_or_category_cont)
   end
