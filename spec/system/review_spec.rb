@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'レビュー機能', type: :system do
-
   let!(:user) { FactoryBot.create(:user) }
   let!(:gear) { FactoryBot.create(:gear) }
 
@@ -48,7 +47,7 @@ RSpec.describe 'レビュー機能', type: :system do
 
       it 'クリックした機材と対応したURLに遷移する' do
         expect(current_path).to eq("/gears/#{gear.id}/reviews/new")
-      end      
+      end
 
       context 'レビュー投稿画面にて、必須項目を全て埋めた場合' do
         before do
@@ -88,7 +87,7 @@ RSpec.describe 'レビュー機能', type: :system do
         context '別のユーザーでログインした場合' do
           let!(:user2) { FactoryBot.create(:user, email: 'testman2@yahoo.co.jp') }
           before do
-            sign_out  user
+            sign_out user
             sign_in user2
             visit root_path
             click_link 'KATANA-AIR'
@@ -106,7 +105,7 @@ RSpec.describe 'レビュー機能', type: :system do
 
         context 'ログインしていないユーザーの場合' do
           before do
-            sign_out  user
+            sign_out user
             visit root_path
             click_link 'KATANA-AIR'
           end
@@ -121,7 +120,6 @@ RSpec.describe 'レビュー機能', type: :system do
           end
         end
       end
-
 
       context 'レビュー投稿画面にて、必須項目を埋めていない場合' do
         before do
@@ -140,7 +138,6 @@ RSpec.describe 'レビュー機能', type: :system do
       end
     end
   end
- 
 
   describe '編集、削除機能' do
     let!(:review) { FactoryBot.create(:review, user: user, gear: gear) }

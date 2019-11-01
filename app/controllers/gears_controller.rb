@@ -28,6 +28,7 @@ class GearsController < ApplicationController
   end
 
   private
+
   def search_params
     params.require(:q).permit(:gearname_or_maker_or_category_cont)
   end
