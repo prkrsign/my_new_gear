@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'レビュー機能', type: :system do
-  before do
-    user = FactoryBot.create(:user)
-    gear = FactoryBot.create(:gear)
-  end
+
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:gear) { FactoryBot.create(:gear) }
 
   describe '投稿機能' do
     context 'ログインしていない場合' do
@@ -19,21 +18,25 @@ RSpec.describe 'レビュー機能', type: :system do
       end
 
       context 'ログイン画面に遷移した場合' do
-        it 'ログイン後、レビュー投稿ページに遷移する' do
+        before do
           fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
           fill_in 'パスワード', with: '1234567'
           click_button 'My New Gearにログイン'
+        end
+
+        it 'ログイン後、レビュー投稿ページに遷移する' do
           expect(page).to have_content '機材のレビューを入力'
+        end
+
+        it 'クリックした機材と対応したURLに遷移する' do
+          expect(current_path).to eq("/gears/#{gear.id}/reviews/new")
         end
       end
     end
 
     context 'ログインしている場合' do
       before do
-        visit new_user_session_path
-        fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
-        fill_in 'パスワード', with: '1234567'
-        click_button 'My New Gearにログイン'
+        sign_in user
         visit root_path
         click_link 'KATANA-AIR'
         click_link 'レビューを投稿'
@@ -42,6 +45,10 @@ RSpec.describe 'レビュー機能', type: :system do
       it 'レビュー投稿画面に遷移できる' do
         expect(page).to have_content '機材のレビューを入力'
       end
+
+      it 'クリックした機材と対応したURLに遷移する' do
+        expect(current_path).to eq("/gears/#{gear.id}/reviews/new")
+      end      
 
       context 'レビュー投稿画面にて、必須項目を全て埋めた場合' do
         before do
@@ -79,13 +86,10 @@ RSpec.describe 'レビュー機能', type: :system do
         end
 
         context '別のユーザーでログインした場合' do
+          let!(:user2) { FactoryBot.create(:user, email: 'testman2@yahoo.co.jp') }
           before do
-            user2 = FactoryBot.create(:user, email: 'testman2@yahoo.co.jp')
-            click_link 'ログアウト'
-            visit new_user_session_path
-            fill_in 'メールアドレス', with: 'testman2@yahoo.co.jp'
-            fill_in 'パスワード', with: '1234567'
-            click_button 'My New Gearにログイン'
+            sign_out  user
+            sign_in user2
             visit root_path
             click_link 'KATANA-AIR'
           end
@@ -102,7 +106,7 @@ RSpec.describe 'レビュー機能', type: :system do
 
         context 'ログインしていないユーザーの場合' do
           before do
-            click_link 'ログアウト'
+            sign_out  user
             visit root_path
             click_link 'KATANA-AIR'
           end
@@ -110,10 +114,16 @@ RSpec.describe 'レビュー機能', type: :system do
           it '投稿されたレビューを見ることができる' do
             expect(page).to have_content 'Bluetoothとワイヤレスシステムを唯一搭載している'
           end
+
+          it '編集、および削除ボタンが表示されない' do
+            expect(page).to have_no_link '編集'
+            expect(page).to have_no_button '削除'
+          end
         end
       end
 
-      context 'レビュー投稿画面にて、レビュー詳細を埋めていない場合' do
+
+      context 'レビュー投稿画面にて、必須項目を埋めていない場合' do
         before do
           select '1', from: 'review[cost_performance]'
           select '2', from: 'review[sound]'
@@ -130,95 +140,95 @@ RSpec.describe 'レビュー機能', type: :system do
       end
     end
   end
+ 
 
   describe '編集、削除機能' do
+    let!(:review) { FactoryBot.create(:review, user: user, gear: gear) }
+
     context 'レビューを投稿したユーザーと、閲覧するユーザーが同じ場合' do
       before do
-        user3 = FactoryBot.create(:user, email: 'testman3@yahoo.co.jp')
-        gear2 = FactoryBot.create(:gear, gearname: 'MD-200', image: 'http://img.digimart.net/prdimg/m/e0/ad87ad82be09f1412b0e35ce71575ae1c3a5bb.jpg')
-        review = FactoryBot.create(:review, user: user3, gear: gear2)
-        visit new_user_session_path
-        fill_in 'メールアドレス', with: 'testman3@yahoo.co.jp'
-        fill_in 'パスワード', with: '1234567'
-        click_button 'My New Gearにログイン'
+        sign_in user
         visit root_path
-        click_link 'MD-200'
+        click_link 'KATANA-AIR'
       end
 
       it '編集ボタンおよび削除ボタンが存在する' do
         expect(page).to have_link '編集'
         expect(page).to have_button '削除'
       end
-
-      context '編集ボタンを押した場合' do
-        before do
-          click_link '編集'
-        end
-
-        it '編集画面に遷移できる' do
-          expect(page).to have_content '機材のレビューを編集'
-        end
-
-        context '既存の値を適切に編集した場合' do
-          before do
-            # 元々の値は1
-            select '5', from: 'review[cost_performance]'
-            # 元々のタイトルは'Bluetoothとワイヤレスシステムを唯一搭載している'
-            fill_in 'review_title', with: 'テストチェック'
-            click_button 'レビューを編集する'
-          end
-
-          it 'レビューの編集ができる' do
-            review = Review.last
-            expect(review.cost_performance).to eq 5
-            expect(review.title).to eq 'テストチェック'
-          end
-
-          it '機材詳細画面に遷移する' do
-            gear = Gear.last
-            expect(current_path).to eq("/gears/#{gear.id}")
-            expect(page).to have_content 'テストチェック'
-          end
-        end
-
-        context '既存の値をnilにした場合' do
-          before do
-            fill_in 'review_title', with: nil
-            click_button 'レビューを編集する'
-          end
-
-          it 'レビューの編集に失敗する' do
-            gear = Gear.last
-            review = Review.last
-            expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
-          end
-        end
-      end
-
-      context '削除ボタンを押した場合' do
-        before do
-          click_button '削除'
-        end
-
-        it 'モーダルウィンドウが表示される' do
-          expect(page).to have_content '本当に削除してもよろしいですか？'
-        end
-
-        context 'モーダルウィンドウの削除ボタンをクリックした場合' do
-          before do
-            click_link '削除'
-          end
-
-          it '機材詳細ページに遷移する' do
-            gear = Gear.last
-            expect(current_path).to eq("/gears/#{gear.id}")
-          end
-
-          it 'レビューが削除される' do
-            expect(page).to have_content 'まだレビューが存在しません'
-          end
-        end
-      end
     end
   end
 end
+
+  #     context '編集ボタンを押した場合' do
+  #       before do
+  #         click_link '編集'
+  #       end
+
+  #       it '編集画面に遷移できる' do
+  #         expect(page).to have_content '機材のレビューを編集'
+  #       end
+
+  #       context '既存の値を適切に編集した場合' do
+  #         before do
+  #           # 元々の値は1
+  #           select '5', from: 'review[cost_performance]'
+  #           # 元々のタイトルは'Bluetoothとワイヤレスシステムを唯一搭載している'
+  #           fill_in 'review_title', with: 'テストチェック'
+  #           click_button 'レビューを編集する'
+  #         end
+
+  #         it 'レビューの編集ができる' do
+  #           review = Review.last
+  #           expect(review.cost_performance).to eq 5
+  #           expect(review.title).to eq 'テストチェック'
+  #         end
+
+  #         it '機材詳細画面に遷移する' do
+  #           gear = Gear.last
+  #           expect(current_path).to eq("/gears/#{gear.id}")
+  #           expect(page).to have_content 'テストチェック'
+  #         end
+  #       end
+
+  #       context '既存の値をnilにした場合' do
+  #         before do
+  #           fill_in 'review_title', with: nil
+  #           click_button 'レビューを編集する'
+  #         end
+
+  #         it 'レビューの編集に失敗する' do
+  #           gear = Gear.last
+  #           review = Review.last
+  #           expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
+  #         end
+  #       end
+  #     end
+
+  #     context '削除ボタンを押した場合' do
+  #       before do
+  #         click_button '削除'
+  #       end
+
+  #       it 'モーダルウィンドウが表示される' do
+  #         expect(page).to have_content '本当に削除してもよろしいですか？'
+  #       end
+
+  #       context 'モーダルウィンドウの削除ボタンをクリックした場合' do
+  #         before do
+  #           click_link '削除'
+  #         end
+
+  #         it '機材詳細ページに遷移する' do
+  #           gear = Gear.last
+  #           expect(current_path).to eq("/gears/#{gear.id}")
+  #         end
+
+  #         it 'レビューが削除される' do
+  #           expect(page).to have_content 'まだレビューが存在しません'
+  #         end
+#         end
+#       end
+#     end
+#   end
+# end
