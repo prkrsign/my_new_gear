@@ -156,79 +156,80 @@ RSpec.describe 'レビュー機能', type: :system do
         expect(page).to have_link '編集'
         expect(page).to have_button '削除'
       end
+
+      context '編集ボタンを押した場合' do
+        before do
+          click_link '編集'
+        end
+
+        it '編集画面に遷移できる' do
+          expect(page).to have_content '機材のレビューを編集'
+        end
+
+        it 'クリックしたレビューと対応したURLに遷移する' do
+          expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
+        end
+
+        context '既存の値を適切に編集した場合' do
+          before do
+            # 元々の値は1
+            select '5', from: 'review[cost_performance]'
+            # 元々のタイトルは'Bluetoothとワイヤレスシステムを唯一搭載している'
+            fill_in 'review_title', with: 'テストチェック'
+            click_button 'レビューを編集する'
+          end
+
+          it 'レビューの編集ができる' do
+            review = Review.last
+            expect(review.cost_performance).to eq 5
+            expect(review.title).to eq 'テストチェック'
+          end
+
+          it '機材詳細画面に遷移する' do
+            expect(current_path).to eq("/gears/#{gear.id}")
+            expect(page).to have_content 'テストチェック'
+          end
+        end
+
+        context '既存の値をnilにした場合' do
+          before do
+            fill_in 'review_title', with: nil
+            click_button 'レビューを編集する'
+          end
+
+          it 'レビューの編集に失敗する' do
+            expect(page).to have_content 'レビューの更新に失敗しました'
+          end
+
+          it 'レビュー編集画面にリダイレクトされる' do
+            expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
+          end
+        end
+      end
+
+      context '削除ボタンを押した場合' do
+        before do
+          click_button '削除'
+        end
+
+        it 'モーダルウィンドウが表示される' do
+          expect(page).to have_content '本当に削除してもよろしいですか？'
+        end
+
+        context 'モーダルウィンドウの削除ボタンをクリックした場合' do
+          before do
+            click_link '削除'
+          end
+
+          it '機材詳細ページに遷移する' do
+            expect(current_path).to eq("/gears/#{gear.id}")
+          end
+
+          it 'レビューが削除される' do
+            expect(page).to have_content 'まだレビューが存在しません'
+          end
+        end
+      end
     end
   end
 end
-
-  #     context '編集ボタンを押した場合' do
-  #       before do
-  #         click_link '編集'
-  #       end
-
-  #       it '編集画面に遷移できる' do
-  #         expect(page).to have_content '機材のレビューを編集'
-  #       end
-
-  #       context '既存の値を適切に編集した場合' do
-  #         before do
-  #           # 元々の値は1
-  #           select '5', from: 'review[cost_performance]'
-  #           # 元々のタイトルは'Bluetoothとワイヤレスシステムを唯一搭載している'
-  #           fill_in 'review_title', with: 'テストチェック'
-  #           click_button 'レビューを編集する'
-  #         end
-
-  #         it 'レビューの編集ができる' do
-  #           review = Review.last
-  #           expect(review.cost_performance).to eq 5
-  #           expect(review.title).to eq 'テストチェック'
-  #         end
-
-  #         it '機材詳細画面に遷移する' do
-  #           gear = Gear.last
-  #           expect(current_path).to eq("/gears/#{gear.id}")
-  #           expect(page).to have_content 'テストチェック'
-  #         end
-  #       end
-
-  #       context '既存の値をnilにした場合' do
-  #         before do
-  #           fill_in 'review_title', with: nil
-  #           click_button 'レビューを編集する'
-  #         end
-
-  #         it 'レビューの編集に失敗する' do
-  #           gear = Gear.last
-  #           review = Review.last
-  #           expect(current_path).to eq("/gears/#{gear.id}/reviews/#{review.id}/edit")
-  #         end
-  #       end
-  #     end
-
-  #     context '削除ボタンを押した場合' do
-  #       before do
-  #         click_button '削除'
-  #       end
-
-  #       it 'モーダルウィンドウが表示される' do
-  #         expect(page).to have_content '本当に削除してもよろしいですか？'
-  #       end
-
-  #       context 'モーダルウィンドウの削除ボタンをクリックした場合' do
-  #         before do
-  #           click_link '削除'
-  #         end
-
-  #         it '機材詳細ページに遷移する' do
-  #           gear = Gear.last
-  #           expect(current_path).to eq("/gears/#{gear.id}")
-  #         end
-
-  #         it 'レビューが削除される' do
-  #           expect(page).to have_content 'まだレビューが存在しません'
-  #         end
-#         end
-#       end
-#     end
-#   end
-# end
