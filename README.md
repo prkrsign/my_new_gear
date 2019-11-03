@@ -1,7 +1,6 @@
 ## サイトトップページ画像
 * ご覧になる際はURLにアクセスのうえ、下記アカウントでログインください。
   * URL:https://mynewgear-portfolio.com/ メールアドレス:test@example.com      パスワード:1234567  
-  * 2019/11/4までECSの設定予定です。アクセスできない可能性がございます。11/5からアクセス可能予定です。大変申し訳ございません
   
 |PCサイズ|iPadサイズ|iPhoneサイズ|
 |---|---|---|
@@ -40,7 +39,6 @@
   
 * インフラ  
   * Docker、docker-composeによる開発環境構築
-  * DBにAmazonRDS(MySQL)
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
   * CircleCIによる自動テスト(rspec及びrubocopに対応)
