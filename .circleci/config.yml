@@ -80,16 +80,16 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "bc:d8:17:7b:3c:4f:8b:5f:97:88:0d:88:80:b9:9f:7f"
+            - "96:92:88:3f:00:87:c0:fb:17:94:45:69:0c:52:2a:6b"
       
-      - run:  
-          name: Start ssh-keyscan  
-          command: |  
-            ssh-keyscan -p 22 ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
+      # - run:  
+      #     name: Start ssh-keyscan  
+      #     command: |  
+      #       ssh-keyscan -p 22 ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
 
       - deploy:  
           name: Capistranoデプロイ
           command:
-            bundle exec cap production deploy
+            bundle exec cap production deploy --trace
 
        
