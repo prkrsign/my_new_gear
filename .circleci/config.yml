@@ -80,7 +80,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "96:92:88:3f:00:87:c0:fb:17:94:45:69:0c:52:2a:6b"
+            - "41:34:df:3c:16:e3:bc:e6:4d:c5:52:d2:9c:d3:2e:0b"
       
       # - run:  
       #     name: Start ssh-keyscan  
@@ -90,6 +90,6 @@ jobs:
       - deploy:  
           name: Capistranoデプロイ
           command:
-            bundle exec cap production deploy --trace
+            bundle exec cap production deploy
 
        
