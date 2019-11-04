@@ -85,7 +85,7 @@ jobs:
       - run:  
           name: Start ssh-keyscan  
           command: |  
-            ssh-keyscan -p ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
+            ssh-keyscan -p 22 ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
 
       - deploy:
            name: Capistranoデプロイ
