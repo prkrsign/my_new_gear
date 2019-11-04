@@ -18,8 +18,7 @@ jobs:
           - MYSQL_ROOT_HOST: '%'
 
   test:
-    - working_directory: ~/repo
-
+    working_directory: ~/repo
     steps:
       - checkout
 
