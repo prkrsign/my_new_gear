@@ -82,12 +82,24 @@ jobs:
 
 workflows:
   version: 2
-  test_and_deploy:
+  build-deploy:
     jobs:
-      - build
-      - deploy:
-          requires: # buildが成功したら実行する
-            - build
+      - build-job
+      - deploy-job:
+          requires:
+            - build-job
+          filters:
+            branches:
+              only: master
+
+# workflows:
+#   version: 2
+#   test_and_deploy:
+#     jobs:
+#       - build
+#       - deploy:
+#           requires: # buildが成功したら実行する
+#             - build
           # filters:
           #   branches:
           #     only: master
