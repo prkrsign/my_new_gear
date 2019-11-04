@@ -86,9 +86,9 @@ workflows:
   build_and_test:
     jobs:
       - build:
-      # - test:
-      #     requires: # buildが成功したら実行する
-      #       - build
+      - test:
+          requires: # buildが成功したら実行する
+            - build
 
           # filters:
           #   branches:
