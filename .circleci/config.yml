@@ -80,7 +80,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - {bc:d8:17:7b:3c:4f:8b:5f:97:88:0d:88:80:b9:9f:7f}
+            - "bc:d8:17:7b:3c:4f:8b:5f:97:88:0d:88:80:b9:9f:7f"
       - deploy:
            name: Capistranoデプロイ
            command:
