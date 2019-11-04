@@ -19,7 +19,6 @@ jobs:
 
     working_directory: ~/repo
 
-  test:
     steps:
       - checkout
 
@@ -78,7 +77,7 @@ jobs:
           fingerprints:
             - "f9:31:ef:14:eb:0f:6e:5a:bc:cc:d9:74:62:e4:55:5f"
 
-      # - deploy:  
-      #     name: Capistrano deploy
-      #     command:
-      #       bundle exec cap production deploy
+      - deploy:  
+          name: Capistrano deploy
+          command:
+            bundle exec cap production deploy
