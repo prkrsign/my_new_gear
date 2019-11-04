@@ -1,4 +1,10 @@
 server '18.179.74.251', user: 'ec2-user', roles: %w[app db web]
+set :ssh_options, keys: '~/.ssh/MyNewGear2.pem'
+
+# set :ssh_options,
+#     forward_agent: true,
+#     user: fetch(:user),
+#     keys: [(ENV['SERVICE_NAME_PRODUCTION_SSH_KEY']).to_s]
 
 # server-based syntax
 # ======================

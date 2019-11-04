@@ -77,3 +77,21 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - add_ssh_keys:
+          fingerprints:
+            - "bc:d8:17:7b:3c:4f:8b:5f:97:88:0d:88:80:b9:9f:7f"
+      
+      - run:  
+          name: Start ssh-keyscan  
+          command: |  
+            ssh-keyscan -p 22 ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
+
+      - deploy:  
+          name: Start master deploy  
+          command: |  
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then  
+                rsync -av --delete --rsh="ssh -p 22" --exclude='.git' --exclude='.circleci' ./ ec2-user@18.179.74.251  
+            fi  
+
+       
