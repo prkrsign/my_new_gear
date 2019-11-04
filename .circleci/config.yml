@@ -17,6 +17,7 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
 
+  test:
     working_directory: ~/repo
 
     steps:
@@ -81,3 +82,16 @@ jobs:
           name: Capistrano deploy
           command:
             bundle exec cap production deploy
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - build
+      - test:
+          requires: # buildが成功したら実行する
+            - build
+
+          # filters:
+          #   branches:
+          #     only: master
