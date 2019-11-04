@@ -87,10 +87,10 @@ workflows:
   version: 2
   test-and-deploy:
     jobs:
-      - build:
-      - test:
-          requires: # buildが成功したら実行する
-            - build
+      - build
+      # - test:
+      #     requires: # buildが成功したら実行する
+      #       - build
 
           # filters:
           #   branches:
