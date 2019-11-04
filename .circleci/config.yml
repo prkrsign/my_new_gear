@@ -84,8 +84,8 @@ workflows:
     jobs:
       - build
       - deploy
-        requires: # buildが成功したら実行する
-          - build
+        # requires: # buildが成功したら実行する
+        #   - build
 
           # filters:
           #   branches:
