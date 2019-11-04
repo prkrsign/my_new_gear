@@ -1,4 +1,4 @@
-server '18.179.74.251', port: 22, user: 'ec2-user', roles: %w[app db web]
+server '18.179.74.251', user: 'ec2-user', roles: %w[app db web]
 
 # set :ssh_options,
 #     forward_agent: true,
