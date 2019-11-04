@@ -84,7 +84,7 @@ workflows:
     jobs:
       - build
       - deploy
-        equires: # buildが成功したら実行する
+        requires: # buildが成功したら実行する
           - build
 
           # filters:
