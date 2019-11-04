@@ -88,10 +88,8 @@ jobs:
             ssh-keyscan -p 22 ${PRIVATE_DNS} >> ~/.ssh/known_hosts  
 
       - deploy:  
-          name: Start master deploy  
-          command: |  
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then  
-                rsync -av --delete --rsh="ssh -p 22" --exclude='.git' --exclude='.circleci' ./ ec2-user@18.179.74.251  
-            fi  
+          name: Capistranoデプロイ
+          command:
+            bundle exec cap production deploy
 
        
