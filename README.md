@@ -41,7 +41,8 @@
   * Docker、docker-composeによる開発環境構築
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
-  * CircleCIによる自動テスト、自動デプロイ(rspec及びrubocopでテスト後、capistrano自動デプロイが走る)
+  * CircleCIによる自動テスト(githubにpushした際にrspec及びrubocop実行)
+  * CircleCIによる自動デプロイ(masterブランチにマージした際にcapistrano自動デプロイ実行)
   * Route53(AWS)を使用した独自ドメインの取得
   * ELB(AWS)をエンドポイントとして常時SSL化
 
