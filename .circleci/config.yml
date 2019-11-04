@@ -74,13 +74,12 @@ jobs:
             - "f9:31:ef:14:eb:0f:6e:5a:bc:cc:d9:74:62:e4:55:5f"
 
       - deploy:
-        name: Capistrano deploy
-        command: |
-          if [ "${CIRCLE_BRANCH}" != "master" ]; then
-            exit 0
-          fi
-          
-          bundle exec cap production deploy
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
 
 # workflows:
 #   version: 2
