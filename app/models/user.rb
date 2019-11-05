@@ -40,31 +40,6 @@ class User < ApplicationRecord
         provider: provider,
         user_id: nil
       )
-
-      # 会員登録 済み
-      # if user.present?
-      #   sns = SnsCredential.new(
-      #     uid: uid,
-      #     provider: provider,
-      #     user_id: user.id
-      #   )
-
-      # 会員登録 なし
-      # else
-      # Userテーブル用の情報として、emailとusernameの値をオブジェクト化。値はSNSから引っ張りだす。まだDBには保存しない。
-      # user = User.new(
-      #   email: auth.info.email,
-      #   username: auth.info.nickname
-      # )
-
-      # Snscredentialテーブルにuidとproviderをオブジェクト化。providerはtwitterのこと。uidはprovider側で管理しているidのこと。
-      # UserテーブルのIDと紐づけたいのでこの時点ではまだ保存できない。
-      # sns = SnsCredential.new(
-      #   uid: uid,
-      #   provider: provider,
-      #   user_id: nil
-      # )
-      # end
     end
     # hashでuser情報と、snsのidを返り値として保持しておく
     { user: user, sns: sns }
