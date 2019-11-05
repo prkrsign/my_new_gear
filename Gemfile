@@ -45,11 +45,11 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mechanize'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'seed_dump'
-gem 'omniauth'
-gem 'omniauth-twitter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
