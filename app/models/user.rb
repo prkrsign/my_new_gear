@@ -27,6 +27,7 @@ class User < ApplicationRecord
 
     # sns登録 なし
     else
+      # Userテーブル用の情報として、emailとusernameの値をオブジェクト化。値はSNSから引っ張りだす。まだDBには保存しない。
       user = User.new(
         email: auth.info.email,
         username: auth.info.nickname
