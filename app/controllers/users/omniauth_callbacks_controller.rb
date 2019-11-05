@@ -20,7 +20,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user_info = SnsCredential.find_or_create_from_auth_hash(info)
       sign_in user_info
       redirect_to root_path
-
     end
     set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
   end
