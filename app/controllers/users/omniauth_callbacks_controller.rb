@@ -12,18 +12,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def callback_for(provider)
     info = User.find_oauth(request.env["omniauth.auth"])
     @user = info[:user]
-    sns = info[:sns]
 
     # userが存在する場合。sign_inした上でrootにリダレクトされる
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
     else
       user_info = SnsCredential.find_or_create_from_auth_hash(info)
       sign_in user_info
       redirect_to root_path
-      set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
+
     end
+    set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
   end
 
   def failure
