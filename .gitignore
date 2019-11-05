@@ -32,3 +32,5 @@ coverage
 .DS_Store
 mysql/mysql_data/ib_logfile0
 mysql/mysql_data/ibdata1
+mysql/mysql_data/docker_development
+mysql/mysql_data/mysql

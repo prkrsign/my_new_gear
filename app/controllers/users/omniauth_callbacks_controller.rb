@@ -10,10 +10,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # infoで必要な情報を抜き出して、userが存在する場合とuserが存在しない場合で処理を分ける
   def callback_for(provider)
-    @omniauth = request.env["omniauth.auth"]
+    # binding.pry
     info = User.find_oauth(request.env["omniauth.auth"])
     @user = info[:user]
-    sns_id = info[:sns_id]
+    sns = info[:sns]
 
     # userが存在する場合。sign_inした上でrootにリダレクトされる？
     if @user.persisted?
@@ -24,10 +24,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # user_idとsns_idでリレーションを組む必要があるため、sns_idを次のメソッドに持ち越す。
     # ユーザー情報はビューに表示する必要があるため、インスタンス変数@userを使う。
     else
-      # sns_credentialのidを他のメソッドに持ち越す
-      session["devise.sns_id"] = sns_id
-      # redirect_to だと更新してしまうのでrenderで。
-      render template: step1_signup_index_path
+
+      SnsCredential.find_or_create_from_auth_hash(info)
+      redirect_to root_path
     end
   end
 

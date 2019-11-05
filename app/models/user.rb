@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[twitter]
 
   has_many :reviews
+  has_one :sns_credential
   has_many :likes, dependent: :destroy
 
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
@@ -48,19 +49,25 @@ class User < ApplicationRecord
         # Userテーブル用の情報として、emailとusernameの値をオブジェクト化。値はSNSから引っ張りだす。まだDBには保存しない。
         user = User.new(
           email: auth.info.email,
-          username: auth.info.name
+          username: auth.info.nickname
         )
 
-        # Snscredentialテーブルにuidとproviderを保存。providerはfacebookかgoogleのこと。uidはprovider側で管理しているidのこと。
-        sns = SnsCredential.create(
+        # Snscredentialテーブルにuidとproviderをオブジェクト化。providerはtwitterのこと。uidはprovider側で管理しているidのこと。
+        # UserテーブルのIDと紐づけたいのでこの時点ではまだ保存できない。
+        sns = SnsCredential.new(
           uid: uid,
-          provider: provider
+          provider: provider,
+          user_id: nil
         )
 
       end
     end
 
     # hashでuser情報と、snsのidを返り値として保持しておく
-    { user: user, sns_id: sns.id }
+    { user: user, sns: sns }
+  end
+
+  def self.dummy_email(auth)
+    "#{auth[:sns][:uid]}-#{auth[:sns][:provider]}@example.com"
   end
 end
