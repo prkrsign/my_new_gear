@@ -19,17 +19,14 @@ class User < ApplicationRecord
   def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    sns = SnsCredential.where(uid: uid, provider: provider).first
 
     # sns登録のみ完了してるユーザー?
-    if snscredential.present?
-      user = User.where(id: snscredential.user_id).first
-      sns = snscredential
+    if sns.present?
+      user = User.where(id: sns.user_id).first
 
     # sns登録 なし
     else
-      user = User.where(email: auth.info.email).first
-
       user = User.new(
         email: auth.info.email,
         username: auth.info.nickname
