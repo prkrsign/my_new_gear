@@ -18,6 +18,6 @@ class SnsCredential < ApplicationRecord
     find_or_create_by(provider: provider, uid: uid, user_id: user.id)
 
     # ログインするためにuserをメソッド呼び出し元に返す
-    return user
+    user
   end
 end
