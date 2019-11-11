@@ -12,7 +12,7 @@
 
       .middle__inner__title__left.row
         .col-md-6
-          =link_to user_twitter_omniauth_authorize_path, class: 'btn btn-twitter-inverse btn-block btn-lg my-3' do
+          =link_to user_twitter_omniauth_authorize_path, method: :post, class: 'btn btn-twitter-inverse btn-block btn-lg my-3' do
             %i.fa.fa-twitter
             Twitterアカウントで登録
 

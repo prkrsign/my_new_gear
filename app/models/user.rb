@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[twitter]
 
   has_many :reviews
-  has_one  :sns_credential
+  has_many :sns_credentials, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
@@ -16,11 +16,10 @@ class User < ApplicationRecord
   validates :profile,              length: { maximum: 1000 }
   validates :password,             presence: true, length: { minimum: 7, maximum: 20 }, confirmation: true
 
-
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
     if user.present?
-      sns = SnsCredential.create(
+      sns = SnsCredential.new(
         uid: auth.uid,
         provider: auth.provider,
         user_id: user.id
@@ -28,25 +27,25 @@ class User < ApplicationRecord
     else
       user = User.new(
         username: auth.info.nickname,
-        email: auth.info.email,
+        email: auth.info.email
       )
       sns = SnsCredential.new(
         uid: auth.uid,
         provider: auth.provider
       )
     end
-    return { user: user ,sns: sns}
-  end
+    { user: user, sns: sns }
+    end
 
   def self.with_sns_data(auth, snscredential)
     user = User.where(id: snscredential.user_id).first
     unless user.present?
       user = User.new(
-        username: auth.info.username,
-        email: auth.info.email,
+        username: auth.info.nickname,
+        email: auth.info.email
       )
     end
-    return {user: user}
+    { user: user }
   end
 
   def self.find_oauth(auth)
@@ -60,6 +59,6 @@ class User < ApplicationRecord
       user = without_sns_data(auth)[:user]
       sns = without_sns_data(auth)[:sns]
     end
-    return { user: user ,sns: sns}
+    { user: user, sns: sns }
   end
 end
