@@ -35,7 +35,7 @@ class User < ApplicationRecord
       )
     end
     { user: user, sns: sns }
-    end
+  end
 
   def self.with_sns_data(auth, snscredential)
     user = User.where(id: snscredential.user_id).first

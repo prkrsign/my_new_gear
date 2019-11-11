@@ -16,7 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session[:sns]["user_id"] = user.id
       SnsCredential.create!(session[:sns])
       sign_in_and_redirect user, event: :authentication
-      binding.pry
       set_flash_message(:notice, :success, kind: session[:sns]["provider"].to_s.capitalize) if is_navigational_format?
     else
       super
