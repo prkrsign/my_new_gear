@@ -2,14 +2,12 @@
 -# - binding.pry
 - if review.like_user(current_user.id).nil?
   .row.px-4.mb-1
-    = link_to likes_path(review.id), method: :post, remote: true do
+    = link_to likes_path(review_id: review.id, gear_id: review.gear.id), method: :post, remote: true do
       %i.fa.fa-heart-o.heart-icon.text-secondary
       
-
-
 - else
   .row.px-4.mb-1
-    = link_to likes_path(review.id), method: :delete, remote: true do
+    = link_to like_path(review_id: review.id, gear_id: review.gear.id), method: :delete, remote: true do
       %i.fa.fa-heart.heart-red.heart-icon
 
 -# - else
