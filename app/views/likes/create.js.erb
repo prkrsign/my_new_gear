@@ -1,2 +1,1 @@
-<%# <% binding.pry %>
 $("#js-grid-like-show").html("<%= j(render partial: 'gears/review', collection: @gear.reviews.includes(:user), as: :review) %>");

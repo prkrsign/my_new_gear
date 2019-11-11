@@ -1,14 +1,16 @@
--# いいね機能一旦停止
--# - binding.pry
 - if review.like_user(current_user.id).nil?
-  .row.px-4.mb-1
+  .row.px-4.mb-1.float-left
     = link_to likes_path(review_id: review.id, gear_id: review.gear.id), method: :post, remote: true do
       %i.fa.fa-heart-o.heart-icon.text-secondary
+    .likes-count.h6.ml-1.text-secondary
+      = review.likes.count
       
 - else
-  .row.px-4.mb-1
+  .row.px-4.mb-1.float-left
     = link_to like_path(review_id: review.id, gear_id: review.gear.id), method: :delete, remote: true do
       %i.fa.fa-heart.heart-red.heart-icon
+    .likes-count.h6.ml-1.text-secondary
+      = review.likes.count
 
 -# - else
 -#   .row.px-4.mb-1
