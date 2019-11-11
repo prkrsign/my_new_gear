@@ -10,9 +10,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if session[:sns].present?
+      user = User.create!(params.require(:user).permit(:username, :email, :password))
+      session[:sns]["user_id"] = user.id
+      SnsCredential.create!(session[:sns])
+      sign_in_and_redirect user, event: :authentication
+      set_flash_message(:notice, :success, kind: session[:sns]["provider"].to_s.capitalize) if is_navigational_format?
+    else
+      super
+    end
+  end
 
   # GET /resource/edit
   # def edit

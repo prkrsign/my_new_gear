@@ -33,7 +33,7 @@ Metrics/BlockLength:
 # Configuration parameters: CountComments, ExcludedMethods.
 # 必要なのでコメントアウトしない
 Metrics/MethodLength:
-  Max: 17
+  Max: 18
 
 # デプロイできなくなる可能性があるのでコメントアウトしない
 Style/ExpandPathArguments:
