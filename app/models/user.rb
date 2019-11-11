@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :sns_credentials, dependent: :destroy
+  # accepts_nested_attributes_for :sns_credentials
   has_many :likes, dependent: :destroy
 
   VALID_EMAIL_REGIX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
