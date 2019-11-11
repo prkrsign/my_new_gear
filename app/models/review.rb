@@ -19,4 +19,8 @@ class Review < ApplicationRecord
   validates  :satisfaction_level,      presence: true
   validates  :user_id,                 presence: true
   validates  :gear_id,                 presence: true
+
+  def like_user(id)
+    likes.find_by(user_id: id)
+  end
 end

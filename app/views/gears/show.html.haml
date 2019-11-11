@@ -7,9 +7,6 @@
         .show-header.h5.font-weight-bold.py-4.mt-3.text-center.card-header.bg-dark.text-light
           = @gear.gearname
         %hr
-        #js-grid-like-show
-          -# = render partial: 'likes/like_show', locals:{ gear: @gear }
-
   
         .row
           .show-image.col-lg-6.col-md-6.col-sm-12.col-12.text-center.mb-4.d-inline-flex.justify-content-center
@@ -87,16 +84,19 @@
               .show-review.card.shadow-sm.w-100.mt-3
                 .review-title.card-header
                   = review.title
+
                 .review-inner.p-3
                   = review.detail
                   .review-info.col-12.text-right.text-primary.mt-3
                     = review.user.username
                     %time.text-secondary(datetime="#{review.created_at}")= time_ago_in_words(review.created_at)
+
+                    #js-grid-like-show.float-left
+                      = render partial: 'likes/like_show', locals: { review: review }
                   
                   - if user_signed_in? 
                     - if review.user.id == current_user.id
                       .show-delete.col-12.text-right.mt-2
-                        -# -binding.pry
                         = link_to edit_gear_review_path(@gear.id, review.id), class: 'btn btn-outline-success btn-sm mr-2' do
                           編集                    
                         %button{type: 'button', class: 'btn btn-outline-danger btn-sm', data: {toggle: 'modal', target: '#deleteModal'}}

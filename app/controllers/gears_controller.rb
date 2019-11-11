@@ -1,6 +1,7 @@
 class GearsController < ApplicationController
   before_action :set_gear, only: [:show]
   before_action :set_search, only: %i[index show]
+  before_action :set_reviews, only: %i[show]
 
   def index
     @gear = Gear.all.page(params[:page]).per(12)
@@ -21,6 +22,10 @@ class GearsController < ApplicationController
 
   def set_gear
     @gear = Gear.find(params[:id])
+  end
+
+  def set_reviews
+    @reviews = Review.where(gear_id: params[:id])
   end
 
   def set_search

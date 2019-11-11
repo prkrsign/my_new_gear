@@ -12,10 +12,6 @@ class LikesController < ApplicationController
     like.destroy
   end
 
-  def set_gear
-    @gear = Gear.order(created_at: 'DESC').page(params[:page]).per(10)
-  end
-
   private
 
   def set_show
