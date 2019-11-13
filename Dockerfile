@@ -1,7 +1,7 @@
 # ruby2.5.1のalpineを指定
 FROM ruby:2.5.1-alpine
 
-ENV CHROME_PACKAGES="chromium-chromedriver zlib-dev chromium xvfb wait4ports xorg-server dbus ttf-freefont mesa-dri-swrast udev font-noto" \
+ENV CHROME_PACKAGES="chromium-chromedriver zlib-dev chromium xvfb wait4ports xorg-server dbus ttf-freefont mesa-dri-swrast udev" \
     BUILD_PACKAGES="build-base curl-dev" \
     LANG=C.UTF-8 \
     TZ=Asia/Tokyo
@@ -25,6 +25,12 @@ RUN gem install bundler && \
     apk add --no-cache ${CHROME_PACKAGES} && \
     apk add --virtual build-packages --no-cache ${BUILD_PACKAGES} && \
     bundle install && \
+    apk add --no-cache curl fontconfig && \
+    curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/NotoSansCJKjp && \
+    unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/NotoSansCJKjp/ && \
+    rm NotoSansCJKjp-hinted.zip && \
+    fc-cache -fv && \
 # 上で指定したパッケージの中、開発環境を構築したら不要になるファイルたちです。apk delで消しちゃいます。
     apk del libxml2-dev curl-dev make gcc libc-dev g++ linux-headers build-packages
 
