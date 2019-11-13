@@ -26,6 +26,8 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
 
   [
+    "no-sandbox",
+    "disable-dev-shm-usage",
     "headless",
     "window-size=2880x2000",
     "disable-gpu" # https://developers.google.com/web/updates/2017/04/headless-chrome
