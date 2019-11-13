@@ -11,7 +11,22 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
     ports:
       - "4306:3306" # ホストからゲストへポートフォワード。sequelProと繋ぎたいので、3306ではなく4306をポートに指定
-    # command: --innodb-use-native-aio=0  
+    
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+
+  test-db:
+    image: mysql:5.6
+    environment:
+      MYSQL_DATABASE: docker_test
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: test_root
+      MYSQL_PASSWORD: password
+    ports:
+      - "4307:3306" # ホストからゲストへポートフォワード。sequelProと繋ぎたいので、3306ではなく4306をポートに指定 
+
   web:
     build:
       context: .
@@ -26,3 +41,5 @@ services:
       - "3000:3000" # ホストからゲストへポートフォワード
     volumes:
       - .:/workdir # ソースコード変更したらDocker側も即反映されるように
+    environment:
+       - "SELENIUM_DRIVER_URL=https://selenium_chrome:4444/wd/hub"

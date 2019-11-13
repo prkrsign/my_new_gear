@@ -1,6 +1,4 @@
 class LikesController < ApplicationController
-  # いいね機能一旦停止
-  # before_action :set_review, only: %i[create destroy]
   before_action :set_gear, only: %i[create destroy]
 
   def create

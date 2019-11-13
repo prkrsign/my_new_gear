@@ -70,9 +70,16 @@
           .show-edit.col-12
             =link_to new_gear_review_path(@gear.id), class: 'btn btn-outline-success btn-block' do
               レビューを投稿
-        .row.px-3.my-3
-          %label.review-label.text-secondary.mb-0
-            この機材のレビュー
-        
-        #js-grid-like-show.float-left.mb-4
-          = render partial: 'review', collection: @gear.reviews.includes(:user), as: :review
+
+        - if @gear.reviews.first.nil? 
+          .show-review.card.shadow-sm.w-100.my-4
+            .review-title.card-header
+              まだレビューが存在しません
+
+        - else
+          .row.px-3.my-3
+            %label.review-label.text-secondary.mb-0
+              この機材のレビュー
+          
+          #js-grid-like-show.float-left.mb-4
+            = render partial: 'review', collection: @gear.reviews.includes(:user), as: :review
