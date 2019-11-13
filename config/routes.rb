@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   post 'photos/:id/:user_id', to: 'photos#show'
 
   resources :gears, only: %i[show search] do
-    resources :likes, only: %i[create destroy]
     resources :reviews, only: %i[new edit update create destroy]
+  end
+
+  resources :review do
+    member do
+      resources :likes, only: %i[create destroy]
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

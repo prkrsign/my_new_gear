@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :gear
+  has_many :likes, dependent: :destroy
 
   # 一つの機材に対して、ユーザーは一つのレビューしか投稿できないバリデーション。うまく動かないので一旦保留
   # def prevent_duplicate_user?
@@ -18,4 +19,8 @@ class Review < ApplicationRecord
   validates  :satisfaction_level,      presence: true
   validates  :user_id,                 presence: true
   validates  :gear_id,                 presence: true
+
+  def like_user(id)
+    likes.find_by(user_id: id)
+  end
 end
