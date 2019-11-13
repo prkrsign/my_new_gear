@@ -41,7 +41,7 @@
   * 統合テスト(System Spec) (gem simplecovによるカバレッジ計測87%)
   
 * インフラ  
-  * Docker、docker-composeによる開発環境構築
+  * Docker、docker-composeによる開発環境、テスト環境構築
   * 仮想サーバーEC2(AWS)を使用
   * Capistranoを用いた自動デプロイ
   * CircleCIによる自動テスト(githubにpushした際にrspec及びrubocop実行)
