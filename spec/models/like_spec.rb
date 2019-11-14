@@ -5,6 +5,7 @@ RSpec.describe Like, type: :model do
     let(:gear) { FactoryBot.create(:gear) }
     let(:user) { FactoryBot.create(:user) }
     let(:review) { FactoryBot.create(:review, user: user, gear: gear) }
+    let(:review2) { FactoryBot.create(:review, user: user, gear: gear) }
 
     it '存在するユーザーIDとレビューIDの場合、有効である' do
       like = FactoryBot.build(:like, user: user, review: review)
@@ -24,15 +25,15 @@ RSpec.describe Like, type: :model do
     end
 
     it '任意のユーザーIDが複数のレビューIDを持つ場合、有効である' do
-      binding.pry
-      review2 = FactoryBot.create(:review, user: user, gear: gear)
       like1 = FactoryBot.create(:like, user: user, review: review)
+      expect(like1).to be_valid
       like2 = FactoryBot.build(:like, user: user, review: review2)
       expect(like2).to be_valid
     end
 
     it 'ユーザーIDとレビューIDが重複する場合、無効である' do
       like1 = FactoryBot.create(:like, user: user, review: review)
+      expect(like1).to be_valid
       like2 = FactoryBot.build(:like, user: user, review: review)
       like2.valid?
       expect(like2.errors[:review_id]).to include('はすでに存在します')

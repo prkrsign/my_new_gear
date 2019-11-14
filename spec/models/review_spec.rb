@@ -153,5 +153,24 @@ RSpec.describe Review, type: :model do
         expect(review.errors[:gear]).to include("を入力してください")
       end
     end
+
+    describe 'like_userメソッドの妥当性確認' do
+      let(:gear) { FactoryBot.create(:gear) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:review) { FactoryBot.create(:review, user: user, gear: gear) }
+
+      it '任意のユーザーがいいねをしている場合、メソッドは存在するを返すこと' do
+        like = FactoryBot.create(:like, user: user, review: review)
+        expect(like).to be_valid
+        expect(user.reviews.first.like_user(user.id).present?).to eq true
+      end
+
+      it '任意のユーザーがいいねをしていない場合、メソッドは存在しないを返すこと' do
+        user2 = FactoryBot.create(:user, email: 'testtest@yahoo.co.jp')
+        like = FactoryBot.create(:like, user: user2, review: review)
+        expect(like).to be_valid
+        expect(user.reviews.first.like_user(user.id).present?).to eq false
+      end
+    end
   end
 end
