@@ -11,12 +11,8 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
     ports:
       - "4306:3306" # ホストからゲストへポートフォワード。sequelProと繋ぎたいので、3306ではなく4306をポートに指定
-    
-  selenium_chrome:
-    image: selenium/standalone-chrome-debug
-    logging:
-      driver: none
 
+  # Docker内部でテスト用のデータベースが必要になるので記述
   test-db:
     image: mysql:5.6
     environment:
@@ -25,7 +21,7 @@ services:
       MYSQL_USER: test_root
       MYSQL_PASSWORD: password
     ports:
-      - "4307:3306" # ホストからゲストへポートフォワード。sequelProと繋ぎたいので、3306ではなく4306をポートに指定 
+      - "4307:3306" # ホストからゲストへポートフォワード。sequelProと繋ぎたいので、3306ではなく4307をポートに指定 
 
   web:
     build:
