@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Gear, type: :model do
   describe '機材情報保存機能' do
-    let(:gear) { FactoryBot.create(:gear) }
+    let(:gear) { create(:gear) }
 
     it '全ての必須項目を入れた場合に、機材情報が保存される' do
       gear.valid?
@@ -43,9 +43,9 @@ RSpec.describe Gear, type: :model do
   end
 
   describe 'average_pointメソッド' do
-    let(:gear) { FactoryBot.create(:gear) }
-    let(:user) { FactoryBot.create(:user) }
-    let(:review) { FactoryBot.create_list(:review, 5, gear: gear, user: user) }
+    let(:gear) { create(:gear) }
+    let(:user) { create(:user) }
+    let(:review) { create_list(:review, 5, gear: gear, user: user) }
 
     before do
       review

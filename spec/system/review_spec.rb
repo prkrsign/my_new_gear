@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'レビュー機能', type: :system do
-  let!(:user) { FactoryBot.create(:user) }
-  let!(:gear) { FactoryBot.create(:gear) }
+  let!(:user) { create(:user) }
+  let!(:gear) { create(:gear) }
 
   describe '投稿機能' do
     context 'ログインしていない場合' do
@@ -85,7 +85,7 @@ RSpec.describe 'レビュー機能', type: :system do
         end
 
         context '別のユーザーでログインした場合' do
-          let!(:user2) { FactoryBot.create(:user, email: 'testman2@yahoo.co.jp') }
+          let!(:user2) { create(:user, email: 'testman2@yahoo.co.jp') }
           before do
             sign_out user
             sign_in user2
@@ -140,7 +140,7 @@ RSpec.describe 'レビュー機能', type: :system do
   end
 
   describe '編集、削除機能' do
-    let!(:review) { FactoryBot.create(:review, user: user, gear: gear) }
+    let!(:review) { create(:review, user: user, gear: gear) }
 
     context 'レビューを投稿したユーザーと、閲覧するユーザーが同じ場合' do
       before do

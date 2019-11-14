@@ -21,7 +21,7 @@ RSpec.describe 'サインアップ、ログイン、ログアウト機能', type
 
     context '登録済みのメールアドレスを打ち込んだ場合' do
       before do
-        user = FactoryBot.create(:user)
+        user = create(:user)
         fill_in 'ユーザー名', with: 'あいうえお'
         fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
         fill_in 'パスワード', with: '1234567'
@@ -37,7 +37,7 @@ RSpec.describe 'サインアップ、ログイン、ログアウト機能', type
   describe 'ログイン機能' do
     context 'ユーザー登録完了済がいる場合' do
       before do
-        user = FactoryBot.create(:user)
+        user = create(:user)
         visit new_user_session_path
       end
 
@@ -80,7 +80,7 @@ RSpec.describe 'サインアップ、ログイン、ログアウト機能', type
   describe 'ログアウト機能' do
     context 'ユーザーがログインしている場合' do
       before do
-        user = FactoryBot.create(:user)
+        user = create(:user)
         visit new_user_session_path
         fill_in 'メールアドレス', with: 'testman@yahoo.co.jp'
         fill_in 'パスワード', with: '1234567'
