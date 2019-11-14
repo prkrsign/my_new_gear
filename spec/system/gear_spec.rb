@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe '機材機能', type: :system, js: true do
   describe '一覧表示機能' do
-    let!(:user) { FactoryBot.create(:user) }
-    let!(:gear) { FactoryBot.create_list(:gear, 16) }
+    let!(:user) { create(:user) }
+    let!(:gear) { create_list(:gear, 16) }
 
     context 'ログインしていない場合' do
       before do
@@ -64,8 +64,8 @@ RSpec.describe '機材機能', type: :system, js: true do
   end
 
   describe '詳細表示機能' do
-    let!(:user) { FactoryBot.create(:user) }
-    let!(:gear) { FactoryBot.create(:gear) }
+    let!(:user) { create(:user) }
+    let!(:gear) { create(:gear) }
     context 'ログインしていない場合' do
       before do
         visit root_path
@@ -108,7 +108,7 @@ RSpec.describe '機材機能', type: :system, js: true do
         end
 
         context 'レビューが投稿されている場合' do
-          let!(:review) { FactoryBot.create(:review, user: user, gear: gear) }
+          let!(:review) { create(:review, user: user, gear: gear) }
 
           it 'レーダーチャートが表示される' do
             expect(page).to have_selector 'canvas'
@@ -123,8 +123,8 @@ RSpec.describe '機材機能', type: :system, js: true do
   end
 
   describe '検索機能' do
-    let!(:user) { FactoryBot.create(:user) }
-    let!(:gear) { FactoryBot.create_list(:gear, 16) }
+    let!(:user) { create(:user) }
+    let!(:gear) { create_list(:gear, 16) }
 
     context '検索にヒットした場合' do
       before do
