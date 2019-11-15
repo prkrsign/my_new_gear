@@ -38,7 +38,7 @@
   * グラフ表示機能(chart.jsを用いたレーダーチャート)
   * Twitterによるサインアップ、サインイン機能
   * 単体テスト(RSpec)
-  * 統合テスト(System Spec) (gem simplecovによるカバレッジ計測87%)
+  * 統合テスト(System Spec)
   
 * インフラ  
   * Docker、docker-composeによる開発環境、テスト環境構築
