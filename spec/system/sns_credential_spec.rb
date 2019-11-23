@@ -7,10 +7,6 @@ RSpec.describe 'SNSサインアップ、サインイン機能', type: :system do
         visit new_user_registration_path
         click_link 'Twitterアカウントで登録'
       end
-      
-      it 'サインアップ画面に遷移する' 
-
-      it 'フォームにSNSのユーザーネームが登録されている'
     end
   end
 end

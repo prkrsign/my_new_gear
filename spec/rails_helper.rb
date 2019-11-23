@@ -16,11 +16,16 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+# omniauthのテストモードに変更
+OmniAuth.config.test_mode = true
+
 RSpec.configure do |config|
+  config.include OmniauthMocks
+  # FactoryBotの記述省略
   config.include FactoryBot::Syntax::Methods
 
+  # deviseで使うヘルパー
   config.include Devise::TestHelpers, type: :controller
-
   config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -29,8 +34,5 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
 end

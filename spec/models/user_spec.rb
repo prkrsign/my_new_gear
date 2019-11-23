@@ -128,8 +128,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe 'SNS認証メソッド' do
-    context 'find_oauthメソッドの検証'
-  end
 end
