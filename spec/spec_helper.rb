@@ -22,6 +22,7 @@ SimpleCov.start 'rails' do
   add_filter "app/models/scraping.rb"
 end
 
+# Docker内部でcapybaraを実行する場合、下記設定をする必要がある。
 Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
 

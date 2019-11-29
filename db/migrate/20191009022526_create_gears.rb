@@ -5,6 +5,7 @@ class CreateGears < ActiveRecord::Migration[5.2]
       t.string   :image,                  null: false
       t.string   :maker,                  null: false
       t.string   :category,               null: false
+      t.integer  :reviews_count,          null: false, default: 0
 
       t.timestamps
     end
