@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :sns_credential do
-    provider              {'twitter'}
-    uid                   { Faker::Number.number(19) }
+    provider              { 'twitter' }
+    uid                   { '123456' }
     user
   end
 end
