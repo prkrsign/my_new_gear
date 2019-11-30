@@ -34,6 +34,8 @@ Metrics/BlockLength:
 # 必要なのでコメントアウトしない
 Metrics/MethodLength:
   Max: 18
+  Exclude:
+   - 'spec/rails_helper.rb'
 
 # デプロイできなくなる可能性があるのでコメントアウトしない
 Style/ExpandPathArguments:

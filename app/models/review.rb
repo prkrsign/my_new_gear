@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :gear
+  belongs_to :gear, counter_cache: true
   has_many :likes, dependent: :destroy
 
   # 一つの機材に対して、ユーザーは一つのレビューしか投稿できないバリデーション。うまく動かないので一旦保留
