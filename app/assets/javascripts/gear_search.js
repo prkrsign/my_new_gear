@@ -4,9 +4,14 @@ $(document).on('turbolinks:load', function(){
 
   function appendGear(gear){
     var html = 
-              `<li class="list-group-item list-group-item-primary data-gear-id=${gear.id} h6"> ${gear.name} </li>`
+              `<li class="list-group-item list-group-item-primary h6 gearname-select" data-gear-id=${gear.id}  data-gear-name=${gear.name}> ${gear.name} </li>`
               search_list.append(html)
   }
+
+  // fucntion selectGear(gear_name){
+  //   var text = gear_name
+
+  // }
 
   $('#gear_search').on('keyup', function(e){
   var input = $("#q_gearname_or_maker_or_category_cont").val();
@@ -32,15 +37,19 @@ $(document).on('turbolinks:load', function(){
       }
 
       else {
-        console.log('sasisuseso')  
-        $('#q_gearname_or_maker_or_category_cont').empty(); // ユーザーが見つからなければ「見つからない」を返す。
-        appendErrMsgToHTML("一致するユーザーが見つかりません");
+        $('#gear-search-result').empty(); // 機材が見つからなければ「見つからない」を返す。
+        appendErrMsgToHTML("一致する機材が見つかりません");
       }
     })
 
     .fail(function() {
-      alert('ユーザー検索に失敗しました');
+      alert('機材検索に失敗しました');
     });
-
   });
+
+  $(document).on('click', '.gearname-select', function() {
+    var gear_name = $(this).attr('data-gear-name');
+    $("#q_gearname_or_maker_or_category_cont").val(gear_name);
+    $(this).parent().remove();
+  })
 })
