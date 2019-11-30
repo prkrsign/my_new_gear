@@ -5,6 +5,12 @@ class GearsController < ApplicationController
 
   def index
     @gear = Gear.all.page(params[:page]).per(12)
+    @increments = Gear.where('gearname LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format| 
+      # binding.pry
+      format.html
+      format.json
+    end
   end
 
   def search
