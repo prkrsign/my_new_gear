@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function(){
 
   function appendGear(gear){
     var html = 
-              `<li class="float-none list-group-item data-gear-id=${gear.id} h7"> ${gear.name} </li>`
+              `<li class="list-group-item list-group-item-primary data-gear-id=${gear.id} h6"> ${gear.name} </li>`
               search_list.append(html)
   }
 
