@@ -33,35 +33,36 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
-def twitter_mock
-  OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
-    "provider" => "twitter",
-    "uid" => "123456",
-    "info" => {
-      "name" => "Mock User",
-      "image" => "http://mock_image_url.com",
-      "location" => "",
-      "email" => "mock@example.com",
-      "urls" => {
-        "Twitter" => "https://twitter.com/MockUser1234",
-        "Website" => ""
-      }
-    },
-    "credentials" => {
-      "token" => "mock_credentails_token",
-      "secret" => "mock_credentails_secret"
-    },
-    "extra" => {
-      "raw_info" => {
-        "name" => "Mock User",
-        "id" => "123456",
-        "followers_count" => 0,
-        "friends_count" => 0,
-        "statuses_count" => 0
-      }
-    }
-  )
-end
+# SNSログイン機能うまくテストできないので一旦停止
+# def twitter_mock
+#   OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
+#     "provider" => "twitter",
+#     "uid" => "123456",
+#     "info" => {
+#       "name" => "Mock User",
+#       "image" => "http://mock_image_url.com",
+#       "location" => "",
+#       "email" => "mock@example.com",
+#       "urls" => {
+#         "Twitter" => "https://twitter.com/MockUser1234",
+#         "Website" => ""
+#       }
+#     },
+#     "credentials" => {
+#       "token" => "mock_credentails_token",
+#       "secret" => "mock_credentails_secret"
+#     },
+#     "extra" => {
+#       "raw_info" => {
+#         "name" => "Mock User",
+#         "id" => "123456",
+#         "followers_count" => 0,
+#         "friends_count" => 0,
+#         "statuses_count" => 0
+#       }
+#     }
+#   )
+# end
 
-# omniauthのテストモードに変更
-OmniAuth.config.test_mode = true
+# # omniauthのテストモードに変更
+# OmniAuth.config.test_mode = true

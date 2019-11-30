@@ -29,17 +29,8 @@ $(document).on('turbolinks:load', function(){
         gears.forEach(function(gear){
           appendGear(gear)
         });
-      }
-
-      else {
-        $('#gear-search-result').empty(); // 機材が見つからなければ「見つからない」を返す。
-        appendErrMsgToHTML("一致する機材が見つかりません");
-      }
-    })
-
-    .fail(function() {
-      alert('機材検索に失敗しました');
-    })
+      };
+    });
   });
 
   $(document).on('click', '.gearname-select', function() {
