@@ -33,9 +33,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
-
 def twitter_mock
-  OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+  OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
     "provider" => "twitter",
     "uid" => "123456",
     "info" => {
@@ -61,7 +60,7 @@ def twitter_mock
         "statuses_count" => 0
       }
     }
-  })
+  )
 end
 
 # omniauthのテストモードに変更

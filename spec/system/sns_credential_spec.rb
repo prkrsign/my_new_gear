@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'SNSサインアップ、サインイン機能', type: :system do
   describe 'サインイン機能' do
     let!(:user) { create(:user) }
-    let!(:sns_credential) { create(:sns_credential, user: user) } 
+    let!(:sns_credential) { create(:sns_credential, user: user) }
 
     context 'SNS認証登録済みの場合' do
       before do
@@ -14,7 +14,6 @@ RSpec.describe 'SNSサインアップ、サインイン機能', type: :system do
       end
 
       it 'SNS認証ログインできる' do
-        binding.pry
         expect(page).to have_content('aaaa')
       end
     end

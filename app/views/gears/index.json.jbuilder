@@ -1,5 +1,4 @@
-json.array! @increments  do |gear|
-  # binding.pry
-  json.id      gear.id
-  json.name    gear.gearname 
-  end
+json.array! @increments do |gear|
+  json.id gear.id
+  json.name gear.gearname
+end

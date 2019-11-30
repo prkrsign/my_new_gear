@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SnsCredential, type: :model do
   describe 'SNS連携新規登録' do
     let(:user) { create(:user) }
-    let(:sns_credential) { create(:sns_credential, user: user) } 
+    let(:sns_credential) { create(:sns_credential, user: user) }
 
     it 'provider,uid,user_idが存在する場合、有効である' do
       expect(sns_credential).to be_valid
