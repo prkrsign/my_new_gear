@@ -1,7 +1,6 @@
 = render 'devise/shared/signup'
 
 .gears-new-wrapper
-  -# -binding.pry
   = form_with model: @review, url: gear_review_path(@gear.id, @review.id), local: true ,class: 'container-fluid' do |f|
     .gears-new-contents.row
       .gears-new-contents__box.h5.col-lg-6.col-md-8.col-sm-12.col-12.offset-md-2.offset-lg-3.pt-5.card
@@ -80,91 +79,3 @@
         .gears-new-contents__box__review-container.text-center.my-4
           %button{type: 'submit', class: 'btn btn-outline-success'}
             レビューを編集する
-
--# .gears-new-wrapper
--#   = form_with model: @gear, url:gear_path, method: :PATCH , local: true ,class: 'container-fluid' do |f|
--#     .gears-new-contents.row
--#       .gears-new-contents__box.h5.col-lg-6.col-md-8.col-sm-12.col-12.offset-md-2.offset-lg-3.pt-5.card
--#         .gears-new-contents__box__title.text-center.font-weight-bold
--#           機材の情報を入力
--#           %hr.my-4
-        
--#         .gears-new-contents__box__image-container.pt-3
--#           %label.gears-new-contents__box__image-container__icon.font-weight-bold.border.border-warning.rounded.pt-4
--#             %i.fa.fa-camera.align-middle
--#             = f.file_field :image, id: 'file_photo'
--#           .gears-new-contents__box__image-container__text.mt-2
--#             -# 画像をアップロードしてください (後々画像読み込みアイコンのところと、読み込んだ画像が入れ替わるようにする)
-        
--#         .gears-new-contents__box__image-check.pt-3#gearImgPreview
--#           %label.gears-new-contents__box__image-check__image.font-weight-bold.border.border-warning.rounded.pt-2
--#             = image_tag "", id:'image', class:'gears-new-contents__box__image-check__image__view rounded',accept: "image/*"
--#           .gears-new-contents__box__image-check__text
--#             画像をアップロード済
-
--#         %hr.my-4
-        
--#         .gears-new-contents__box__status-container.p-3.row
--#           .gears-new-contents__box__status-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
--#             種類
-
--#           .gears-new-contents__box__status-container__select.col-md-8
--#             = f.label :gearname, '機材名', class: 'h6 font-weight-bold'
--#             = f.text_field :gearname, class: 'form-control', placeholder: '例)OD-1X'
-
--#             = f.label :category_id, 'カテゴリー', class: 'h6 font-weight-bold mt-4'
--#             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},{class: "category form-control"}
-
--#             = f.label :maker_id, 'メーカー', class: 'h6 font-weight-bold mt-4'
--#             = f.collection_select :maker_id, Maker.all, :id, :name, {include_blank: '未選択'},{class: "maker form-control"}
--#         %hr.my-4
-
--#         .gears-new-contents__box__point-container.p-3.row
--#           .gears-new-contents__box__point-container__title.h6.col-md-4.pl-4.mb-3.font-weight-bold.text-muted
--#             ポイント
--#             .gears-new-contents__box__point-container__title__note.mt-3.text-primary.h6
--#               合計点が100点になるようにご記入ください。
-          
--#           .gears-new-contents__box__point-container__list.col-md-8
--#             = f.label :cost_performance, 'コストパフォーマンス', class: 'h6 font-weight-bold'
--#             = f.text_field :cost_performance, class: 'form-control point_input', placeholder: '例)20', id: 'cost_point'
-
--#             = f.label :sound, 'サウンド', class: 'h6 font-weight-bold mt-4'
--#             = f.text_field :sound, class: 'form-control point_input', placeholder: '例)20', id: 'sound_point'
-
--#             = f.label :design, 'デザイン', class: 'h6 font-weight-bold mt-4'
--#             = f.text_field :design, class: 'form-control point_input', placeholder: '例)20', id: 'design_point'
-
--#             = f.label :durability, '耐久性', class: 'h6 font-weight-bold mt-4'
--#             = f.text_field :durability, class: 'form-control point_input', placeholder: '例)20', id: 'durability_point'
-
--#             = f.label :dissatisfaction, '不満', class: 'h6 font-weight-bold mt-4'
--#             = f.text_field :dissatisfaction, class: 'form-control point_input', placeholder: '例)20', id: 'dissatisfaction_point'
-
--#             .gears-new-contents__box__point-container__list__result.mt-5.row.px-3
--#               .gears-new-contents__box__point-container__list__result__text.font-weight-bold.col-4.h4
--#                 合計:
--#               .gears-new-contents__box__point-container__list__result__point.col-8.text-right.h3
-              
--#         %hr.my-4
-
--#         .gears-new-contents__box__review-container.p-3.row
--#           .gears-new-contents__box__review-container__title.h6.col-12.font-weight-bold.text-muted
--#             タイトル
-          
--#           .gears-new-contents__box__review-container__form.col-12
--#             .form-group
--#               = f.text_area :title, class: 'form-control', rows: '1', placeholder: '例)「CRAFTROS Supiritus」エフェクターレビュー！'
-
--#         .gears-new-contents__box__review-container.p-3.row
--#           .gears-new-contents__box__review-container__title.h6.col-12.font-weight-bold.text-muted
--#             レビュー
-          
--#           .gears-new-contents__box__review-container__form.col-12
--#             .form-group
--#               = f.text_area :review, class: 'form-control', rows: '6', placeholder: '例)これまでたくさんのオーバードライブを購入しましたが、ここに結論がありました。BOSSらしいと言えばそこまでですが、これがBOSSのひとつの回答だと思います。つまみをどの位置にしても良い音がでます。ブースターとして、クランチとして、軽めのディストーションとして。オールラウンダーです。'
--#         %hr.my-3
-        
--#         .gears-new-contents__box__review-container.text-center.my-4
--#           %button{type: 'submit', class: 'btn btn-outline-success'}
--#             レビューを編集する
